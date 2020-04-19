@@ -1,4 +1,4 @@
 class OrganizationUser < ApplicationRecord
-  has_one :organization
+  belongs_to :organization
   has_many :users
 end

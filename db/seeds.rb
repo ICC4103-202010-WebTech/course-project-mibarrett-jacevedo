@@ -18,14 +18,13 @@
  u10 = User.create!(username:"alejandro_r", email:"alerojas@gmail.com", password:"chile34", role:1, full_name:"Alejandro Rojas")
  u11 = User.create!(username:"georgew", email:"georgewes1@gmail.com", password:"washington6", role:1, full_name:"George Wesley")
  u12 = User.create!(username:"theodorem", email:"theomax@hotmail.com", password:"theo3", role:2, full_name:"Theodore Maxwell")
-#
-# #EVENTS
+ #EVENTS
  e1 = Event.create!(title: "Birthday Party",user: u1, description: "My birthday is coming ups and i would like to celebrate with all of you!", location:"Avenida la Dehesa 2000", starting_vote_day: DateTime.parse("2020-05-02 19:30:00 UTC-4"))
  e2 = Event.create!(title: "Anniversary",user: u1, description: "For 20 years now this organization has given us so much to learn", location:"Avenida Larrain 10998", starting_vote_day: DateTime.parse("2020-04-07 11:00:00 UTC-4"))
  e3 = Event.create!(title: "Run for cancer",user: u2, description: "It is a race to colect for people suffering through this frustrating disease", location:"Padre Hurtado Sur 2334", starting_vote_day: DateTime.parse("2020-06-01 20:00:00 UTC-4"))
  e4 = Event.create!(title: "Dog meeting",user: u3, description: "As you know this is a very important subject we are in need to discuss", location:"Lo Beltran 2700", starting_vote_day: DateTime.parse("2020-05-20 10:00:00 UTC-4"))
-#
-# #EVENTVOTE
+
+#EVENTVOTE
  ev1 = EventVote.create!(event: e1, day: 1, user:u6)
  ev2 = EventVote.create!(event: e1, day: 1, user:u2)
  ev3 = EventVote.create!(event: e2, day: 2, user:u7)
@@ -38,8 +37,8 @@
  ev10 = EventVote.create!(event: e2, day: 2, user:u12)
  ev11 = EventVote.create!(event: e4, day: 2, user:u1)
  ev12 = EventVote.create!(event: e3, day: 2, user:u3)
-#
-# #EVENTGUEST
+
+ #EVENTGUEST
  eg1 = EventGuest.create!(event:e1, user:u1)#creador
  eg2 = EventGuest.create!(event:e2, user:u1)#creador
  eg3 = EventGuest.create!(event:e3, user:u2)#creador
@@ -58,9 +57,9 @@
  eg16 = EventGuest.create!(event:e3, user:u3)
 #
 # #ORGANIZATIONS
- o1 = Organization.create!(name:"Soreco", administrator:u1, description:"We are a serious aboy global warming")
- o2 = Organization.create!(name:"Corma", administrator:u7, description:"Choose others, regret it tomorrow")
- o3 = Organization.create!(name:"DobleA", administrator:u12, description:"Double your finanzes with us")
+ o1 = Organization.create!(name:"Soreco", user:u1, description:"We are a serious aboy global warming")
+ o2 = Organization.create!(name:"Corma", user:u7, description:"Choose others, regret it tomorrow")
+ o3 = Organization.create!(name:"DobleA", user:u12, description:"Double your finanzes with us")
 #
 # #EVENTORGANIZATION
  eo1 = EventOrganization.create!(event: e1, organization: o1, priv_or_pub:1)
@@ -80,14 +79,14 @@
  ou9 = OrganizationUser.create!(organization: o3, user:u9)
  ou10 = OrganizationUser.create!(organization: o3, user:u10)
  ou11 = OrganizationUser.create!(organization: o3, user:u11)
- ou12 = OrganizationUser.create!(organization: o3, user:12)
-#
-# #COMMENTS
+ ou12 = OrganizationUser.create!(organization: o3, user:u12)
+
+#COMMENTS
  c1 = Comment.create!(user: u1,event: e1, message: "Happy Birthday!") #u1 creo ev1 y ev 2 y esta invitado a ev4
  c2= Comment.create!(user: u1,event: e1, message: "Have a nice day!")
  c7= Comment.create!(user: u1,event: e4, message: "Who let the dogs out?")
  c3= Comment.create!(user: u2,event: e2, message: "Happy anniversary!") #u2 creo ev3 y esta invitado al ev2 y el ev1
- c4 = Comment.create!(user: u2,event:e1, message: "Hope you celebrate many moree")
+ c4= Comment.create!(user: u2, event:e1, message: "Hope you celebrate many moree")
  c5 = Comment.create!(user: u2,event:e1, message: "Are you celebrating?")
  c6= Comment.create!(user: u3,event:e4, message: "Watch your step") #u3 creo el ev4 y esta invitado el ev3
  c6= Comment.create!(user: u3,event: e3, message: "I will beat cancer in this race")
