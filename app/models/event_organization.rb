@@ -1,4 +1,4 @@
 class EventOrganization < ApplicationRecord
-  has_many :events
-  has_many :organization
+  belongs_to :event
+  belongs_to :organization
 end

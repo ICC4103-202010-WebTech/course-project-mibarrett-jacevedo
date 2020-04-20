@@ -1,5 +1,5 @@
 class Organization < ApplicationRecord
-  has_one :user
+  belongs_to :user
   has_many :event_organizations
   has_many :organization_users
 end
