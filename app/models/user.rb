@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :event_votes
   has_many :organization_users
   has_many :event_guests
+  has_many :replies
+  has_many :mailboxes
   #has_one :organization , optional:true #only if its an admin
 
   validates :username, :email, presence: true

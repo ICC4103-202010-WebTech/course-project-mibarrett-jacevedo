@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_220935) do
+ActiveRecord::Schema.define(version: 2020_04_29_013657) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 2020_04_17_220935) do
     t.index ["user_id"], name: "index_event_guests_on_user_id"
   end
 
+  create_table "event_options", force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.datetime "day"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_event_options_on_event_id"
+  end
+
   create_table "event_organizations", force: :cascade do |t|
     t.integer "event_id", null: false
     t.integer "organization_id", null: false
@@ -42,12 +50,11 @@ ActiveRecord::Schema.define(version: 2020_04_17_220935) do
   end
 
   create_table "event_votes", force: :cascade do |t|
-    t.integer "event_id", null: false
-    t.integer "day"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_id"], name: "index_event_votes_on_event_id"
+    t.integer "event_option_id"
+    t.index ["event_option_id"], name: "index_event_votes_on_event_option_id"
     t.index ["user_id"], name: "index_event_votes_on_user_id"
   end
 
@@ -60,6 +67,16 @@ ActiveRecord::Schema.define(version: 2020_04_17_220935) do
     t.string "location"
     t.date "starting_vote_day"
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "mailboxes", force: :cascade do |t|
+    t.integer "user_from_id", null: false
+    t.string "message"
+    t.integer "user_to_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_from_id"], name: "index_mailboxes_on_user_from_id"
+    t.index ["user_to_id"], name: "index_mailboxes_on_user_to_id"
   end
 
   create_table "organization_users", force: :cascade do |t|
@@ -80,6 +97,16 @@ ActiveRecord::Schema.define(version: 2020_04_17_220935) do
     t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
+  create_table "replies", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "comment_id"
+    t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_replies_on_comment_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -88,18 +115,17 @@ ActiveRecord::Schema.define(version: 2020_04_17_220935) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password"
     t.string "full_name"
+    t.string "biography"
   end
 
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
   add_foreign_key "event_guests", "events"
   add_foreign_key "event_guests", "users"
+  add_foreign_key "event_options", "events"
   add_foreign_key "event_organizations", "events"
   add_foreign_key "event_organizations", "organizations"
-  add_foreign_key "event_votes", "events"
+  add_foreign_key "event_votes", "event_options"
   add_foreign_key "event_votes", "users"
   add_foreign_key "events", "users"
-  add_foreign_key "organization_users", "organizations"
-  add_foreign_key "organization_users", "users"
-  add_foreign_key "organizations", "users"
 end
