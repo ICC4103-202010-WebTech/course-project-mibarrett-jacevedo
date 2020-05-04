@@ -108,11 +108,11 @@
  r3 = Reply.create!(user: u1, comment: c1, message: "This is gonna be Legen - wait for it - dary!")
 
 #MAILBOX
- #m1 = Mailbox.create!(user_from_id: u1, message: "Hello!", user_to_id: u2)
- #m2 = Mailbox.create!(user_from_id: u1, message: "Hello!", user_to_id: u2)
- #m3 = Mailbox.create!(user_from_id: u1, message: "Hello!", user_to_id: u2)
- #m4 = Mailbox.create!(user_from_id: u1, message: "Hello!", user_to_id: u2)
-#m5 = Mailbox.create!(user_from_id: u1, message: "Hello!", user_to_id: u2)
+ #m1 = Mailbox.create!(user: u1)
+ #m2 = Mailbox.create!(user: u2)
+ #m3 = Mailbox.create!(user: u3)
+ #m4 = Mailbox.create!(user: u4)
+ #m5 = Mailbox.create!(user: u5)
 
 
 

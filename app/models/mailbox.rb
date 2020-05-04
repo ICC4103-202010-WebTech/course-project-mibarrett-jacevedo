@@ -1,3 +1,4 @@
 class Mailbox < ApplicationRecord
-  has_many :users
+  belongs_to :user
+  has_many :messages
 end

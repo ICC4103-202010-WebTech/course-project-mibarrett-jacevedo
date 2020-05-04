@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_29_013657) do
+ActiveRecord::Schema.define(version: 2020_05_04_204701) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -65,18 +65,24 @@ ActiveRecord::Schema.define(version: 2020_04_29_013657) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "description"
     t.string "location"
-    t.date "starting_vote_day"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "mailboxes", force: :cascade do |t|
-    t.integer "user_from_id", null: false
-    t.string "message"
-    t.integer "user_to_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_from_id"], name: "index_mailboxes_on_user_from_id"
-    t.index ["user_to_id"], name: "index_mailboxes_on_user_to_id"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_mailboxes_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "mailbox_id"
+    t.index ["mailbox_id"], name: "index_messages_on_mailbox_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "organization_users", force: :cascade do |t|
@@ -128,4 +134,7 @@ ActiveRecord::Schema.define(version: 2020_04_29_013657) do
   add_foreign_key "event_votes", "event_options"
   add_foreign_key "event_votes", "users"
   add_foreign_key "events", "users"
+  add_foreign_key "mailboxes", "users"
+  add_foreign_key "messages", "mailboxes"
+  add_foreign_key "messages", "users"
 end
