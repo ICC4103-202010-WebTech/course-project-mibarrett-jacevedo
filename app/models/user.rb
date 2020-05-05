@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :event_guests
   has_many :replies
   has_one :mailbox
+  has_many :messages
   #has_one :organization , optional:true #only if its an admin
 
   validates :username, :email, presence: true
