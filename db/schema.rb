@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 2020_05_04_210927) do
   end
 
   create_table "mailboxes", force: :cascade do |t|
+    t.integer "user_from"
+    t.integer "user_to"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
@@ -137,4 +139,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_210927) do
   add_foreign_key "mailboxes", "users"
   add_foreign_key "messages", "mailboxes"
   add_foreign_key "messages", "users"
+  add_foreign_key "organization_users", "organizations"
+  add_foreign_key "organization_users", "users"
+  add_foreign_key "organizations", "users"
 end
