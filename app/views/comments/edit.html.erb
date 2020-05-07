@@ -1,6 +1,21 @@
 <h1>Editing Comment</h1>
 
 <%= render 'form', comment: @comment %>
+<table>
+  <thead>
+  <tr>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
 
+  <tbody>
+  <tr>
+    <td> New message: </td>
+    <td><%= link_to 'Save', root_path %></td>
+  </tr>
+  </tbody>
+</table>
+
+<br>
 <%= link_to 'Show', @comment %> |
 <%= link_to 'Back', comments_path %>

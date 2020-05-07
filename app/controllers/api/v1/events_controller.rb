@@ -11,7 +11,7 @@ class API::V1::EventsController < APIController
   # GET /events/1
   # GET /events/1.json
   def show
-    @events = Event.joins(:event_guests,:user)
+    @events = Event.joins(:event_guests,:user) #aca lo tenemos distinto
   end
 
   # GET /events/new
@@ -21,6 +21,7 @@ class API::V1::EventsController < APIController
 
   # GET /events/1/edit
   def edit
+    @event = Event.find(params[:id])
   end
 
   # POST /events

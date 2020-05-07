@@ -4,12 +4,13 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.joins(:event)
+    @comments = Comment.all
   end
 
   # GET /comments/1
   # GET /comments/1.json
   def show
+    @comment = Comment.find(params[:id])
   end
 
   # GET /comments/new
@@ -19,6 +20,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+    @comment = Comment.find(params[:id])
   end
 
   # POST /comments

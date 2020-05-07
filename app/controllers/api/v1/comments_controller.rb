@@ -5,12 +5,13 @@ class API::V1::EventsController < APIController
   # GET /comments.json
   def index
     #@comments = Comment.all
-    @comments = Comment.where(event_id: params[:event_id])
+    @comments = Comment.where(event_id: params[:event_id]) #fuera del API esta distinto
   end
 
   # GET /comments/1
   # GET /comments/1.json
   def show
+    @comment = Comment.find(params[:id])
   end
 
   # GET /comments/new
@@ -20,6 +21,7 @@ class API::V1::EventsController < APIController
 
   # GET /comments/1/edit
   def edit
+    @comment = Comment.find(params[:id])
   end
 
   # POST /comments
