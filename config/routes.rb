@@ -10,7 +10,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :organizations
+  resources :mailboxes do
+    resources :messages, shallow: true
+  end
+
   resources :comments, defaults: { format: :html }
   resources :events, defaults: { format: :html}
+  resources :mailboxes, defaults: { format: :html}
+  resources :messages, defaults: { format: :html}
+  resources :organizations, defaults: { format: :html}
 
 end
