@@ -1,4 +1,26 @@
 <p id="notice"><%= notice %></p>
+<table>
+  <thead>
+  <tr>
+    <th>Event name</th>
+    <th>Host</th>
+    <th>Description</th>
+    <th>Event location</th>
+    <th>Comments</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @event.title %></td>
+      <td><%= @event.user.username %></td>
+      <td><%= @event.description %></td>
+      <td><%= @event.location %></td>
+      <td><%= link_to 'Comments', '/comments' %></td>
+    </tr>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

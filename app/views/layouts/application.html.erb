@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <b style="font-size: 40px"><%= link_to "Home Page", root_path %></b>
+
+    <nav>
+      <ul>
+        <li><%= link_to 'Events', '/events' %></li>
+
+      </ul>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

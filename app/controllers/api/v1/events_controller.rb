@@ -11,6 +11,7 @@ class API::V1::EventsController < APIController
   # GET /events/1
   # GET /events/1.json
   def show
+    @events = Event.joins(:event_guests,:user)
   end
 
   # GET /events/new
