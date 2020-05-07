@@ -1,2 +1,2 @@
 json.extract! event, :id, :created_at, :updated_at
-json.url event_url(event, format: :json)
+json.url api_v1_event_url(event, format: :json)

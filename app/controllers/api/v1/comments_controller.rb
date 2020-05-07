@@ -4,7 +4,8 @@ class API::V1::EventsController < APIController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    #@comments = Comment.all
+    @comments = Comment.where(event_id: params[:event_id])
   end
 
   # GET /comments/1
