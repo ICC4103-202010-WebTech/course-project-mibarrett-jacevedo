@@ -1,5 +1,4 @@
 class API::V1::EventsController < APIController
-
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
@@ -11,7 +10,7 @@ class API::V1::EventsController < APIController
   # GET /events/1
   # GET /events/1.json
   def show
-    @events = Event.joins(:event_guests,:user) #aca lo tenemos distinto
+    #@events = Event.joins(:event_guests,:user) #aca lo tenemos distinto
   end
 
   # GET /events/new
@@ -28,16 +27,19 @@ class API::V1::EventsController < APIController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @event.user = User.find(params[:user_id])
 
-    respond_to do |format|
+    #respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
+        #format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        #format.json { render :show, status: :created, location: @event }
+        render :show, status: :created, location: @event
       else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+        #format.html { render :new }
+        #format.json { render json: @event.errors, status: :unprocessable_entity }
+        render json: @event.errors, status: :unprocessable_entity
       end
-    end
+      #end
   end
 
   # PATCH/PUT /events/1
@@ -72,7 +74,8 @@ class API::V1::EventsController < APIController
 
   # Only allow a list of trusted parameters through.
   def event_params
-    params.fetch(:event, {})
+    #params.fetch(:event, {})
+    params.fetch(:event, {}).permit(:id, :title, :description, :user)
   end
 end
 

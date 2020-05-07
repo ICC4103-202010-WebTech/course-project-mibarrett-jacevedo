@@ -1,4 +1,4 @@
-class API::V1::EventsController < APIController
+class API::V1::CommentsController < APIController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
@@ -11,7 +11,7 @@ class API::V1::EventsController < APIController
   # GET /comments/1
   # GET /comments/1.json
   def show
-    @comment = Comment.find(params[:id])
+    #@comment = Comment.find(params[:id])
   end
 
   # GET /comments/new
@@ -28,16 +28,20 @@ class API::V1::EventsController < APIController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
+    @comment.user = User.find(params[:user_id])
+    @comment.event = Event.find(params[:event_id])
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    #respond_to do |format|
+    if @event.save
+      #format.html { redirect_to @event, notice: 'Event was successfully created.' }
+      #format.json { render :show, status: :created, location: @event }
+      render :show, status: :created, location: @event
+    else
+      #format.html { render :new }
+      #format.json { render json: @event.errors, status: :unprocessable_entity }
+      render json: @event.errors, status: :unprocessable_entity
     end
+      #end
   end
 
   # PATCH/PUT /comments/1
@@ -72,6 +76,7 @@ class API::V1::EventsController < APIController
 
   # Only allow a list of trusted parameters through.
   def comment_params
-    params.fetch(:comment, {})
+    #params.fetch(:comment, {})
+    params.fetch(:comment, {}).permit(:id, :user, :event, :message)
   end
 end
