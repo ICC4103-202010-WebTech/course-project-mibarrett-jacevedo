@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.where(mailbox_id: params[:mailbox_id])
+    @messages = Message.where(mailbox_id: 1)
   end
 
   # GET /messages/1

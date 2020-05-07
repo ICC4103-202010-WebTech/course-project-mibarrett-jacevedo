@@ -1,4 +1,4 @@
 class Message < ApplicationRecord
-  belongs_to :mailbox
-  belongs_to :user
+  has_many :mailbox
+  has_many :user
 end
