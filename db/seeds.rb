@@ -114,6 +114,14 @@
  #m4 = Mailbox.create!(user: u4)
  #m5 = Mailbox.create!(user: u5)
 
+#MESSAGE
+ #me1 = Message.create!(user: u1, content: "hi can we be friends", Mailbox: Mailbox.first)
+ #me2 = Message.create!(user: u2, content: "will you come to my event?", Mailbox: Mailbox.first)
+ #me3 = Message.create!(user: u3, content: "what date would you prefer for your event?", Mailbox: Mailbox.first)
+ #me4 = Message.create!(user: u4, content: "want to go with me to this event?", Mailbox: Mailbox.first)
+ #me5 = Message.create!(user: u5, content: "hello, what is your name", Mailbox: Mailbox.first)
+ #me6 = Message.create!(user: u6, content: "please come to my event", Mailbox: Mailbox.first)
+#me7 = Message.create!(user: u7, content: "i dont understand what the event is about", Mailbox: Mailbox.first)
 
 
 
