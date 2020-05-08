@@ -6,18 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # #USER
- u1 = User.create!(username:"pablolopez1", email:"palopez@gmail.com", password:"pab123", role:1, full_name:"Pablo Lopez", biography: "Escritor de novelas de terror")
- u2 = User.create!(username:"mariapd", email:"mariapizarro1@gmail.com", password:"mypass9", role:1, full_name:"Maria Pizarro", biography: "Ingeniero mencion Obras Civiles")
- u3 = User.create!(username:"carlosjones", email:"carlos_jm@hotmail.com", password:"cuttles3", role:1, full_name:"Carlos Jones", biography: "Agricultor de dia, Batman de noche")
- u4 = User.create!(username:"robertR2", email:"robocop@gmail.com", password:"rocky7", role:1, full_name:"Robert Patrick", biography: "Artista abstracto minimalista contemporaneo")
- u5 = User.create!(username:"miaPerez", email:"mp_rosales@gmail.com", password:"mp2000", role:1, full_name:"Mia Rosales", biography: "Industrias Monsters Inc")
- u6 = User.create!(username:"pedromontes", email:"pmontes1@gmail.com", password:"pmo2001", role:1, full_name:"Pedro Montes", biography: "Jefa de mesa")
- u7 = User.create!(username:"rosagonzalez2", email:"ro_g123@gmail.com", password:"cat60", role:1, full_name:"Rosa Gonzalez", biography: "Logistica de transporte")
- u8 = User.create!(username:"mramirez4", email:"mayar@gmail.com", password:"password1", role:1, full_name:"Maya Ramirez", biography: "Locutor de radio")
- u9 = User.create!(username:"pacita2m", email:"mariapazmar@hotmail.com", password:"martinez23", role:2, full_name:"Maria Paz Mardones", biography: "Tecnologo en alimentos veganos")
- u10 = User.create!(username:"alejandro_r", email:"alerojas@gmail.com", password:"chile34", role:1, full_name:"Alejandro Rojas", biography: "Enfermera geriatra")
- u11 = User.create!(username:"georgew", email:"georgewes1@gmail.com", password:"washington6", role:1, full_name:"George Wesley", biography: "Instructor de vuelo en parapente")
- u12 = User.create!(username:"theodorem", email:"theomax@hotmail.com", password:"theo3", role:2, full_name:"Theodore Maxwell", biography: "Piloto de avion")
+ u1 = User.create!(username:"pablolopez1", email:"palopez@gmail.com", password:"pab123", role:1)
+ u2 = User.create!(username:"mariapd", email:"mariapizarro1@gmail.com", password:"mypass9", role:1)
+ u3 = User.create!(username:"carlosjones", email:"carlos_jm@hotmail.com", password:"cuttles3", role:1)
+ u4 = User.create!(username:"robertR2", email:"robocop@gmail.com", password:"rocky7", role:1)
+ u5 = User.create!(username:"miaPerez", email:"mp_rosales@gmail.com", password:"mp2000", role:1)
+ u6 = User.create!(username:"pedromontes", email:"pmontes1@gmail.com", password:"pmo2001", role:1)
+ u7 = User.create!(username:"rosagonzalez2", email:"ro_g123@gmail.com", password:"cat60", role:1)
+ u8 = User.create!(username:"mramirez4", email:"mayar@gmail.com", password:"password1", role:1)
+ u9 = User.create!(username:"pacita2m", email:"mariapazmar@hotmail.com", password:"martinez23", role:2)
+ u10 = User.create!(username:"alejandro_r", email:"alerojas@gmail.com", password:"chile34", role:1)
+ u11 = User.create!(username:"georgew", email:"georgewes1@gmail.com", password:"washington6", role:1)
+ u12 = User.create!(username:"theodorem", email:"theomax@hotmail.com", password:"theo3", role:2)
 
  #EVENTS
  e1 = Event.create!(title: "Birthday Party",user: u1, description: "My birthday is coming ups and i would like to celebrate with all of you!", location:"Avenida la Dehesa 2000")
@@ -109,13 +109,14 @@
 
 
 #MESSAGE
-#me1 = Message.create!(user: u1, content: "hi can we be friends?", mailbox: Mailbox.first.id)
- # me2 = Message.create!(user: u2, content: "will you come to my event?", mailbox: Mailbox.first)
- #me3 = Message.create!(user: u3, content: "what date would you prefer for your event?", mailbox: Mailbox.first)
- #me4 = Message.create!(user: u4, content: "want to go with me to this event?", mailbox: Mailbox.first)
- #me5 = Message.create!(user: u5, content: "hello, what is your name", mailbox: Mailbox.first)
- #me6 = Message.create!(user: u6, content: "please come to my event", mailbox: Mailbox.first)
-#e7 = Message.create!(user: u7, content: "i dont understand what the event is about", mailbox: Mailbox.first)
+me1 = Message.create!(user: u1, content: "hi can we be friends?", mailbox: Mailbox.first)
+ me2 = Message.create!(user: u2, content: "will you come to my event?", mailbox: Mailbox.first)
+ me3 = Message.create!(user: u3, content: "what date would you prefer for your event?", mailbox: Mailbox.first)
+ me4 = Message.create!(user: u4, content: "want to go with me to this event?", mailbox: Mailbox.first)
+ me5 = Message.create!(user: u5, content: "hello, what is your name", mailbox: Mailbox.first)
+ me6 = Message.create!(user: u6, content: "please come to my event", mailbox: Mailbox.first)
+ me7 = Message.create!(user: u7, content: "i dont understand what the event is about", mailbox: Mailbox.first)
 
 
-
+#PROFILE
+ p1 = Profile.create!(name: "Pablito", biography: "I am a party animal", user: u1)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_210927) do
+ActiveRecord::Schema.define(version: 2020_05_08_220453) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -105,6 +105,15 @@ ActiveRecord::Schema.define(version: 2020_05_04_210927) do
     t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.string "name"
+    t.text "biography"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "replies", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "comment_id", null: false
@@ -122,8 +131,6 @@ ActiveRecord::Schema.define(version: 2020_05_04_210927) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password"
-    t.string "full_name"
-    t.string "biography"
   end
 
   add_foreign_key "comments", "events"
@@ -142,6 +149,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_210927) do
   add_foreign_key "organization_users", "organizations"
   add_foreign_key "organization_users", "users"
   add_foreign_key "organizations", "users"
+  add_foreign_key "profiles", "users"
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "users"
 end

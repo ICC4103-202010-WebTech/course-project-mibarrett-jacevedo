@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
+    @organization = Organization.joins(:event_organizations).where(event_organizations: {event_id:@events})
   end
 
   # GET /events/new

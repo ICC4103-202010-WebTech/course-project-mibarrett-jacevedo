@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       end
     end
   end
-
+  resources :profiles
   resources :organizations
   resources :mailboxes do
     resources :messages, shallow: true
