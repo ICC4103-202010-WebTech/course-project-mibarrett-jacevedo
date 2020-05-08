@@ -100,7 +100,7 @@
  c4= Comment.create!(user: u2, event:e1, message: "Hope you celebrate many more!")
  c5 = Comment.create!(user: u2,event:e1, message: "Are you celebrating?")
  c6= Comment.create!(user: u3,event:e4, message: "Watch your step") #u3 creo el ev4 y esta invitado el ev3
- c6= Comment.create!(user: u3,event: e3, message: "I will beat cancer in this race")
+ c7= Comment.create!(user: u3,event: e3, message: "I will beat cancer in this race")
 
 #REPLIES
  r1 = Reply.create!(user: u2, comment: c1, message: "Yay so exciting!")
@@ -110,13 +110,13 @@
 
 
 #MESSAGE
- me1 = Message.create!(user: u1, content: "hi can we be friends", mailbox: Mailbox.first)
- me2 = Message.create!(user: u2, content: "will you come to my event?", mailbox: Mailbox.first)
- me3 = Message.create!(user: u3, content: "what date would you prefer for your event?", mailbox: Mailbox.first)
- me4 = Message.create!(user: u4, content: "want to go with me to this event?", mailbox: Mailbox.first)
- me5 = Message.create!(user: u5, content: "hello, what is your name", mailbox: Mailbox.first)
- me6 = Message.create!(user: u6, content: "please come to my event", mailbox: Mailbox.first)
- me7 = Message.create!(user: u7, content: "i dont understand what the event is about", mailbox: Mailbox.first)
+#me1 = Message.create!(user: u1, content: "hi can we be friends?", mailbox: Mailbox.first.id)
+ # me2 = Message.create!(user: u2, content: "will you come to my event?", mailbox: Mailbox.first)
+ #me3 = Message.create!(user: u3, content: "what date would you prefer for your event?", mailbox: Mailbox.first)
+ #me4 = Message.create!(user: u4, content: "want to go with me to this event?", mailbox: Mailbox.first)
+ #me5 = Message.create!(user: u5, content: "hello, what is your name", mailbox: Mailbox.first)
+ #me6 = Message.create!(user: u6, content: "please come to my event", mailbox: Mailbox.first)
+#e7 = Message.create!(user: u7, content: "i dont understand what the event is about", mailbox: Mailbox.first)
 
 
 

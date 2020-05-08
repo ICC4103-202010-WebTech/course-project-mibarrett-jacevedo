@@ -63,3 +63,5 @@ FUNCTIONALITY
 - If a user is deleted it will be destroyed therefore removing all dependencies. Since our models Organization, Event and Comment have dependencies, 
 	or in other words belongs_to association, every record corresponding to the user destroyed will be destroyed in those tables.
 -----------------
+
+* Postman link: https://www.getpostman.com/collections/7b8e6dfbfc2501664af7
