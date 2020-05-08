@@ -95,7 +95,6 @@
 #COMMENTS
  c1 = Comment.create!(user: u1,event: e1, message: "Happy Birthday!") #u1 creo ev1 y ev 2 y esta invitado a ev4
  c2= Comment.create!(user: u1,event: e1, message: "Have a nice day!")
- c7= Comment.create!(user: u1,event: e4, message: "Who let the dogs out?")
  c3= Comment.create!(user: u2,event: e2, message: "Happy anniversary!") #u2 creo ev3 y esta invitado al ev2 y el ev1
  c4= Comment.create!(user: u2, event:e1, message: "Hope you celebrate many more!")
  c5 = Comment.create!(user: u2,event:e1, message: "Are you celebrating?")
