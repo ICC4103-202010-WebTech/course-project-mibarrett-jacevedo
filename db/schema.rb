@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 2020_05_04_210927) do
   end
 
   create_table "mailboxes", force: :cascade do |t|
+    t.integer "user_from"
+    t.integer "user_to"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
@@ -104,8 +106,8 @@ ActiveRecord::Schema.define(version: 2020_05_04_210927) do
   end
 
   create_table "replies", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "comment_id"
+    t.integer "user_id", null: false
+    t.integer "comment_id", null: false
     t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -124,6 +126,10 @@ ActiveRecord::Schema.define(version: 2020_05_04_210927) do
     t.string "biography"
   end
 
+  add_foreign_key "comments", "events"
+  add_foreign_key "comments", "users"
+  add_foreign_key "event_guests", "events"
+  add_foreign_key "event_guests", "users"
   add_foreign_key "event_options", "events"
   add_foreign_key "event_organizations", "events"
   add_foreign_key "event_organizations", "organizations"
@@ -133,4 +139,9 @@ ActiveRecord::Schema.define(version: 2020_05_04_210927) do
   add_foreign_key "mailboxes", "users"
   add_foreign_key "messages", "mailboxes"
   add_foreign_key "messages", "users"
+  add_foreign_key "organization_users", "organizations"
+  add_foreign_key "organization_users", "users"
+  add_foreign_key "organizations", "users"
+  add_foreign_key "replies", "comments"
+  add_foreign_key "replies", "users"
 end
