@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
+<h1 class="event">Events</h1>
 
 <table>
   <thead>
@@ -12,11 +12,11 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.title %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Comments', comment_path(event) %></td>
+        <td class="name"><%= event.title %></td>
+        <td><a><%= link_to 'Show', event %></a></td>
+        <td><a><%= link_to 'Edit', edit_event_path(event) %></a></td>
+        <td><a><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></a></td>
+        <td><a><%= link_to 'Comments', comment_path(event) %></a></td>
       </tr>
     <% end %>
   </tbody>
