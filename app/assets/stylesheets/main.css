@@ -146,3 +146,10 @@ th {
     background-color: #4CAF50;
     color: white;
 }
+
+footer {
+    color: white;
+    background: #333;
+    padding: 1em;
+    height: 6em;
+}
