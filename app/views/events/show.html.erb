@@ -25,16 +25,17 @@
 <h4>Comments</h4>
 
 <%= @event_comments.each do |comment| %>
+  <%=@replies= comment.replies %>
   <div class="row">
     <div class="column">
-      <h1><%= comment.user.username %></h1>
+      <h5><%= comment.user.username %></h5>
       <p><%= comment.message %></p>
-      <p><%= link_to 'Replies', comment_path(comment) %></p>
+      <%= @replies.each do |reply| %>
+        <p><%=reply.user.username%>: <%= reply.message%></p>
+      <%end %>
     </div>
   </div>
 <%end%>
-
-
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
