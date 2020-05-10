@@ -12,7 +12,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     #@organization = Organization.where(events: @event)
-    @event_comment = @event.comments
+    @event_comments = @event.comments
     @organization = @event.organizations
   end
 

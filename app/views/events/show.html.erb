@@ -31,7 +31,7 @@
   </thead>
   <tbody>
   <tr>
-    <%= @event_comment.each do |comment| %>
+    <%= @event_comments.each do |comment| %>
       <td><%= comment.user.username %></td>
       <td><%= comment.message %> </td>
     <%end%>

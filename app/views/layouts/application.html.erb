@@ -10,22 +10,19 @@
   </head>
 
   <body>
-    <b class="header"><a><%= link_to "Home Page", root_path %></a></b>
+    <b class="header"><a><%= link_to "Meet Me!", root_path %></a></b>
 
     <nav>
       <ul class = "navigation">
-        <li class = "nav-item"><a><%= link_to 'Events', '/events' %></a></li>
-        <li class = "nav-item"><a><%= link_to 'Mailbox', mailbox_path(@user) %></a></li>
-        <li class = "nav-item"><a><%= link_to 'Profile', '/profiles/1' %></a></li>
+        <li class="nav-item"><a><%= link_to 'Events', '/events' %></a></li>
+        <li class="nav-item"><a><%= link_to 'Mailbox', mailbox_path(@user) %></a></li>
+        <li class="nav-item"><a><%= link_to 'Profile', '/profiles/1' %></a></li>
+        <li class="nav-item"><a class ="logout"><%= link_to 'Log Out', root_path %></a></li>
       </ul>
     </nav>
 
     <%= yield %>
 
-    <button class="button">Log In</button>
-    <button class="button">Sign Up Now!</button>
-
-    <div>Welcome to Meet Me! The best platform to arrange meetings with your friends and colleagues</div>
 
 
     <footer>
