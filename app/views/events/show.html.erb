@@ -34,6 +34,7 @@
     <%= @event_comments.each do |comment| %>
       <td><%= comment.user.username %></td>
       <td><%= comment.message %> </td>
+      <td><%=link_to 'Replies', comment_path(comment) %> </td>
     <%end%>
   </tr>
   </tbody>
