@@ -1,6 +1,8 @@
 * {
     box-sizing: border-box;
 }
+
+
 a:link {
     text-decoration: none;
     color: lightcoral;
@@ -22,13 +24,12 @@ a:active {
     color: lightcoral;
 }
 
-.header {
-    font-size: 2em;
+b.header {
+    font-size: 5.5em;
     text-transform: uppercase;
-    color: #4CAF50;
     font-family: "Courier New", Courier, monospace;
-    background-color: #f1f1f1;
     width:100%;
+    text-align: center;
 }
 
 .navigation {
@@ -36,7 +37,7 @@ a:active {
     flex-flow: row wrap;
     /* This aligns items to the end line
     on main-axis */
-    justify-content: flex-end;
+    justify-content: flex-start;
     border-style: outset;
     list-style-type: none;
     margin: 0;
@@ -167,4 +168,21 @@ footer {
     font-weight: bold;
 }
 
-
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+div {
+    width: 320px;
+    padding: 10px;
+    border: 5px solid gray;
+    margin: 0;
+}
