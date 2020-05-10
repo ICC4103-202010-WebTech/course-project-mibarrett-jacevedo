@@ -17,7 +17,7 @@
       <td><%= @event.user.username %></td>
       <td><%= @event.description %></td>
       <td><%= @event.location %></td>
-      <td><%= link_to @organization.name, organization_path %></td>
+      <td><%= link_to @organization.name, organization_path(@event) %></td>
     </tr>
   </tbody>
 </table>

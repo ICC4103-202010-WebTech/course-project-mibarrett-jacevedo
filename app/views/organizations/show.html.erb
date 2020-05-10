@@ -14,5 +14,18 @@
   </tbody>
 </table>
 
+<% @events.each do |event| %>
+
+  <div class="dropdown">
+    <button class="dropbtn"><%= event.title %></button>
+    <div class="dropdown-content">
+      <a><%= link_to 'Open Event', event %></a>
+    </div>
+  </div>
+<% end %>
+
+
+<br>
+
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>

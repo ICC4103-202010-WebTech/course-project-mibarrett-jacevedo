@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :events
   has_many :event_votes
   has_many :organization_users
+  has_many :organizations, through: :organization_users
   has_many :event_guests
   has_many :replies
   has_one :mailbox
