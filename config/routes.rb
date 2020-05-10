@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  resources :events
   resources :profiles
   resources :organizations
   resources :mailboxes do
@@ -20,5 +21,6 @@ Rails.application.routes.draw do
   resources :mailboxes, defaults: { format: :html}
   resources :messages, defaults: { format: :html}
   resources :organizations, defaults: { format: :html}
+  resources :profiles, defaults: {format: :html}
 
 end
