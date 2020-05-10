@@ -30,8 +30,12 @@
     <div class="column">
       <h5><%= comment.user.username %></h5>
       <p><%= comment.message %></p>
-      <%= @replies.each do |reply| %>
-        <p><%=reply.user.username%>: <%= reply.message%></p>
+        <%= @replies.each do |reply| %>
+        <div class="row">
+          <div class="column">
+          <p class="reply"><%=reply.user.username%>: <%= reply.message%></p>
+          </div>
+        </div>
       <%end %>
     </div>
   </div>
