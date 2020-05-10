@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 a:link {
     text-decoration: none;
     color: lightcoral;
@@ -20,12 +23,12 @@ a:active {
 }
 
 .header {
-    text-align: center;
     font-size: 2em;
     text-transform: uppercase;
     color: #4CAF50;
     font-family: "Courier New", Courier, monospace;
     background-color: #f1f1f1;
+    width:100%;
 }
 
 .navigation {
@@ -82,7 +85,7 @@ li a:hover {
     color: black;
     font-family: "Courier New", Courier, monospace;
     background-color: #f1f1f1;
-    text-align: center;
+    text-align: left;
 }
 
 .dropbtn {
@@ -152,4 +155,16 @@ footer {
     background: #333;
     padding: 1em;
     height: 6em;
+    position:fixed;
+    bottom:0px;
+    width:100%;
 }
+
+.h5 {
+    color: black;
+    background: tomato;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+}
+
+
