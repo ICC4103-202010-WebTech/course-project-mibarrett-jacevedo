@@ -173,9 +173,33 @@ footer {
     margin: 4px 2px;
     cursor: pointer;
 }
-div {
+/*div {
     width: 320px;
     padding: 10px;
     border: 5px solid gray;
     margin: 0;
+}*/
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 15px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+p {
+    text-indent: 50px;
 }
