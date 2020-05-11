@@ -1,17 +1,27 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%=@user.profile.name%> Mailbox</h1>
 <table>
   <thead>
   <tr>
+    <th><h2>Messages</h2></th>
     <th colspan="3"></th>
   </tr>
   </thead>
-
   <tbody>
-  <td><%= link_to 'View Messages', messages_path(@mailbox) %></td>
+  <% @messages.each do |message| %>
+    <tr>
+      <td><h3>From: <%=message.user.username%></h3></td>
+      <td><%=message.content%></td>
+      <td><%= link_to 'Show', message_path(message) %></td>
+      <td>Destroy</td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 
 <br>
-<%= link_to 'Edit', edit_mailbox_path(@mailbox) %> |
-<%= link_to 'Back', mailboxes_path %>
+
+<h4><%= link_to 'New Mailbox', new_mailbox_path %> </h4>
+
+<%= link_to 'Back', root_path %>

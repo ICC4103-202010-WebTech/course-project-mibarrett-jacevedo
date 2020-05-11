@@ -5,6 +5,10 @@
 <table>
   <thead>
     <tr>
+      <th>Name</th>
+      <th>Administrator</th>
+      <th>Created at</th>
+      <th>Updated at</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +16,10 @@
   <tbody>
     <% @organizations.each do |organization| %>
       <tr>
+        <td><%= organization.name %></td>
+        <td><%= organization.user.profile.name %></td>
+        <td><%= organization.created_at %></td>
+        <td><%= organization.updated_at %></td>
         <td><%= link_to 'Show', organization %></td>
         <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
         <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -22,4 +30,5 @@
 
 <br>
 
-<%= link_to 'New Organization', new_organization_path %>
+<%= link_to 'New Organization', new_organization_path %> |
+<%= link_to 'Back to home', root_path %>

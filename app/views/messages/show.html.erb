@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+<h2>From: <%=@message.user.username %></h2>
+<p><%=@message.content %></p>
+
+<%= link_to 'Back', '/mailboxes/1' %>
