@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  resources :users
   resources :events
   resources :profiles
   resource :events do
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
     resources :messages, shallow: true
   end
 
+  resources :users, defaults: { format: :html }
   resources :comments, defaults: { format: :html }
   resources :events, defaults: { format: :html}
   resources :mailboxes, defaults: { format: :html}

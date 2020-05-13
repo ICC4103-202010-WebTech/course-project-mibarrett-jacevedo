@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<h4 class="event">Name: <%= @profile.name %></h4>
+<h5 class="profile-item">Bio: <%= @profile.biography %></h5>
+<h5 class="profile-item">Role: <%= @user.role %></h5>
+<h5 class="profile-item">E-Mail address: <%= @user.email %></h5>
+
+<%= link_to 'Send message'%> |
+<%= link_to 'Back to home', root_path %>

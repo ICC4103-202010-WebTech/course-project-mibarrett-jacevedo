@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h4 class="event"><%= @profile.name %></h4>
-<h5 class="profile-item"><%= @profile.biography %></h5>
-<h5 class="profile-item"><%= @user.role %></h5>
-<h5 class="profile-item"><%= @user.email %></h5>
+<h4 class="event">Name: <%= @profile.name %></h4>
+<h5 class="profile-item">Bio: <%= @profile.biography %></h5>
+<h5 class="profile-item">Role: <%= @user.role %></h5>
+<h5 class="profile-item">E-Mail: <%= @user.email %></h5>
 
 
 
 
 
 
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'See all users', profiles_path %>
+<%= link_to 'Edit', edit_profile_path(@profile) %>  |
+<%= link_to 'See all users', profiles_path %>  |
+<%= link_to 'Back to home', root_path %>

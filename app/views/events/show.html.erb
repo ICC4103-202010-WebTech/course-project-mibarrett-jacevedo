@@ -31,7 +31,8 @@
 
 <h3>People invited to this event</h3>
 <%@guests.each do |guest|%>
-  <p><%=guest.user.username%></p>
+  <%@user = guest.user %>
+  <p><%=guest.user.username%>  <%=link_to 'See profile', user_path(@user) %></p>
 <%end%>
 
 <h3>Comments</h3>
