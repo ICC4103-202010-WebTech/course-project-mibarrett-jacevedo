@@ -27,7 +27,7 @@
   <%@vote_number= date.event_votes.count %>
   <p><%=date.day%>  <%=@vote_number%> Votes</p>
 <%end%>
-<p><%=link_to 'Vote for this event'%>></p>
+<p><%=link_to 'Vote for this event'%></p>
 
 <h3>People invited to this event</h3>
 <%@guests.each do |guest|%>
@@ -41,7 +41,7 @@
   <div class="row">
     <div class="column">
       <h5><%= comment.user.username %></h5>
-      <p><%= comment.message %>  Reply </p>
+      <p><%= comment.message %>  <%=link_to 'Reply'%></p>
         <% @replies.each do |reply| %>
         <div class="row">
           <div class="column">

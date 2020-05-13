@@ -143,8 +143,13 @@ th {
     background-color: #4CAF50;
     color: white;
 }
-
-footer {
+.wrapper{
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -5em;
+}
+.footer, .push {
     color: white;
     background: #333;
     padding: 0em;
