@@ -23,7 +23,7 @@
         <td><%=user.created_at%></td>
         <td><%=user.updated_at%></td>
         <td><%= link_to 'Edit', edit_profile_path(@user.profile) %></td>
-        <td>Delete</td>
+        <td><%=link_to 'Delete' %>></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,5 +31,5 @@
 
 <br>
 
-<%= link_to 'New Profile', new_profile_path %>
-<%= link_to 'Back', @profile %>
+<%= link_to 'New Profile' %> |
+<%= link_to 'Back', root_path %>

@@ -1,9 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h4 class="event">Name: <%= @profile.name %></h4>
-<h5 class="profile-item">Bio: <%= @profile.biography %></h5>
-<h5 class="profile-item">Role: <%= @user.role %></h5>
-<h5 class="profile-item">E-Mail address: <%= @user.email %></h5>
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <div class="fakeimg" style="height:150px;">Image</div>
+      <h2><%= @profile.name %></h2>
+      <div class="profileimg">Profile Picture</div>
+      <h5><%= @user.email %></h5>
+      <h5>Role: <%= @user.role %></h5>
+    </div>
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>About Me</h2>
+      <p><%= @profile.biography %></p>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Send message'%> |
 <%= link_to 'Back to home', root_path %>

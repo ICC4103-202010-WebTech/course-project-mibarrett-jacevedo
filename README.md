@@ -1,6 +1,6 @@
 #SUMMARY OF IMPLEMENTED FEATURES
 - Created folders api and v1 and copy controllers of events and comments for postman testing of CRUD operations on them. This can be found under app/api/v1
-- All controllers for this assignement only allow viwes and navigation through the webpage, do not have permission to create, update or delete records
+- All controllers for this assignement only allow viwes and navigation through the webpage, do not have permission to create, edit, update or delete records
 - Created controllers for:
   * api - for events and comments controllers in api folder to inherit from
   * comments
@@ -14,6 +14,7 @@
 
 - Other controllers are not necessary to show the view part of the webpage
 - By pressing on the name of the webpage "MEET ME" the user comes back to the home page
+- The MEET ME main page shows options to "Log In" and "Sign Up", these options are not available but thay will redirect to a forum for the user to identify iself or register respectively
 - The navigation bar allows to navigate directly to "Events", "Mailbox", "Profile" and "log Out" options
 - Pages controller implemented to display any general and main information
 - Inside the Events page the different events available will appear, by placing the mouse over the name of the event different options will appear, these are: "Show", "Edit" and "Destroy". Appears an option to create a "New Event" as well
@@ -23,7 +24,7 @@
   * New Event - option available to all users for them to create a new event, by clicking it will redirect the user to a forum to create a new event 
 
 - The Event details show:
-  * Name, user creator, description, location, organization name
+  * Name, event host, description, location, organization name
   * Date vote options with the amount of votes for each one
   * Event guests with an option to go see the profile of this user, with an option to send this user a message
   * Comments, including replies to comments, option to reply to comments and option to create a new comment
@@ -35,11 +36,12 @@
 - Inside the Profile there is an option meant for the system administrator to see all users ativity and perform CRUD operations on them
 - In the footer part of the page appears contact info for all users to see
 
-
 - The following dependencies were established on delete actions:
   * If a user is deleted it deletes with it: profile, comments, replies, events created by the user, organizations created by the user, votes on events, users mailbox
   * If an organization is deleted it deletes with it: events
   * If an event is deleted it deletes with it: comments, replies 
+
+- For future development of the webpage the remaining controllers will have to be craeted so that create, new, edit, update and destroy actions are available by forum implementation
 
 #POSTMAN
 Link to postman actions: https://www.getpostman.com/collections/7b8e6dfbfc2501664af7

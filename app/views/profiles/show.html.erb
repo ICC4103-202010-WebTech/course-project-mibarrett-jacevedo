@@ -6,14 +6,14 @@
       <div class="fakeimg" style="height:150px;">Image</div>
       <h2><%= @profile.name %></h2>
       <div class="profileimg">Profile Picture</div>
-      <h5><%= @profile.biography %></h5>
+      <h5><%= @user.email %></h5>
       <h5>Role: <%= @user.role %></h5>
     </div>
   </div>
   <div class="rightcolumn">
     <div class="card">
       <h2>About Me</h2>
-      <p><%= @user.email %></p>
+      <p><%= @profile.biography %></p>
     </div>
     <div class="card">
       <h3>My Events</h3>

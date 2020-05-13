@@ -4,7 +4,7 @@
   <div class="leftcolumn">
     <div class="card">
       <h2><%= @event.title %></h2>
-      <h5><%= @event.user.username %></h5>
+      <h5> Event host: <%= @event.user.username %></h5>
       <div class="fakeimg" style="height:200px;">Image</div>
       <h5>Description</h5>
       <p class="comment"><%= @event.description %></p>
@@ -18,6 +18,14 @@
         <p><%=date.day%>  <%=@vote_number%> Votes</p>
       <%end%>
       <p><%=link_to 'Vote for this event'%></p>
+    </div>
+    <div class="card">
+      <h2>People invited to this event</h2>
+      <%@guests.each do |guest|%>
+        <%@user =guest.user %>
+        <p><%=guest.user.username%> <%=link_to 'See profile', user_path(@user)%></p>
+      <%end%>
+      <%link_to 'invite more people to this event'%>
     </div>
   </div>
   <div class="rightcolumn">
