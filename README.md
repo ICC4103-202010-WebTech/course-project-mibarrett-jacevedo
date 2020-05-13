@@ -3,16 +3,17 @@
 - All controllers for this assignement only allow viwes and navigation through the webpage, do not have permission to create, update or delete records
 - Created controllers for:
 	*api - for events and comments controllers in api folder to inherit from
-	*comments - showed in events page for every event
-	*events - shows events availbale to the user and can be opened
-	*mailboxes - show the mailbox of a specific user
-	*messages - when a specific message from mailbox is opened
-	*organization - shows all organizations and specific ones
-	*profiles - shows the 
+	*comments
+	*events
+	*mailboxes
+	*messages
+	*messages
+	*organization
+	*profiles 
 - By pressing on the name of the webpage "MEET ME" the user comes back to the home page
 - The navigation bar alows to navigate directly to "Events", "Mailbox", "Profile" and "log Out" options
-- Inside the events page the different events available will appear, by placing the mouse over the name of the event different options will appear, these are: "Show", "Edit" and "Destroy". Appears an option to create a "New Event" as well
-	*Show - enters the event details (including organization by clicking over the name it will redirect to the organizations page), comments and replies this will be availbale for all users
+- Inside the Events page the different events available will appear, by placing the mouse over the name of the event different options will appear, these are: "Show", "Edit" and "Destroy". Appears an option to create a "New Event" as well
+	*Show - enters the event details (including organization by clicking over the name it will redirect to the organizations page), the event option dates to 'vote' from, comments and replies will be availbale for all users who can access the event to see and create 
 	*Edit - this option is available for the event creator and the system administrator 
 	*Destroy - this will be an option available to the event creator, organization administrator and the system administrator
 	*New Event - option available to all users for them to create a new event, by clicking it will redirect the user to a forum to create a new event 
@@ -23,7 +24,8 @@
 - Inside the Profile there is an option meant for the system administrator to see all users ativity and perform CRUD operations on them
 - In the footer part of the page appears contact info for all users to see
 
-- The following dependencies were established for items belonging to o
+- The following dependencies were established on delete actions:
+	*
 
 #POSTMAN
 Link to postman actions: https://www.getpostman.com/collections/7b8e6dfbfc2501664af7
