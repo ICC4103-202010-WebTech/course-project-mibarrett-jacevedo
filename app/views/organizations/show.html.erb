@@ -21,7 +21,7 @@
     </div>
 
     <div class="card">
-      <h2>People invited to this event</h2>
+      <h2>User from organization</h2>
       <%@participants.each do |participant|%>
         <%@user = participant.user %>
         <p><%=participant.user.username%> <%=link_to 'See profile', user_path(@user)%></p>
