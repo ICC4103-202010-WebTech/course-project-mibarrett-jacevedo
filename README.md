@@ -34,7 +34,7 @@
 - The Log Out page takes the user the main page logged out, where the options to "log In" and "Sign Up" appear for the user to identify itself 
 - Inside the Profile there is an option meant for the system administrator to see all users ativity and perform CRUD operations on them
 - In the footer part of the page appears contact info for all users to see
-- Clicking of the main header ("MEET ME!") will re-direct to the Home Page
+
 
 - The following dependencies were established on delete actions:
   * If a user is deleted it deletes with it: profile, comments, replies, events created by the user, organizations created by the user, votes on events, users mailbox
