@@ -11,7 +11,8 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1.json
   def show
     @organization = Organization.find(params[:id])
-    @events = Event.joins(:event_organization).where(event_organizations: {event_id: params[:event_id]})
+    @events = @organization.events
+        #@events = Event.joins(:event_organization).where(event_organizations: {event_id: params[:event_id]})
     @participants = @organization.organization_users
   end
 
