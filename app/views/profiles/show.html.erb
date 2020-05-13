@@ -1,10 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<h4 class="event">Name: <%= @profile.name %></h4>
-<h5 class="profile-item">Bio: <%= @profile.biography %></h5>
-<h5 class="profile-item">Role: <%= @user.role %></h5>
-<h5 class="profile-item">E-Mail: <%= @user.email %></h5>
-
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <div class="fakeimg" style="height:150px;">Image</div>
+      <h2><%= @profile.name %></h2>
+      <div class="profileimg">Profile Picture</div>
+      <h5><%= @profile.biography %></h5>
+      <h5>Role: <%= @user.role %></h5>
+    </div>
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>About Me</h2>
+      <p><%= @user.email %></p>
+    </div>
+    <div class="card">
+      <h3>My Events</h3>
+      <% @events.each do |event| %>
+        <div class="dropdown">
+          <button class="dropbtn"><%= event.title %></button>
+          <div class="dropdown-content">
+            <a><%= link_to 'Open Event', event %></a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
 

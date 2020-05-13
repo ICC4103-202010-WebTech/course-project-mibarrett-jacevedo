@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
   def show
     @user = User.first
     @profile = Profile.first
+    @events = Event.where(user_id: 1)
   end
 
   # GET /profiles/new
