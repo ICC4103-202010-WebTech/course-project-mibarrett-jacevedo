@@ -20,11 +20,7 @@
     </div>
 
     <div class="card">
-<<<<<<< HEAD
-      <h2>Users that belong to this organization</h2>
-=======
-      <h2>User from organization</h2>
->>>>>>> 7835f1800d7142df18f7f51bb4ec2e335bf772eb
+      <h2>Users in organization</h2>
       <%@participants.each do |participant|%>
         <%@user = participant.user %>
         <p><%=participant.user.username%> <%=link_to 'See profile', user_path(@user)%></p>
