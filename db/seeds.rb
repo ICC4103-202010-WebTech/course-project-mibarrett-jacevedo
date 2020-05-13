@@ -48,6 +48,7 @@ eov5 = EventOption.create!(event: e3, day:"18/09/2002 11:06")
 eov6 = EventOption.create!(event: e3, day:"16/12/1996 18:23")
 eov7 = EventOption.create!(event: e4, day:"22/11/2011 21:16")
 eov8 = EventOption.create!(event: e4, day:"24/07/2004 06:15")
+eov9 = EventOption.create!(event: e1, day:"08/04/2018 07:00")
 
 #EVENTVOTE
 ev1 = EventVote.create!(event_option: eov1, user:u6)
@@ -119,7 +120,6 @@ c7= Comment.create!(user: u3,event: e3, message: "I will beat cancer in this rac
 r1 = Reply.create!(user: u2, comment: c1, message: "Yay so exciting!")
 r2 = Reply.create!(user: u1, comment: c1, message: "Are you bringing anybody to the party?")
 r3 = Reply.create!(user: u1, comment: c1, message: "This is gonna be Legen - wait for it - dary!")
-
 
 
 #MESSAGE

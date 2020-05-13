@@ -22,14 +22,26 @@
   </tbody>
 </table>
 
-<h4>Comments</h4>
+<h3>Date options for this event</h3>
+<%@date_options.each do |date|%>
+  <%@vote_number= date.event_votes.count %>
+  <p><%=date.day%>  <%=@vote_number%> Votes</p>
+<%end%>
+<p><%=link_to 'Vote for this event'%>></p>
 
-<%= @event_comments.each do |comment| %>
+<h3>People invited to this event</h3>
+<%@guests.each do |guest|%>
+  <p><%=guest.user.username%> <%=link_to 'See profile' %></p>
+<%end%>
+
+<h3>Comments</h3>
+
+<% @event_comments.each do |comment| %>
   <%@replies= comment.replies %>
   <div class="row">
     <div class="column">
-      <h4><%= comment.user.username %></h4>
-      <p><%= comment.message %></p>
+      <h5><%= comment.user.username %></h5>
+      <p><%= comment.message %>  Reply </p>
         <% @replies.each do |reply| %>
         <div class="row">
           <div class="column">
@@ -40,6 +52,7 @@
     </div>
   </div>
 <%end%>
+<p>Create new comment</p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

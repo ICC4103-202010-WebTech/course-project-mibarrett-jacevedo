@@ -1,67 +1,29 @@
-#MODEL LAYER FUNCTIONALITY AND BEHAVIOR
+#SUMMARY OF IMPLEMENTED FEATURES
+- Created folders api and v1 and copy controllers of events and comments for postman testing of CRUD operations on them
+- All controllers for this assignement only allow viwes and navigation through the webpage, do not have permission to create, update or delete records
+- Created controllers for:
+	*api - for events and comments controllers in api folder to inherit from
+	*comments - showed in events page for every event
+	*events - shows events availbale to the user and can be opened
+	*mailboxes - show the mailbox of a specific user
+	*messages - when a specific message from mailbox is opened
+	*organization - shows all organizations and specific ones
+	*profiles - shows the 
+- By pressing on the name of the webpage "MEET ME" the user comes back to the home page
+- The navigation bar alows to navigate directly to "Events", "Mailbox", "Profile" and "log Out" options
+- Inside the events page the different events available will appear, by placing the mouse over the name of the event different options will appear, these are: "Show", "Edit" and "Destroy". Appears an option to create a "New Event" as well
+	*Show - enters the event details (including organization by clicking over the name it will redirect to the organizations page), comments and replies this will be availbale for all users
+	*Edit - this option is available for the event creator and the system administrator 
+	*Destroy - this will be an option available to the event creator, organization administrator and the system administrator
+	*New Event - option available to all users for them to create a new event, by clicking it will redirect the user to a forum to create a new event 
+- Once in the organizations page there will be an option to see all organizations available to the system administrator to perform CRUD operations on them
+- Inside the Mailbox page the user logged in will be able to see its messages  with the option to "Show" to view a specific message and the "Destroy" option to delete the message
+- Inside the Profile page it will show the details of the users profile with option to "Edit", so the user may update or delete its profile
+- The Log Out page takes the user the main page logged out, where the options to "log In" and "Sign Up" appear for the user to identify itself 
+- Inside the Profile there is an option meant for the system administrator to see all users ativity and perform CRUD operations on them
+- In the footer part of the page appears contact info for all users to see
 
-QUERIES
+- The following dependencies were established for items belonging to o
 
-1.Query 1 - Get all events created by certain user
-
-Event.select(:title).where("user_id = 1") 
------------------
-2.Query 2 - Get all users belonging to an organization
-
-User.joins(:organization_users).select(:full_name).where("organization_id = 1")
------------------
-3.Query 3 - Get all public events in an organization
-
-Event.joins(:event_organizations).select(:title).where("organization_id = 1 AND priv_or_pub = 1")
------------------
-4.Query 4 -  Get all private events in an organization
-
-Event.joins(:event_organizations).select(:title).where("organization_id = 1 AND priv_or_pub = 2")
------------------
-5.Query 5 - Get all guests that have been invited to a certain event
-
-User.joins(:event_guests).select(:full_name).where("event_id = 1")
------------------
-6.Query 6 - Get all guests that have voted for a date option in a certain event
-
-User.joins(:event_votes).select(:full_name).where("event_id = 1 AND day= 1")
------------------
-7.Query 7 - Get all comments written by users on a specific event
-
-Comment.select(:message).where("event_id = 1 AND user_id = 1") 
------------------
-8.Query 8 - Get all comments written by a specific user on all events
-
-Comment.select(:message).where("user_id = 2") 
------------------
-9.Query 9 - Get all users with administrative privileges in an organization
-
-User.find_by_sql("SELECT full_name FROM users INNER JOIN organization_users ON users.id=organization_users.user_id INNER JOIN organizations ON organization_users.user_id=organizations.user_id WHERE organizations.id=1")
------------------
-10.Query 10 - Get all users with administrative privileges in the system
-
-User.select(:full_name).where("role = 2") 
------------------
-VALIDATIONS
-
-11.validates :username, :email, presence:true
-validates :username, uniqueness:true
------------------
-12.validates :email, format:/\w+@\w+\.{1}[a-zA-Z]{2,}/
-
-FUNCTIONALITY
-
-13.Explain what should happen model-wise if an event is deleted and guests have already cast votes. 
-- If an event is deleted it will be destroyed, removing any dependencies that come with it. So, since we have a model named EventVote, 
-	all records related to the destroyed event will be removed from the table event_vote. 
------------------
-14.Explain what should happen model-wise if an organization is deleted and events have been already created within the organization.
-- If an organization is deleted it will be destroyed, removing any dependencies that come with it. So, since we have a model named EventOrganization, 
-	all records related to the destroyed organization will be removed from the table event_organization.
------------------
-15.Explain what should happen model-wise if a user is deleted and the user has already created organizations, events and/or comments. 
-- If a user is deleted it will be destroyed therefore removing all dependencies. Since our models Organization, Event and Comment have dependencies, 
-	or in other words belongs_to association, every record corresponding to the user destroyed will be destroyed in those tables.
------------------
-
-* Postman link: https://www.getpostman.com/collections/7b8e6dfbfc2501664af7
+#POSTMAN
+Link to postman actions: https://www.getpostman.com/collections/7b8e6dfbfc2501664af7

@@ -14,6 +14,8 @@ class EventsController < ApplicationController
     #@organization = Organization.where(events: @event)
     @event_comments = @event.comments
     @organization = @event.organizations
+    @guests = @event.event_guests
+    @date_options = @event.event_options
   end
 
   # GET /events/new
