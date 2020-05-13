@@ -10,8 +10,9 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.json
   def show
-    @organization = Organization.joins(event_organizations: :event).where(events: {id:params[:event_id]})
-    @events = Organization.first.events
+    @organization = Organization.find(params[:id])
+    @events = @organization.events
+    @participants = @organization.organization_users
   end
 
   # GET /organizations/new

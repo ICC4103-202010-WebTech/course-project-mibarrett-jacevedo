@@ -13,7 +13,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     #@organization = Organization.where(events: @event)
     @event_comments = @event.comments
-    @organization = @event.organizations
+    @organization = @event.organization
     @guests = @event.event_guests
     @date_options = @event.event_options
   end

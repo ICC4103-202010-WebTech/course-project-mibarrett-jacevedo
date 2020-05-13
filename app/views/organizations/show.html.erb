@@ -19,6 +19,15 @@
         </div>
       <% end %>
     </div>
+
+    <div class="card">
+      <h2>People invited to this event</h2>
+      <%@participants.each do |participant|%>
+        <%@user = participant.user %>
+        <p><%=participant.user.username%> <%=link_to 'See profile', user_path(@user)%></p>
+      <%end%>
+    </div>
+
     <div class="card">
       <h3>About us</h3>
       <p>Contact us at organization@organization.com</p>

@@ -20,9 +20,9 @@
         <td><%= organization.user.profile.name %></td>
         <td><%= organization.created_at %></td>
         <td><%= organization.updated_at %></td>
-        <td><%= link_to 'Show', organization %></td>
-        <td><%= link_to 'Edit'%></td>
-        <td><%= link_to 'Delete'%></td>
+        <td><%= link_to 'Show', organization_path(organization) %></td>
+        <td>Edit</td>
+        <td>Delete</td>
       </tr>
     <% end %>
   </tbody>
@@ -30,5 +30,5 @@
 
 <br>
 
-<%= link_to 'New Organization'%> |
+<%= New Organization%> |
 <%= link_to 'Back to home', root_path %>
