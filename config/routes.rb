@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :profiles
   resource :events do
     resources :organizations
-    resources :comments
+    resources :comments, shallow: true
   end
 
   resources :mailboxes do

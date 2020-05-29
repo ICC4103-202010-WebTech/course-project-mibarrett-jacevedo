@@ -1,5 +1,11 @@
-<h1>New Comment</h1>
 
-<%= render 'form', comment: @comment %>
-
+<div class="row ml-0 mt-3">
+  <h2>Add comment to "<%= @event.name %>"</h2>
+</div>
+<div class="row ml-0 mt-2">
+  <p>Enter comment for the event:</p>
+</div>
+<div class="row ml-0 mt-2">
+  <%= render 'form', locals: { event: @event, ticket_type: @ticket_type } %>
+</div>
 <%= link_to 'Back', comments_path %>
