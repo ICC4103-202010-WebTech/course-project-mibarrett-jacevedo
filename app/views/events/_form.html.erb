@@ -1,17 +1,26 @@
-<%= form_with(model: event, local: true) do |form| %>
-  <% if event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-      <ul>
-        <% event.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="row ml-0">
+  <%= form_with model: event, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: "form-control" %>
     </div>
-  <% end %>
+    <div class="form-group">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :location %>
+      <%= form.datetime_local_field :location, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :starting_vote_day %>
+      <%= form.datetime_local_field :starting_vote_day %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div class="form-group mt-2">
+      <%= form.submit submit_btn_text, class: ["btn", "btn-primary"] %>
+      <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+    </div>
+
+  <% end %>
+</div>
