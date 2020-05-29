@@ -4,8 +4,9 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.where(mailbox_id: params[:mailbox_id])
-
+    @user = User.first
+    @messages = @user.messages
+    @mailbox = @user.mailbox
   end
 
   # GET /messages/1
@@ -16,12 +17,12 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-    #@mailbox = Mailbox.find(params[:mailbox_id])
+    @mailbox = Mailbox.find(params[:mailbox_id])
     @user = User.first
     @message = Message.new
-    @mailboxes = Mailbox.all.order(:name)
+    @message.mailbox = @mailbox
     #@message.user_id = User.first
-
+    
   end
 
   # GET /messages/1/edit

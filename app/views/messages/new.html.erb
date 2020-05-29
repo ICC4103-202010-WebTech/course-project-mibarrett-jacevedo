@@ -6,10 +6,6 @@
       <%= form.collection_select :user_id, User.all.order(:username), :id, :username %>
     </div>
     <div>
-      <%= form.label :mailbox_id %>
-      <%= form.collection_select :mailbox_id, Mailbox.all.order(:id), :id, :user_id %>
-    </div>
-    <div>
       <%= form.label :content %>
       <%= form.text_area :content %>
     </div>
