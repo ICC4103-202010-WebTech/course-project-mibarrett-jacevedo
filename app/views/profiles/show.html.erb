@@ -9,29 +9,32 @@
       <h5><%= @user.email %></h5>
       <h5>Role: <%= @user.role %></h5>
     </div>
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <h3>My Events</h3>
+        <% @events.each do |event| %>
+          <%= link_to image_tag("thumbnail.svg", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef"), url_for(event) %>
+          <div class="card-body">
+            <p class="card-text"><%= link_to event.title, event %></p>
+            <p class="card-text"><%= event.location %></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "View", event %></button>
+                <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to "Edit", edit_event_path(event) %></button>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="rightcolumn">
     <div class="card">
       <h2>About Me</h2>
       <p><%= @profile.biography %></p>
     </div>
-    <div class="card">
-      <h3>My Events</h3>
-      <% @events.each do |event| %>
-        <div class="dropdown">
-          <button class="dropbtn"><%= event.title %></button>
-          <div class="dropdown-content">
-            <a><%= link_to 'Open Event', event %></a>
-          </div>
-        </div>
-      <% end %>
-    </div>
   </div>
 </div>
-
-
-
-
 
 <%= link_to 'Edit', edit_profile_path(@profile) %>  |
 <%= link_to 'See all users', profiles_path %>  |
