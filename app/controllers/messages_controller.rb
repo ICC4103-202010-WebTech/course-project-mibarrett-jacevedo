@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
   # GET /messages.json
   def index
     @messages = Message.where(mailbox_id: params[:mailbox_id])
+
   end
 
   # GET /messages/1
@@ -15,7 +16,12 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
+    #@mailbox = Mailbox.find(params[:mailbox_id])
+    @user = User.first
     @message = Message.new
+    @mailboxes = Mailbox.all.order(:name)
+    #@message.user_id = User.first
+
   end
 
   # GET /messages/1/edit
@@ -25,7 +31,9 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
+    #@mailbox = Mailbox.find(params[:mailbox_id])
     @message = Message.new(message_params)
+    #@message.user_id = User.first.id
 
     respond_to do |format|
       if @message.save
@@ -70,6 +78,6 @@ class MessagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def message_params
-      params.fetch(:message, {})
+      params.fetch(:message).permit(:id, :user_id, :content, :mailbox_id)
     end
 end
