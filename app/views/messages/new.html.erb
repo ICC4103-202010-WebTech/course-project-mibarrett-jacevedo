@@ -1,21 +1,25 @@
-<h2>New Message</h2>
-<div>
+<div class="row ml-0 mt-3">
+  <h2>New Message</h2>
+</div>
+<div class="row ml-0">
   <%= form_with model: @message do |form| %>
-    <div>
+    <% form.hidden_field :mailbox_id, value=@mailbox %>
+    <div class="form-group">
       <%= form.label :user_id %>
       <%= form.collection_select :user_id, User.all.order(:username), :id, :username %>
     </div>
-    <div>
+    <div class="form-group">
       <%= form.label :content %>
       <%= form.text_area :content %>
     </div>
-    <div>
+    <div class="form-group mt-2">
+      <%= form.submit 'Send', class: ["btn", "btn-primary"] %>
+      <%= link_to 'Back', :back, class: ["btn", "btn-secondary"] %>
     </div>
-    <%= form.submit 'Send' %>
-    <%= link_to 'Back', messages_path %>
   <%end%>
-
 </div>
+
+
 
 
 

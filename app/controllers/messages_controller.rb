@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
     @mailbox = Mailbox.find(params[:mailbox_id])
     @user = User.first
     @message = Message.new
-    @message.mailbox = @mailbox
+      #@message.mailbox = @mailbox
     #@message.user_id = User.first
     
   end
@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    #@mailbox = Mailbox.find(params[:mailbox_id])
+    @mailbox = Mailbox.find(params[:mailbox_id])
     @message = Message.new(message_params)
     #@message.user_id = User.first.id
 
@@ -79,6 +79,6 @@ class MessagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def message_params
-      params.fetch(:message).permit(:id, :user_id, :content, :mailbox_id)
+      params.fetch(:message).permit(:user_id, :content, :mailbox_id)
     end
 end
