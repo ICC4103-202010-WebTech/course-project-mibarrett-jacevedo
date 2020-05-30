@@ -25,11 +25,12 @@ class EventOptionsController < ApplicationController
   # POST /event_options
   # POST /event_options.json
   def create
+    @event = Event.find(params[:event_id])
     @event_option = EventOption.new(event_option_params)
-
+    @event_option.event = @event
     respond_to do |format|
       if @event_option.save
-        format.html { redirect_to @event_option, notice: 'Event option was successfully created.' }
+        format.html { redirect_to  @event, notice: 'Event option was successfully created.' }
         format.json { render :show, status: :created, location: @event_option }
       else
         format.html { render :new }
@@ -70,7 +71,6 @@ class EventOptionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_option_params
-
       params.fetch(:event_option, {}).permit(:id, :day, :event_id)
     end
 end

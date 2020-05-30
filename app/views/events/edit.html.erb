@@ -1,25 +1,13 @@
-<h1>Editing Event</h1>
-
-<%= render 'form', event: @event %>
-
-<table>
-  <thead>
-  <tr>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <tr>
-    <td> New title: </td>
-    <td> New Description: </td>
-    <td> New Location: </td>
-    <td><%= link_to 'Save', root_path %></td>
-  </tr>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<div class="row ml-0 mt-3">
+  <h2>Edit "<%=@event.title%>" Event</h2>
+</div>
+<div class="row ml-0 mt-2">
+  <p>Enter the following to edit the "<%=@event.title%>" event:</p>
+</div>
+<%= render partial: "form",
+           locals: {
+               event: @event,
+               submit_btn_text: "Update",
+               event_option_section_title: "Edit event voting dates",
+               event_option_instruction_text: "You may edit existing vote options for your event"
+           } %>
