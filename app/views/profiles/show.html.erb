@@ -3,27 +3,29 @@
 <div class="row">
   <div class="leftcolumn">
     <div class="card">
-      <div class="fakeimg" style="height:150px;">Image</div>
-      <h2><%= @profile.name %></h2>
-      <div class="profileimg">Profile Picture</div>
-      <h5><%= @user.email %></h5>
-      <h5>Role: <%= @user.role %></h5>
+      <h1 class="display-2"><%= @profile.name %></h1>
+      <img src="thumbnail.svg" alt="..." class="img-thumbnail">
+      <p class="lead"><%= @user.email %></p>
+      <p class="lead">Role: <%= @user.role %></p>
     </div>
-    <div class="col-md-4">
+
+    <div class="card">
       <div class="card mb-4 shadow-sm">
         <h3>My Events</h3>
         <% @events.each do |event| %>
           <div class="col-md-4">
-            <div class="card-content">
-              <div class="card-img">
-                <%= link_to image_tag("thumbnail.svg", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef"), url_for(event) %>
-                <span><h4><%= link_to event.title, event %></h4></span>
-                <p><%= event.location %></p>
-              </div>
-              <div class="card-desc">
-                <button type="button" class="btn btn-outline-secondary"><%= link_to "View", event %></button>
-                <button type="button" class="btn btn-outline-secondary"><%= link_to "Edit", edit_event_path(event) %></button>
-                <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+            <div class="card mb-4 shadow-sm">
+              <div class="card-content">
+                <div class="card-img">
+                  <%= link_to image_tag("thumbnail.svg", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef"), url_for(event) %>
+                  <span><h4><%= link_to event.title, event %></h4></span>
+                  <p><%= event.location %></p>
+                </div>
+                <div class="card-desc">
+                  <button type="button" class="btn btn-outline-secondary"><%= link_to "View", event %></button>
+                  <button type="button" class="btn btn-outline-secondary"><%= link_to "Edit", edit_event_path(event) %></button>
+                  <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                </div>
               </div>
             </div>
           </div>
@@ -34,7 +36,7 @@
   <div class="rightcolumn">
     <div class="card">
       <h2 class="lead">About Me</h2>
-      <p><%= @profile.biography %></p>
+      <p class="lead"><%= @profile.biography %></p>
     </div>
   </div>
 </div>
