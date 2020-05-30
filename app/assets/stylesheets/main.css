@@ -16,8 +16,6 @@ a:visited {
 
 li a:hover {
     text-decoration: none;
-    color: white;
-    background-color: #111;
 }
 
 a:active {
@@ -206,9 +204,6 @@ body {
     }
 }
 
-p {
-    text-indent: 50px;
-}
 
 p.reply {
     text-indent: 70px;

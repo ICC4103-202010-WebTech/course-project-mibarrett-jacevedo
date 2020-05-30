@@ -3,14 +3,19 @@
 <div class="row">
   <div class="leftcolumn">
     <div class="card">
-      <h2><%= @event.title %></h2>
-      <h5> Event host: <%= @event.user.username %></h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <h5>Description</h5>
-      <p class="comment"><%= @event.description %></p>
-      <h5>Location</h5>
-      <p class="comment"><%= @event.location %></p>
+      <h5 class="display-2"><%= @event.title %></h5>
+      <p class="card-text"><%= @event.user.username %></p>
     </div>
+
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><%= @event.description %></p>
+        <h5 class="card-title">Location</h5>
+        <p class="card-text"><%= @event.location %></p>
+      </div>
+      <img class="card-img-bottom" src="..." alt="Card image cap">
+    </div>
+
     <div class="card">
       <h2>Date Options</h2>
       <%@date_options.each do |date|%>
@@ -31,18 +36,17 @@
   <div class="rightcolumn">
     <div class="card">
       <h2>Comments</h2>
+
       <% @event_comments.each do |comment| %>
         <%@replies= comment.replies %>
-        <div class="row">
-          <div class="column">
-            <h5><%= comment.user.username %></h5>
-            <p class = "comment"><%= comment.message %>  <%=link_to 'Reply'%></p>
+
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= comment.user.username %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= comment.message %></h6>
+            <a href="#" class="card-link"> <%=link_to 'Reply'%></a>
             <% @replies.each do |reply| %>
-              <div class="row">
-                <div class="column">
-                  <p class="reply"><%=reply.user.username%>: <%= reply.message%></p>
-                </div>
-              </div>
+              <p class="card-text"><%=reply.user.username%>: <%= reply.message%></p>
             <%end %>
           </div>
         </div>

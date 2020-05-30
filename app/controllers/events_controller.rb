@@ -39,7 +39,7 @@ class EventsController < ApplicationController
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
-        format.html { render :new }
+        format.html { render :new, notice: 'Event was not successfully created.'}
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
@@ -77,6 +77,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {}).permit(:id, :title, :description, :location, event_options_attributes: [:id, :day, :_destroy], comments_attributes: [:id, :user_id, :message])
+      params.fetch(:event, {}).permit(:id, :title, :description, :location, event_options_attributes: [:id, :day, :_destroy], comments_attributes: [:id, :user_id, :message, :_destroy])
     end
 end

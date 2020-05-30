@@ -1,26 +1,15 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<h1 class="display-2">Events</h1>
+<p class="lead">Check out the many events to have fun and meet new friends</p>
 
-<p id="notice"><%= notice %></p>
-
-<h1 class="event">Events</h1>
-
-
-<% @events.each do |event| %>
-
-  <div class="dropdown">
-    <button class="dropbtn"><%= event.title %></button>
-    <div class="dropdown-content">
-      <a><%= link_to 'Show', event %></a>
-      <a><%= link_to 'Edit', edit_event_path(event) %></a>
-      <a><%= link_to 'Delete'%></a>
-    </div>
-  </div>
-<% end %>
-
-
-<br>
+<div class="row">
+  <% @events.each do |event| %>
+    <%= render partial: 'event_tile', locals: { event: event } %>
+  <% end %>
+</div>
 <div class="row ml-0 mt-2 mb-3">
   <%= link_to "Add Event", new_event_path, class: ["btn", "btn-primary"] %>
 </div>
+
+
 
 
