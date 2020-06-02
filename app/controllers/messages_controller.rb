@@ -17,8 +17,8 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-    @mailbox = Mailbox.find(params[:mailbox_id])
     @user = User.first
+    @mailbox = Mailbox.find(params[:mailbox_id])
     @message = Message.new
       #@message.mailbox = @mailbox
     #@message.user_id = User.first
@@ -34,6 +34,7 @@ class MessagesController < ApplicationController
   def create
     @mailbox = Mailbox.find(params[:mailbox_id])
     @message = Message.new(message_params)
+    @message.mailbox_id = @mailbox
     #@message.user_id = User.first.id
 
     respond_to do |format|
