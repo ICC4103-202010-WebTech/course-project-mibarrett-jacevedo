@@ -5,7 +5,30 @@
     <div class="card">
       <h2><%= @organization.name %></h2>
       <h5><%= @organization.description %></h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
+      <div class="row ml-0 mt-3">
+        <% if @organization.picture.attached? == true %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" style="width:400px;" ><%= image_tag(@organization.picture, height: "50%", width: "50%") %></button>
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width:800px;" >
+              <div class="modal-content">
+                <%= link_to "X", organization_path, class: ["btn", "btn-secondary"] %>
+                <%= image_tag(@organization.picture, height: "50%", width: "80%") %><%= link_to "Close", organization_path, class: ["btn", "btn-primary"] %>
+              </div>
+            </div>
+          </div>
+        <%end %>
+        <% if @organization.picture.attached? == false %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" style="width:400px;" ><%= image_tag("no_image.png", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef") %></button>
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width:800px;">
+              <div class="modal-content">
+                <%= link_to "X", organization_path, class: ["btn", "btn-secondary"] %>
+                <%= image_tag("no_image.png") %><%= link_to "Close", organization_path, class: ["btn", "btn-primary"] %>
+              </div>
+            </div>
+          </div>
+        <%end %>
+      </div>
     </div>
     <div class="card">
       <h2>Events</h2>
