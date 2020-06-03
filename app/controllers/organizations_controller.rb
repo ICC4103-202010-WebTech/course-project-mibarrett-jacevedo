@@ -4,7 +4,10 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.search(params[:search])
+    @organizations = Organization.all
+    if params[:search]
+      @organizations = Organization.search(params[:search])
+    end
   end
 
   # GET /organizations/1
