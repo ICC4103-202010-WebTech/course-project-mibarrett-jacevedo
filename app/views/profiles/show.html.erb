@@ -17,11 +17,11 @@
           </div>
         <%end %>
         <% if @profile.picture.attached? == false %>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" style="width:400px;" ><%= image_tag("thumbnail.svg", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef") %></button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" style="width:400px;" ><%= image_tag("no_image.png", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef") %></button>
           <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog" style="width:800px;">
               <div class="modal-content">
-                <%= image_tag("thumbnail.svg") %>
+                <%= image_tag("no_image.png") %>
               </div>
             </div>
           </div>
@@ -39,7 +39,7 @@
             <div class="card mb-4 shadow-sm">
               <div class="card-content">
                 <div class="card-img">
-                  <%= link_to image_tag("thumbnail.svg", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef"), url_for(event) %>
+                  <%= link_to image_tag("no_image.png", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef"), url_for(event) %>
                   <span><h4><%= link_to event.title, event %></h4></span>
                   <p><%= event.location %></p>
                 </div>
