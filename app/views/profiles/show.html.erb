@@ -4,7 +4,29 @@
   <div class="leftcolumn">
     <div class="card">
       <h1 class="display-2"><%= @profile.name %></h1>
-      <img src="thumbnail.svg" alt="..." class="img-thumbnail">
+      <div class="row ml-0 mt-3">
+        <% if @profile.picture.attached? == true %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" style="width:400px;" ><%= image_tag(@profile.picture, height: "50%", width: "50%") %></button>
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width:800px;" >
+              <div class="modal-content">
+                <%= link_to "X", :back, class: ["btn", "btn-secondary"] %>
+                <%= image_tag(@profile.picture, height: "50%", width: "80%") %><%= link_to "Close", :back, class: ["btn", "btn-primary"] %>
+              </div>
+            </div>
+          </div>
+        <%end %>
+        <% if @profile.picture.attached? == false %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" style="width:400px;" ><%= image_tag("thumbnail.svg", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef") %></button>
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width:800px;">
+              <div class="modal-content">
+                <%= image_tag("thumbnail.svg") %>
+              </div>
+            </div>
+          </div>
+        <%end %>
+      </div>
       <p class="lead"><%= @user.email %></p>
       <p class="lead">Role: <%= @user.role %></p>
     </div>

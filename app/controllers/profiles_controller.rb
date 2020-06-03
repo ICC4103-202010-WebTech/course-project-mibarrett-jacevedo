@@ -82,10 +82,6 @@ class ProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def profile_params
-<<<<<<< HEAD
-      params.fetch(:profile, {}).permit(:name, :biography, :picture)
-=======
-      params.fetch(:profile, {}).permit(:name, :biography, :search)
->>>>>>> 2b9c793007f93099aebdcbaf901a74af745d7eb7
+      params.fetch(:profile, {}).permit(:name, :biography, :search, :picture)
     end
 end

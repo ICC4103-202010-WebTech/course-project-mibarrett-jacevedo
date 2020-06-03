@@ -47,6 +47,11 @@
 
 
 <br>
-<%= link_to 'Edit', edit_organization_path(@organization) %> |
-<%= link_to 'See all organizations', '/organizations' %>
+<div class="row ml-0 mt-2 mb-3">
+  <%= link_to 'Edit', edit_organization_path(@organization), class: ["btn", "btn-primary"] %>
+</div>
+<div class="row ml-0 mt-2 mb-3">
+  <%= link_to 'See all organizations', '/organizations', class: ["btn", "btn-primary"] %>
+</div>
+
 <%= link_to 'Back', '/organizations' %>

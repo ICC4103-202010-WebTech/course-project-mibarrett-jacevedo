@@ -1,6 +1,16 @@
 <h1>Editing Organization</h1>
 
-<%= render 'form', organization: @organization %>
+<div class="row ml-0 mt-3">
+  <h2>Edit "<%=@organization.name%>" Organization</h2>
+</div>
+<div class="row ml-0 mt-2">
+  <p>Enter the following to edit the "<%=@organization.name%>" event:</p>
+</div>
+<%= render partial: "form",
+           locals: {
+               organization: @organization,
+               submit_btn_text: "Update",
+           } %>
 
-<%= link_to 'Show', @organization %> |
+
 <%= link_to 'Back', organizations_path %>

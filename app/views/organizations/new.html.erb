@@ -1,5 +1,15 @@
 <h1>New Organization</h1>
+<div class="row ml-0 mt-3">
+  <h2>New Event</h2>
+</div>
+<div class="row ml-0 mt-2">
+  <p>Enter the following to create an Event:</p>
+</div>
+<%= render partial: "form",
+           locals: {
+               organization: @organization,
+               submit_btn_text: "Create",
+           } %>
 
-<%= render 'form', organization: @organization %>
 
 <%= link_to 'Back', organizations_path %>
