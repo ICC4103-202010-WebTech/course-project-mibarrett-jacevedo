@@ -9,10 +9,9 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :users do
-    resources :mailboxes do
-      resources :messages, shallow: true
-    end
+  resources :users
+  resources :mailboxes do
+    resources :messages, shallow: true
   end
   resources :events
   resources :profiles
