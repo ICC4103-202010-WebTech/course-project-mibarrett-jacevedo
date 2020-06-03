@@ -1,6 +1,12 @@
 <h1 class="display-2">Events</h1>
 <p class="lead">Check out the many events to have fun and meet new friends</p>
 
+<%= form_tag events_path, :method => "get" do %>
+  <%=label_tag(:search, "Event Name:") %>
+  <%=text_field_tag :search, params[:search] %>
+  <%=submit_tag("Search", :name => nil) %>
+<%end %>
+
 <div class="row">
   <% @events.each do |event| %>
     <%= render partial: 'event_tile', locals: { event: event } %>

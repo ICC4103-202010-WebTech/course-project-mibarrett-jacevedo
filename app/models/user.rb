@@ -20,4 +20,6 @@ class User < ApplicationRecord
   def create_mailbox
     Mailbox.create!(user_id: self.id)
   end
+
+
 end

@@ -9,4 +9,17 @@ class Event < ApplicationRecord
 
   accepts_nested_attributes_for :event_options, allow_destroy: true
   accepts_nested_attributes_for :comments
+
+  def self.search(search)
+    if search
+      event_type = Event.find_by(title: search)
+      if event_type
+        self.where(id: event_type)
+      else
+        @events = Event.all
+      end
+    else
+      @events= Event.all
+    end
+  end
 end
