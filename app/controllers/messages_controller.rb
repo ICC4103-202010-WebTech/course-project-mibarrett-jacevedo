@@ -17,12 +17,10 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-    @user = User.first
+    #@user = User.first
     @mailbox = Mailbox.find(params[:mailbox_id])
     @message = Message.new
-      #@message.mailbox = @mailbox
-    #@message.user_id = User.first
-    
+
   end
 
   # GET /messages/1/edit
@@ -32,10 +30,7 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @mailbox = Mailbox.find(params[:mailbox_id])
     @message = Message.new(message_params)
-    @message.mailbox_id = @mailbox
-    #@message.user_id = User.first.id
 
     respond_to do |format|
       if @message.save
