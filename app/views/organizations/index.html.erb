@@ -2,29 +2,32 @@
 
 <h1>Organizations</h1>
 
+
+<%= form_tag organizations_path, :method => "get" do %>
+  <%=label_tag(:search, "Organization Name:") %>
+  <%=text_field_tag :search, params[:search] %>
+  <%=submit_tag("Search", :name => nil) %>
+<%end %>
 <table>
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Administrator</th>
-      <th>Created at</th>
-      <th>Updated at</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Name</th>
+    <th>Administrator</th>
+    <th>Created at</th>
+    <th>Updated at</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
-
   <tbody>
-    <% @organizations.each do |organization| %>
-      <tr>
-        <td><%= organization.name %></td>
-        <td><%= organization.user.profile.name %></td>
-        <td><%= organization.created_at %></td>
-        <td><%= organization.updated_at %></td>
-        <td><%= link_to 'Show', organization_path(organization) %></td>
-        <td>Edit</td>
-        <td>Delete</td>
-      </tr>
-    <% end %>
+  <% @organizations.each do |organization| %>
+    <tr>
+      <td><%= organization.name %></td>
+      <td><%= organization.user.profile.name %></td>
+      <td><%= organization.created_at %></td>
+      <td><%= organization.updated_at %></td>
+      <td><%= link_to 'Show', organization_path(organization) %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 

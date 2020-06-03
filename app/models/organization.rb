@@ -4,4 +4,17 @@ class Organization < ApplicationRecord
   has_many :events, through: :event_organizations, dependent: :destroy
   has_many :organization_users, dependent: :destroy
   has_many :users, through: :organization_users
+
+  def self.search(search)
+    if search
+      organization_type = Organization.find_by(name: search)
+      if organization_type
+        self.where(id: organization_type)
+      else
+        @organizations = Organization.all
+      end
+    else
+      @organizations= Organization.all
+    end
+  end
 end
