@@ -14,6 +14,7 @@ class EventOptionsController < ApplicationController
 
   # GET /event_options/new
   def new
+
     @event = Event.find(params[:event_id])
     @event_option = EventOption.new
   end

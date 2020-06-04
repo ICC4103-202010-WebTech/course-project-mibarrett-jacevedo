@@ -1,5 +1,11 @@
-<h1>New Event Option</h1>
 
-<%= render 'form', event_option: @event_option %>
-
-<%= link_to 'Back', event_options_path %>
+<div class="row ml-0 mt-3">
+  <h2>Adding a Event Option to "<%= @event.name %>"</h2>
+</div>
+<div class="row ml-0 mt-2">
+  <p>Please enter the required information to add a day for the event:</p>
+</div>
+<div class="row ml-0 mt-2">
+  <%= render 'form', locals: { event: @event, event_option: @event_option } %>
+</div>
+<%#= link_to 'Back', event_options_path %>
