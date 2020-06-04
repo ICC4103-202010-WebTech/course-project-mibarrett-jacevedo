@@ -20,7 +20,7 @@
             <div class="modal-dialog" style="width:800px;" >
               <div class="modal-content">
                 <%= link_to "X", event_path, class: ["btn", "btn-secondary"] %>
-                <%= image_tag(@event.picture, height: "50%", width: "80%") %><%= link_to "Close", event_path, class: ["btn", "btn-primary"] %>
+                <%= image_tag(@event.picture, class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef") %><%= link_to "Close", event_path, class: ["btn", "btn-primary"] %>
               </div>
             </div>
           </div>

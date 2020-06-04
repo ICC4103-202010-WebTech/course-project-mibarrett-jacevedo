@@ -10,8 +10,12 @@
           <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog" style="width:800px;" >
               <div class="modal-content">
-                <%= link_to "X", profile_path, class: ["btn", "btn-secondary"] %>
-                <%= image_tag(@profile.picture, height: "50%", width: "80%") %><%= link_to "Close", profile_path, class: ["btn", "btn-primary"] %>
+                <div class="modal-header">
+                  <button class ="btn-toolbar pull-right">
+                    <%= link_to "X", profile_path %>
+                  </button>
+                </div>
+                <%= image_tag(@profile.picture, class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef") %>
               </div>
             </div>
           </div>
@@ -21,8 +25,10 @@
           <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog" style="width:800px;">
               <div class="modal-content">
-                <%= link_to "X", profile_path, class: ["btn", "btn-secondary"] %>
-                <%= image_tag("no_image.png") %><%= link_to "Close", profile_path, class: ["btn", "btn-primary"] %>
+                <div class="modal-header">
+                  <button class ="rightcolumn">X</button>
+                </div>
+                <%= image_tag("no_image.png") %>
               </div>
             </div>
           </div>
