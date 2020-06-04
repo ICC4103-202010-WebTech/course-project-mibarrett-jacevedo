@@ -20,17 +20,17 @@
       <div class="card-body">
         <h5 class="card-title">Event Option</h5>
         <p>Select possible dates for your event </p>
-        <%=form.fields_for :event_options do |event_options_form| %>
-          <div class="form-group">
-            <%= event_options_form.label :day %>
-            <%= event_options_form.datetime_local_field :day %>
+          <%=form.fields_for :event_options do |event_options_form| %>
+            <div id="event-option-nested-forms" class="form-group">
+              <%= event_options_form.label :day %>
+              <%= event_options_form.datetime_local_field :day %>
 
-            <% if action_name == 'edit' %>
-              <%= event_options_form.label "Delete"%>
-              <%= event_options_form.check_box :_destroy %>
-            <% end %>
-            <hr>
-          </div>
+              <% if action_name == 'edit' %>
+                <%= event_options_form.label "Delete"%>
+                <%= event_options_form.check_box :_destroy %>
+              <% end %>
+              <hr>
+            </div>
         <% end %>
         <% if action_name == 'new' %>
           <%= link_to "Add Event Day", new_event_event_option_otf_path, class: [ 'btn', 'btn-primary'], remote: true %>
