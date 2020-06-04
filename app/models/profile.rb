@@ -4,14 +4,10 @@ class Profile < ApplicationRecord
 
   def self.search(search)
     if search
-      profile_type = Profile.find_by(name: search)
-      if profile_type
-        self.where(id: profile_type)
-      else
-        @profiles =Profile.all
-      end
+      profiles = Profile.joins(:user).where("name LIKE ? OR users.username LIKE ?" , "%#{search}%", "%#{search}%")
     else
-      @profiles= Profile.all
+      profiles = Profile.all
     end
   end
 end
+

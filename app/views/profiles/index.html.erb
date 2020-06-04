@@ -3,14 +3,15 @@
 <h1>Users</h1>
 
 <%= form_tag profiles_path, :method => "get" do %>
-  <%=label_tag(:search, "User:") %>
+  <%=label_tag(:search, "Name or username:") %>
   <%=text_field_tag :search, params[:search] %>
   <%=submit_tag("Search", :name => nil) %>
 <%end %>
 
 <% @profiles.each do |profile| %>
   <ul>
-    <li><%= link_to profile.name, profile_path(profile) %></li><br>
+    <li><%= link_to profile.name, profile_path(profile) %>  |  </li>
+    <%= profile.user.username %><br>
   </ul>
 <% end %>
 

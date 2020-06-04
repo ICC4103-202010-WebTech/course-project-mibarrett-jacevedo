@@ -2,6 +2,7 @@
 
 <h1>Searches</h1>
 
+<%= form_tag  %>
 <table>
   <thead>
     <tr>
@@ -12,9 +13,9 @@
   <tbody>
     <% @searches.each do |search| %>
       <tr>
-        <td><%= link_to 'Show', search %></td>
-        <td><%= link_to 'Edit', edit_search_path(search) %></td>
-        <td><%= link_to 'Destroy', search, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', search_path(search) %></td>
+        <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
+        <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

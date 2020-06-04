@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :organizations
     resources :comments, shallow: true
   end
-
+  resources :searches
 
 
   resources :users, defaults: { format: :html }

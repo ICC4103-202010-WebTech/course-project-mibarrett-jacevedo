@@ -2,7 +2,7 @@
 <p class="lead">Check out the many events to have fun and meet new friends</p>
 
 <%= form_tag events_path, :method => "get" do %>
-  <%=label_tag(:search, "Event Name:") %>
+  <%=label_tag(:search, "Event name, event organization, event's creator username:") %>
   <%=text_field_tag :search, params[:search] %>
   <%=submit_tag("Search", :name => nil) %>
 <%end %>

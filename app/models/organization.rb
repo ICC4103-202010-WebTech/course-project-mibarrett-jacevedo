@@ -8,14 +8,9 @@ class Organization < ApplicationRecord
 
   def self.search(search)
     if search
-      organization_type = Organization.find_by(name: search)
-      if organization_type
-        self.where(id: organization_type)
-      else
-        @organizations = Organization.all
-      end
+      organizations = Organization.where("name LIKE ?" , "%#{search}%")
     else
-      @organizations= Organization.all
+      organizations = Organization.all
     end
   end
 end

@@ -13,14 +13,10 @@ class Event < ApplicationRecord
 
   def self.search(search)
     if search
-      event_type = Event.find_by(title: search)
-      if event_type
-        self.where(id: event_type)
-      else
-        @events = Event.all
-      end
+      events = Event.joins(:user, :organization).where("title LIKE ? OR users.username LIKE ?  OR organizations.name LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
     else
-      @events= Event.all
+      events = Event.all
     end
   end
 end
+

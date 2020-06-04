@@ -20,7 +20,7 @@ class Search < ApplicationRecord
   def find_organizations
     organizations = Organization.order(created_at: :desc)
     organizations = organizations.where("name like ?", "%#{keywords}%", "%#{keywords}%") if keywords.present?
-    questions
+    organizations
   end
 
   def find_events
