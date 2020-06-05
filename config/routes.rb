@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :organizations
     resources :comments, shallow: true
     resources :event_options
+    resources :event_organizations
   end
   resources :searches
 
@@ -35,5 +36,6 @@ Rails.application.routes.draw do
   resources :messages, defaults: { format: :html}
   resources :organizations, defaults: { format: :html}
   resources :profiles, defaults: {format: :html}
+  resources :event_organizations, defaults: {format: :html}
 
 end

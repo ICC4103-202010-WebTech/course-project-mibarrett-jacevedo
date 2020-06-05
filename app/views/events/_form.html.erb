@@ -1,5 +1,6 @@
 <div class="row ml-0">
   <%= form_with model: event, local: true do |form| %>
+    <%= form.hidden_field :user_id, value: @user.id %>
     <div class="form-group">
       <%= form.label :title %>
       <%= form.text_field :title, class: "form-control" %>
@@ -37,6 +38,9 @@
         <% end %>
       </div>
     </div>
+    <%= form.fields_for :event_organizations do |event_organization_form| %>
+      <%= event_organization_form.hidden_field :organization_id, value: @organization.id %>
+    <%end%>
     <div class="form-group mt-2">
       <%= form.submit submit_btn_text, class: ["btn", "btn-primary"] %>
       <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>

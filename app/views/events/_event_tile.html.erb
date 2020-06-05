@@ -10,7 +10,7 @@
           <%= link_to image_tag("no_image.png", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef"), url_for(event) %>
         <%end %>
         <span><h4><%= link_to event.title, event %></h4></span>
-        <p><%= event.location %>  | <%=event.user.username %>  | <%=event.organization.name %></p>
+        <p><%= event.location %>  | <%=event.user.username %>  |  <%= event.organization.name %></p>
       </div>
       <div class="card-desc">
         <button type="button" class="btn btn-outline-secondary"><%= link_to "View", event %></button>

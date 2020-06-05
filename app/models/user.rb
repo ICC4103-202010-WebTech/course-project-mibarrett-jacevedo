@@ -2,8 +2,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :event_votes, dependent: :destroy
-  has_many :organization_users, dependent: :destroy
-  has_many :organizations, through: :organization_users, dependent: :destroy
+  has_one :organization_user, dependent: :destroy
+  has_one :organization, through: :organization_user, dependent: :destroy
   has_many :event_guests, dependent: :destroy
   has_many :replies, dependent: :destroy
   has_one :mailbox, dependent: :destroy
