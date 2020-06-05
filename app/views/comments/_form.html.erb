@@ -1,6 +1,5 @@
 
 <%= form_with model: [@event, @comment], local: true do |form| %>
-  <%= errors_for @comment %>
   <div class="form-group">
     <%= form.label :message %>
     <%= form.text_field :message, class: "form-control" %>
