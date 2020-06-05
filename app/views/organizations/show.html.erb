@@ -48,6 +48,7 @@
         <%@user = participant.user %>
         <p><%=participant.user.username%> <%=link_to 'See profile', user_path(@user)%></p>
       <%end%>
+      <%= link_to 'Add participants', new_organization_organization_user_path(@organization)%>
     </div>
 
     <div class="card">

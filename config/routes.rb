@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     resources :event_guests
   end
   resources :searches
-
+  resources :organizations do
+    resources :organization_users
+  end
 
   resources :users, defaults: { format: :html }
   resources :comments, defaults: { format: :html }
@@ -39,5 +41,5 @@ Rails.application.routes.draw do
   resources :profiles, defaults: {format: :html}
   resources :event_organizations, defaults: {format: :html}
   resources :event_guests, defaults: {format: :html}
-
+  resources :organization_users, defaults: {format: :html}
 end

@@ -6,6 +6,8 @@ class Organization < ApplicationRecord
   has_many :users, through: :organization_users
   has_one_attached :picture
 
+  accepts_nested_attributes_for :organization_users
+
   def self.search(search)
     if search
       organizations = Organization.where("name LIKE ?" , "%#{search}%")
