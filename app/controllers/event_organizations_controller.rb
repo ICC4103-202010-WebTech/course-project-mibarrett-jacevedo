@@ -15,6 +15,7 @@ class EventOrganizationsController < ApplicationController
   # GET /event_organizations/new
   def new
     @event = Event.find(params[:event_id])
+    @organization = @user.organization
     @event_organization = EventOrganization.new
   end
 
