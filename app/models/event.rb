@@ -11,6 +11,7 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :event_options, allow_destroy: true
   accepts_nested_attributes_for :comments
   accepts_nested_attributes_for :event_organization, allow_destroy: true
+  accepts_nested_attributes_for :event_guests
 
   def self.search(search)
     if search

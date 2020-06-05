@@ -14,6 +14,7 @@ class EventGuestsController < ApplicationController
 
   # GET /event_guests/new
   def new
+    @event = Event.find(params[:event_id])
     @event_guest = EventGuest.new
   end
 
@@ -24,6 +25,7 @@ class EventGuestsController < ApplicationController
   # POST /event_guests
   # POST /event_guests.json
   def create
+    @event = Event.find(params[:event_id])
     @event_guest = EventGuest.new(event_guest_params)
 
     respond_to do |format|
@@ -69,6 +71,6 @@ class EventGuestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_guest_params
-      params.fetch(:event_guest, {})
+      params.fetch(:event_guest, {}).permit(:id, :event_id, :user_id)
     end
 end
