@@ -29,11 +29,12 @@ class OrganizationUsersController < ApplicationController
 
     respond_to do |format|
       if @organization_user.save
-        format.html { redirect_to @organization_user, notice: 'Organization user was successfully created.' }
-        format.json { render :show, status: :created, location: @organization_user }
+        @organization = @organization_user.organization
+        format.html { redirect_to @organization, notice: 'Organization user was successfully created.' }
+        format.json { render :show, status: :created, location: @organization }
       else
         format.html { render :new }
-        format.json { render json: @organization_user.errors, status: :unprocessable_entity }
+        format.json { render json: @organization.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -25,16 +25,18 @@ class EventGuestsController < ApplicationController
   # POST /event_guests
   # POST /event_guests.json
   def create
-    @event = Event.find(params[:event_id])
+    #@event = Event.find(params[:event_id])
     @event_guest = EventGuest.new(event_guest_params)
+    #@event_guest.event = @event
 
     respond_to do |format|
       if @event_guest.save
-        format.html { redirect_to @event_guest, notice: 'Event guest was successfully created.' }
-        format.json { render :show, status: :created, location: @event_guest }
+        @event = @event_guest.event
+        format.html { redirect_to @event, notice: 'Participant was successfully added.' }
+        format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
-        format.json { render json: @event_guest.errors, status: :unprocessable_entity }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -71,6 +73,6 @@ class EventGuestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_guest_params
-      params.fetch(:event_guest, {}).permit(:id, :event_id, :user_id)
+      params.fetch(:event_guest, {}).permit(:event_id, :user_id)
     end
 end
