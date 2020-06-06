@@ -6,12 +6,14 @@ class Event < ApplicationRecord
   has_many :event_guests, dependent: :destroy
   has_many :users, through: :event_guests
   has_many :event_options, dependent: :destroy
+  has_many :event_votes, through: :event_options
   has_one_attached :picture
 
   accepts_nested_attributes_for :event_options, allow_destroy: true
   accepts_nested_attributes_for :comments
   accepts_nested_attributes_for :event_organization, allow_destroy: true
   accepts_nested_attributes_for :event_guests
+  accepts_nested_attributes_for :event_votes
 
   def self.search(search)
     if search

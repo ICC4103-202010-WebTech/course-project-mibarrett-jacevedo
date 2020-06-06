@@ -45,7 +45,7 @@
         <%@vote_number= date.event_votes.count %>
         <p><%=date.day%>  <%=@vote_number%> Votes</p>
       <%end%>
-      <p><%=link_to 'Vote for this event'%></p>
+      <p><%=link_to 'Vote for this event', new_event_event_vote_path(@event)%></p>
     </div>
     <div class="card">
       <h2>People invited to this event</h2>

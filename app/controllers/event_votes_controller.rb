@@ -14,6 +14,8 @@ class EventVotesController < ApplicationController
 
   # GET /event_votes/new
   def new
+    @user = User.first
+    @event = Event.find(params[:event_id])
     @event_vote = EventVote.new
   end
 
@@ -28,11 +30,12 @@ class EventVotesController < ApplicationController
 
     respond_to do |format|
       if @event_vote.save
-        format.html { redirect_to @event_vote, notice: 'Event vote was successfully created.' }
-        format.json { render :show, status: :created, location: @event_vote }
+        @event = @event_vote.event
+        format.html { redirect_to @event, notice: 'Event vote was successfully created.' }
+        format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
-        format.json { render json: @event_vote.errors, status: :unprocessable_entity }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,6 +72,6 @@ class EventVotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_vote_params
-      params.fetch(:event_vote, {})
+      params.fetch(:event_vote, {}).permit(:event_option_id, :user_id)
     end
 end
