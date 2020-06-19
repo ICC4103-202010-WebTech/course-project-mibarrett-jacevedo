@@ -41,7 +41,7 @@
 
     <div class="card">
       <h2>Date Options</h2>
-      <%@date_options.each do |date|%>
+      <%@event.event_options.each do |date|%>
         <%@vote_number= date.event_votes.count %>
         <p><%=date.day%>  <%=@vote_number%> Votes</p>
       <%end%>
@@ -49,7 +49,7 @@
     </div>
     <div class="card">
       <h2>People invited to this event</h2>
-      <%@guests.each do |guest|%>
+      <%@event.event_guests.each do |guest|%>
         <%@user =guest.user %>
         <p><%=guest.user.username%> <%=link_to 'See profile', user_path(@user)%></p>
       <%end%>
@@ -60,7 +60,7 @@
     <div class="card">
       <h2>Comments</h2>
 
-      <% @event_comments.each do |comment| %>
+      <% @event.comments.each do |comment| %>
         <%@replies= comment.replies %>
 
         <div class="card" style="width: 18rem;">
@@ -68,6 +68,7 @@
             <h5 class="card-title"><%= comment.user.username %></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= comment.message %></h6>
             <a href="#" class="card-link"> <%=link_to 'Reply'%></a>
+            <td><%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% @replies.each do |reply| %>
               <p class="card-text"><%=reply.user.username%>: <%= reply.message%></p>
             <%end %>
@@ -79,7 +80,7 @@
 
     <div class="card">
       <h3>Organization</h3>
-      <p><%= link_to @organization.name, organization_path(@organization) %></p>
+      <p><%= link_to @event.organization.name, organization_path(@event.organization) %></p>
 
     </div>
   </div>

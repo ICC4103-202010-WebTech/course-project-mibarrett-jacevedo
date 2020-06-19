@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :replies, dependent: :destroy
   has_one :mailbox, dependent: :destroy
   has_many :messages
-  has_one :profile, dependent: :destroy
+  has_one :profile, :dependent => :destroy
   #has_one :organization , optional:true #only if its an admin
 
   validates :username, :email, presence: true

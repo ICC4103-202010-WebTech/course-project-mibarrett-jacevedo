@@ -34,14 +34,14 @@
           </div>
         <%end %>
       </div>
-      <p class="lead"><%= @user.email %></p>
-      <p class="lead">Role: <%= @user.role %></p>
+      <p class="lead"><%= @profile.user.email %></p>
+      <p class="lead">Role: <%= @profile.user.role %></p>
     </div>
 
     <div class="card">
       <div class="card mb-4 shadow-sm">
         <h3>My Events</h3>
-        <% @events.each do |event| %>
+        <% Array(@profile.user.events).each do |event| %>
           <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
               <div class="card-content">
@@ -71,5 +71,6 @@
 </div>
 
 <%= link_to 'Edit', edit_profile_path(@profile) %>  |
-<%= link_to 'See all users', profiles_path %>  |
+<%= link_to 'See all users', profiles_path %> |
+<%= link_to 'Delete', @profile.user, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back to home', root_path %>

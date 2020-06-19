@@ -10,12 +10,6 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @event = Event.find(params[:id])
-    #@organization = Organization.where(events: @event)
-    @event_comments = @event.comments
-    @organization = @user.organization
-    @guests = @event.event_guests
-    @date_options = @event.event_options
   end
 
   # GET /events/new

@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def set_user
     @user = User.first
   end
+
+  def set_organization
+    @organization = @user.organization
+  end
 end

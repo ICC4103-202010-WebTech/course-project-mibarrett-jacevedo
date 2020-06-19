@@ -6,6 +6,6 @@
   <p>Enter comment for the event:</p>
 </div>
 <div class="row ml-0 mt-2">
-  <%= render 'form', locals: { event: @event, comment: @comment } %>
+  <%= render 'form', locals: { user: @user, event: @event, comment: @comment } %>
 </div>
 <%= link_to 'Back', comments_path %>

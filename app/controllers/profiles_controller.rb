@@ -4,7 +4,6 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    @users = User.all
     @profiles = Profile.search(params[:search])
   end
 
@@ -19,9 +18,6 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @user = User.first
-    @profile = Profile.first
-    @events = Event.where(user_id: 1)
   end
 
   # GET /profiles/new
@@ -66,6 +62,7 @@ class ProfilesController < ApplicationController
   # DELETE /profiles/1
   # DELETE /profiles/1.json
   def destroy
+    @User = User.joins(:profile).where(id:@profile.id)
     @profile.destroy
     respond_to do |format|
       format.html { redirect_to profiles_url, notice: 'Profile was successfully destroyed.' }
