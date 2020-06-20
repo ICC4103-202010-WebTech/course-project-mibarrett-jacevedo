@@ -20,6 +20,15 @@ class User < ApplicationRecord
   #validates :email, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/
   after_create :create_mailbox
 
+  acts_as_google_authenticated :method => :user_name_with_label
+
+  def user_name_with_label
+    "#{user_name}@example.com"
+  end
+  def admin?
+    false
+  end
+
   private
   def create_mailbox
     Mailbox.create!(user_id: self.id)

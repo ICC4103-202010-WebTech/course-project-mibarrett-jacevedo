@@ -1,0 +1,11 @@
+<div class="row ml-1 mb-2">
+  <div class="btn-group" role="group" aria-label="Sort Events">
+    <button type="button" class="btn btn-secondary btn-sort-date"><i class="far fa-calendar-alt"></i></button>
+    <button type="button" class="btn btn-secondary btn-sort-name"><i class="fas fa-sort-alpha-down"></i></button>
+  </div>
+</div>
+<div class="row event-list">
+  <% events.each do |event| %>
+    <%= render partial: 'events/event_tile', locals: { event: event } %>
+  <% end %>
+</div>

@@ -1,83 +1,66 @@
 <!DOCTYPE html>
 <html>
 
-<header>
-  <!-- Full Page Intro -->
-  <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-    <!-- Mask & flexbox options-->
-    <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
-      <!-- Content -->
-      <div class="container">
-        <!--Grid row-->
-        <div class="row">
-          <!--Grid column-->
-          <div class="col-md-6 white-text text-center text-md-left mt-xl-5 mb-5 wow fadeInLeft" data-wow-delay="0.3s">
-            <h5 class="display-2">Meet Me</h5>
-            <hr class="hr-light">
-            <h6 class="mb-4">Socialize and have fun with your friends. Meet new people. Enjoy. Discover</h6>
-            <button type="button" class="btn btn-light">Log In</button>
-            <button type="button" class="btn btn-light">Sign up now</button>
+
+<%if user_signed_in? %>
+  <div class="row ml-0 mt-3">
+    <h2>Upcoming Events</h2>
+  </div>
+  <%= render partial: 'events/event_list', locals: { events: @events } %>
+<%else %>
+
+  <header>
+    <!-- Full Page Intro -->
+    <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+      <!-- Mask & flexbox options-->
+      <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
+        <!-- Content -->
+        <div class="container">
+          <!--Grid row-->
+          <div class="row">
+            <!--Grid column-->
+            <div class="col-md-6 white-text text-center text-md-left mt-xl-5 mb-5 wow fadeInLeft" data-wow-delay="0.3s">
+              <h5 class="display-2">Meet Me</h5>
+              <hr class="hr-light">
+              <h6 class="mb-4">Socialize and have fun with your friends. Meet new people. Enjoy. Discover</h6>
+              <button type="button" class="btn btn-light"><%= link_to 'Sign In', new_user_session_path %></button>
+              <button type="button" class="btn btn-light">Sign up now</button>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-6 col-xl-5 mt-xl-5 wow fadeInRight" data-wow-delay="0.3s">
+              <img src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png" alt="" class="img-fluid">
+            </div>
+            <!--Grid column-->
           </div>
-          <!--Grid column-->
-          <!--Grid column-->
-          <div class="col-md-6 col-xl-5 mt-xl-5 wow fadeInRight" data-wow-delay="0.3s">
-            <img src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png" alt="" class="img-fluid">
-          </div>
-          <!--Grid column-->
+          <!--Grid row-->
         </div>
-        <!--Grid row-->
+        <!-- Content -->
       </div>
-      <!-- Content -->
+      <!-- Mask & flexbox options-->
     </div>
-    <!-- Mask & flexbox options-->
-  </div>
-  <!-- Full Page Intro -->
-</header>
-<!-- Main navigation -->
-<!--Main Layout-->
-<main>
-  <div class="container">
-    <!--Grid row-->
-    <div class="row py-5">
-      <!--Grid column-->
-      <div class="col-md-12 text-center">
-        <p>We consider socializing and discovering new opportunities is essential for a living a complete lifestyle. Make it easier to achive this wonderful experience using our website.</p>
-      </div>
-      <!--Grid column-->
-    </div>
-    <!--Grid row-->
-  </div>
-</main>
-<!--Main Layout-->
-</header>
-
-
- <!--<div class="row">
-  <div class="leftcolumn">
-    <div class="card">
-      <h5 class="display-2">Welcome to Meet Me! The best platform to arrange meetings with your friends and colleagues</h5>
-    </div>
+    <!-- Full Page Intro -->
+  </header>
+  <!-- Main navigation -->
+  <!--Main Layout-->
+  <main>
     <div class="container">
-      <img src="app/assets/images/social.svg" alt="social" style="width:100%;">
-      <div class="centered" class="text-light bg-dark">Socialize, have fun, discover</div>
-    </div>
-    <div class="row">
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <p>Already have an account?</p>
-          <h5 class="card-title"><a href="#" class="btn btn-primary">Log In</a></h5>
+      <!--Grid row-->
+      <div class="row py-5">
+        <!--Grid column-->
+        <div class="col-md-12 text-center">
+          <p>We consider socializing and discovering new opportunities is essential for a living a complete lifestyle. Make it easier to achive this wonderful experience using our website.</p>
         </div>
+        <!--Grid column-->
       </div>
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <p>Join us</p>
-          <h5 class="card-title"><a href="#" class="btn btn-primary">Sign Up Now!</a></h5>
-        </div>
-      </div>
+      <!--Grid row-->
     </div>
+  </main>
+  <!--Main Layout-->
+  </header>
 
-  </div>
-</div>
--->
+<%end %>
+
+
 </html>
 

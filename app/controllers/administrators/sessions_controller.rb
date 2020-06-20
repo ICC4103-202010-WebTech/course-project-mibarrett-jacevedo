@@ -1,0 +1,5 @@
+class Administrators::SessionsController < Devise::SessionsController
+  def create
+    super
+  end
+end

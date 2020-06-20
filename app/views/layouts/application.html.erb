@@ -19,12 +19,14 @@
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item"><%= link_to 'Events', '/events' %></li>
-            <li class="nav-item"><%= link_to 'Mailbox', messages_path %></li>
-            <li class="nav-item"><%= link_to 'Profile', '/profiles/1' %></a></li>
-            <li class="nav-item"><%= link_to 'Users', '/profiles' %></li>
-            <li class="nav-item"><%= link_to 'Organizations', '/organizations' %></li>
-            <li class="nav-item"><%= link_to 'Log Out', root_path %></li>
+            <% if user_signed_in? %>
+              <li class="nav-item"><%= link_to 'Events', '/events' %></li>
+              <li class="nav-item"><%= link_to 'Mailbox', messages_path %></li>
+              <li class="nav-item"><%= link_to 'Profile', '/profiles/1' %></a></li>
+              <li class="nav-item"><%= link_to 'Users', '/profiles' %></li>
+              <li class="nav-item"><%= link_to 'Organizations', '/organizations' %></li>
+              <li class="nav-item"><%= link_to 'Log Out', destroy_user_session_path,:method => :delete %></li>
+            <%end %>
           </ul>
         <!-- <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -34,9 +36,17 @@
       </nav>
   </header>
 
+  <%= yield %>
 
-    <%= yield %>
-
+  <div class="container-fluid">
+    <div class="row">
+      <aside class="col-sm-2">
+        <% if user_signed_in? %>
+          <%= render partial: "users/user", object: @current_person %>
+          <%end %>
+      </aside>
+    </div>
+  </div>
 
   <footer class="page-footer font-small blue">
 
@@ -50,4 +60,8 @@
   <!-- Footer -->
 
   </body>
+
+
+
+
 </html>
