@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+              :recoverable, :rememberable, :validatable
   has_many :comments, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :event_votes, dependent: :destroy
@@ -11,9 +15,9 @@ class User < ApplicationRecord
   has_one :profile, :dependent => :destroy
   #has_one :organization , optional:true #only if its an admin
 
-  validates :username, :email, presence: true
+  validates :username, presence: true #, :email, presence: true
   validates :username, uniqueness: true
-  validates :email, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/
+  #validates :email, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/
   after_create :create_mailbox
 
   private

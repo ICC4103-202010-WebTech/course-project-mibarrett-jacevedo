@@ -1,13 +1,16 @@
 class ApplicationController < ActionController::Base
-  before_action :set_user
+  include Pagy::Backend
 
-  private
+  protected
 
-  def set_user
-    @user = User.first
+  def current_user
+    if current_user
+      current_user
+    elsif current_administrator
+      current_administrator
+    else
+      User.new
+    end
   end
 
-  def set_organization
-    @organization = @user.organization
-  end
 end
