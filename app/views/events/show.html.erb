@@ -19,8 +19,8 @@
           <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog" style="width:800px;" >
               <div class="modal-content">
-                <%= link_to "X", event_path, class: ["btn", "btn-secondary"] %>
-                <%= image_tag(@event.picture, class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef") %><%= link_to "Close", event_path, class: ["btn", "btn-primary"] %>
+                <div class ="modal-header"><button type='button' class='close' style='font-size:10px' data-dismiss='modal'>×</button></div>
+                <%= image_tag(@event.picture, class: "card-img-top", width: "100%", background: "#696969", color: "#696969") %>
               </div>
             </div>
           </div>
@@ -30,8 +30,8 @@
           <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog" style="width:800px;">
               <div class="modal-content">
-                <%= link_to "X", event_path, class: ["btn", "btn-secondary"] %>
-                <%= image_tag("no_image.png") %><%= link_to "Close", event_path, class: ["btn", "btn-primary"] %>
+                <div class ="modal-header"><button type='button' class='close' style='font-size:10px' data-dismiss='modal'>×</button></div>
+                <%= image_tag("no_image.png") %>
               </div>
             </div>
           </div>
@@ -67,15 +67,15 @@
           <div class="card-body">
             <h5 class="card-title"><%= comment.user.username %></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= comment.message %></h6>
-            <a href="#" class="card-link"> <%=link_to 'Reply'%></a>
+            <a href="#" class="card-link"> <%=link_to 'Reply', new_comment_reply_path(comment)%></a>
             <td><%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% @replies.each do |reply| %>
-              <p class="card-text"><%=reply.user.username%>: <%= reply.message%></p>
+              <p class="card-text"><%=reply.user.username%>: <%= reply.message%>    <%= link_to 'Delete', reply, method: :delete, data: { confirm: 'Are you sure?' } %></p>
             <%end %>
           </div>
         </div>
       <%end%>
-      <p><%=link_to 'Create new comment', new_event_comment_path(@event) %></p>
+      <p><%=link_to 'New comment', new_event_comment_path(@event) %></p>
     </div>
 
     <div class="card">

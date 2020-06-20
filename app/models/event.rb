@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   has_one :event_organization, dependent: :destroy
   has_one :organization, through: :event_organization
   has_many :comments, dependent: :destroy
+  has_many :replies, through: :comments
   has_many :event_guests, dependent: :destroy
   has_many :users, through: :event_guests
   has_many :event_options, dependent: :destroy
@@ -10,7 +11,8 @@ class Event < ApplicationRecord
   has_one_attached :picture
 
   accepts_nested_attributes_for :event_options, allow_destroy: true
-  accepts_nested_attributes_for :comments
+  accepts_nested_attributes_for :comments, allow_destroy: true
+  accepts_nested_attributes_for :replies, allow_destroy: true
   accepts_nested_attributes_for :event_organization, allow_destroy: true
   accepts_nested_attributes_for :event_guests
   accepts_nested_attributes_for :event_votes

@@ -21,7 +21,9 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :organizations
-    resources :comments, shallow: true
+    resources :comments, shallow: true do
+      resources :replies, shallow: true
+    end
     resources :event_options
     resources :event_votes
     resources :event_organizations
@@ -44,4 +46,5 @@ Rails.application.routes.draw do
   resources :event_guests, defaults: {format: :html}
   resources :organization_users, defaults: {format: :html}
   resources :event_votes, defaults: {format: :html}
+  resources :replies, defaults: {format: :html}
 end

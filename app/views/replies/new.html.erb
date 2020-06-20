@@ -1,7 +1,11 @@
-
-<%= form_with model: [@comment], local: true do |form| %>
+<h1><%=@comment.user.username %>: <%=@comment.message %></h1>
+<% @comment_replies = @comment.replies %>
+<% @comment_replies.each do |reply| %>
+  <p class="card-text"><%=reply.user.username%>: <%= reply.message%></p>
+<%end %>
+<%= form_with model: @reply do |form| %>
   <%= form.hidden_field :user_id, value: @user.id %>
-  <%= form.hidden_field :event_id, value: @event.id %>
+  <%= form.hidden_field :comment_id, value: @comment.id %>
   <div class="form-group">
     <%= form.label :message %>
     <%= form.text_field :message, class: "form-control" %>
@@ -10,4 +14,5 @@
     <%= form.submit class: ["btn", "btn-primary"] %>
     <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
   </div>
-<% end %>
+<%end%>
+

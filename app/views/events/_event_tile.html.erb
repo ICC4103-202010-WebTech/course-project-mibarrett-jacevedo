@@ -4,7 +4,7 @@
     <div class="card-content">
       <div class="card-img">
         <% if event.picture.attached? == true %>
-          <%= image_tag(event.picture, width: "400px") %>
+          <%= link_to image_tag(event.picture, width: "400px"), url_for(event) %>
         <%end %>
         <% if event.picture.attached? == false %>
           <%= link_to image_tag("no_image.png", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef"), url_for(event) %>
