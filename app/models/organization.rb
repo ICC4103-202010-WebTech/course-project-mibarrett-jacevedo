@@ -1,5 +1,5 @@
 class Organization < ApplicationRecord
-  belongs_to :user
+  #has_many :users
   has_many :event_organizations, dependent: :destroy
   has_many :events, through: :event_organizations, dependent: :destroy
   has_many :organization_users, dependent: :destroy

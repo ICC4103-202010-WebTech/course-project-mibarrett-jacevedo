@@ -14,8 +14,10 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @user = User.first
-    @organization = @user.organization
+    #@user = current_person
+    #if @user.organization?
+    # @organization = @user.organization
+    #end
     @event = Event.new
     @event.event_options.build
   end
