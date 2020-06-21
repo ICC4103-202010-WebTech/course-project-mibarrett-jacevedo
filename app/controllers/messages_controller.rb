@@ -4,9 +4,6 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @user = User.first
-    @messages = @user.messages
-    @mailbox = @user.mailbox
   end
 
   # GET /messages/1
@@ -20,7 +17,6 @@ class MessagesController < ApplicationController
     #@user = User.first
     @mailbox = Mailbox.find(params[:mailbox_id])
     @message = Message.new
-
   end
 
   # GET /messages/1/edit

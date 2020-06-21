@@ -9,7 +9,9 @@
 
 <div class="row">
   <% @events.each do |event| %>
-    <%= render partial: 'event_tile', locals: { event: event } %>
+    <%if event.user = current_user or event.users(current_user)==true and event.event_organization.priv_or_pub = 2%>
+      <%= render partial: 'event_tile', locals: { event: event } %>
+    <%end %>
   <% end %>
 </div>
 <div class="row ml-0 mt-2 mb-3">

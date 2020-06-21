@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "pages#home"
   get 'events/new_event_option', to: "events#new_event_option", as: :new_event_event_option_otf
+  get 'profile', to: 'users#show'
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do

@@ -11,9 +11,9 @@ class MailboxesController < ApplicationController
   # GET /mailboxes/1
   # GET /mailboxes/1.json
   def show
-    @user_mailbox = Mailbox.where(user_id: params[:user_id])
-    @mailbox = Mailbox.find(params[:id])
-    @messages = @mailbox.messages
+    #@user_mailbox = Mailbox.where(user_id: params[:user_id])
+    #@mailbox = Mailbox.find(params[:id])
+    #@messages = @mailbox.messages
   end
 
   # GET /mailboxes/new

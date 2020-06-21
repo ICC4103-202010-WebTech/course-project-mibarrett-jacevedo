@@ -1,4 +1,3 @@
-
 <div class="col-md-4">
   <div class="card mb-4 shadow-sm">
     <div class="card-content">
@@ -10,7 +9,7 @@
           <%= link_to image_tag("no_image.png", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef"), url_for(event) %>
         <%end %>
         <span><h4><%= link_to event.title, event %></h4></span>
-        <p><%= event.location %>  | <%=event.user.username %>  %></p>
+        <p><%= event.location %> </p>
       </div>
       <div class="card-desc">
         <button type="button" class="btn btn-outline-secondary"><%= link_to "View", event %></button>

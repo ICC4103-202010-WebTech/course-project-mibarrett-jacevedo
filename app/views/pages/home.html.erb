@@ -2,7 +2,7 @@
 <html>
 
 
-<%if user_signed_in? %>
+<%if user_signed_in? or administrator_signed_in?%>
   <div class="row ml-0 mt-3">
     <h2>Upcoming Events</h2>
   </div>

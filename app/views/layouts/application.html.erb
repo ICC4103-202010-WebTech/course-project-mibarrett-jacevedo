@@ -20,9 +20,15 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <% if user_signed_in? %>
+              <li class="nav-item"><%= link_to 'Events', events_path %></li>
+              <li class="nav-item"><%= link_to 'Mailbox', mailbox_path(current_user) %></li>
+              <li class="nav-item"><%= link_to 'Profile', user_path(current_user) %></a></li>
+              <li class="nav-item"><%= link_to 'Users', profiles_path %></li>
+              <li class="nav-item"><%= link_to 'Organizations', organizations_path %></li>
+              <li class="nav-item"><%= link_to 'Log Out', destroy_user_session_path,:method => :delete %></li>
+            <%end %>
+            <% if administrator_signed_in? %>
               <li class="nav-item"><%= link_to 'Events', '/events' %></li>
-              <li class="nav-item"><%= link_to 'Mailbox', messages_path %></li>
-              <li class="nav-item"><%= link_to 'Profile', '/profiles/1' %></a></li>
               <li class="nav-item"><%= link_to 'Users', '/profiles' %></li>
               <li class="nav-item"><%= link_to 'Organizations', '/organizations' %></li>
               <li class="nav-item"><%= link_to 'Log Out', destroy_user_session_path,:method => :delete %></li>

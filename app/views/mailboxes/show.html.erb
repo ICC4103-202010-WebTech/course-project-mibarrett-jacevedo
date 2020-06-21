@@ -1,27 +1,72 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%=@user.profile.name%> Mailbox</h1>
-<table>
-  <thead>
-  <tr>
-    <th><h2>Messages</h2></th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @messages.each do |message| %>
-    <tr>
-      <td><h3>From: <%=message.user.username%></h3></td>
-      <td><%=message.content%></td>
-      <td><%= link_to 'Show', message_path(message) %></td>
-      <td>Destroy</td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <!-- BEGIN INBOX -->
+    <div class="col-md-12">
+      <div class="grid email">
+        <div class="grid-body">
+          <div class="row">
+            <!-- BEGIN INBOX MENU -->
+            <div class="col-md-3">
+              <h2 class="grid-title"><i class="fa fa-inbox"></i>Mailbox</h2>
+              <button type="button" class="btn btn-outline-secondary"><%= link_to 'Compose new message', new_mailbox_message_path(current_user.mailbox) %></button>
+            </div>
+            <!-- END INBOX MENU -->
 
-<br>
+            <!-- BEGIN INBOX CONTENT -->
+            <div class="col-md-9">
+              <div class="row">
 
-<h4><%= link_to 'Compose new message', new_mailbox_message_path(@mailbox) %></h4>
+                <div class="col-md-6 search-form">
+                  <form action="#" class="text-right">
+                    <div class="input-group">
+                      <input type="text" class="form-control input-sm" placeholder="Search">
+                      <span class="input-group-btn">
+                        <button type="submit" name="search" class="btn_ btn-primary btn-sm search"><i class="fa fa-search"></i></button></span>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <div class="padding"></div>
+
+              <div class="table-responsive">
+                <table class="table">
+                  <tbody>
+                  <% current_user.messages.each do |message| %>
+                    <tr>
+                      <td class="action"><input type="checkbox" /></td>
+                      <td class="action"><i class="fa fa-star-o"></i></td>
+                      <td class="action"><i class="fa fa-bookmark-o"></i></td>
+                      <td><h5 class="card-text"><%=message.mailbox.user.username%></h5></td>
+                      <td class="subject" class="card-text"><a href="#"><%=message.content%> </a></td>
+                      <td class="time" class="card-text"><%=message.created_at %></td>
+                      <td><%= link_to 'Show', message_path(message) %></td>
+                      <td><%= link_to 'Delete', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    </tr>
+                  <% end %>
+                  </tbody></table>
+              </div>
+
+              <ul class="pagination">
+                <li class="disabled"><a href="#">«</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">»</a></li>
+              </ul>
+            </div>
+            <!-- END INBOX CONTENT -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END INBOX -->
+  </div>
+</div>
 
 <%= link_to 'Back to home', root_path %>
