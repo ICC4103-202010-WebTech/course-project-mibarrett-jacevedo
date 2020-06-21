@@ -71,6 +71,6 @@ class EventOrganizationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_organization_params
-      params.fetch(:event_organization, {}).permit(:event_id, :organization_id)
+      params.fetch(:event_organization, {}).permit(:id, :event_id, :organization_id, :priv_or_pub)
     end
 end

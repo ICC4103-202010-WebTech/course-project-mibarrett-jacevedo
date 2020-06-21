@@ -38,9 +38,10 @@
         <% end %>
       </div>
     </div>
+    <h5 class="card-title">Event Option</h5>
     <%= form.fields_for :event_organization do |event_organization_form| %>
       <%= event_organization_form.hidden_field :organization_id, value: current_user.organization.id %>
-      <%= event_organization_form.hidden_field :priv_or_pub, value: 2 %>
+      <%= event_organization_form.select(:priv_or_pub, raw('<option value="1">Private</option><option value="2">Public</option>')) %>
     <%end%>
     <div class="form-group mt-2">
       <%= form.submit submit_btn_text, class: ["btn", "btn-primary"] %>
