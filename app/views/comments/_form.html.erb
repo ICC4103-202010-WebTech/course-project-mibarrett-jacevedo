@@ -1,6 +1,6 @@
 
 <%= form_with model: [@comment], local: true do |form| %>
-  <%= form.hidden_field :user_id, value: @user.id %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
   <%= form.hidden_field :event_id, value: @event.id %>
   <div class="form-group">
     <%= form.label :message %>

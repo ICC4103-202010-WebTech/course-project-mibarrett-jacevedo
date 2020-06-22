@@ -1,0 +1,11 @@
+<div class="new-event-option-otf">
+  <%= fields_for 'event[event_options_attributes]', event_option, index: Time.now.utc.to_formatted_s(:number) do |event_option_form| %>
+    <%= event_option_form.datetime :day %>
+    <%= event_option_form.datetime :day, class: "form-control" %>
+    <br>
+    <button type="button" class="btn btn-danger remove-event-option-btn-otf">
+      <i class="far fa-minus-square"></i>
+    </button>
+    <hr>
+  <% end %>
+</div>

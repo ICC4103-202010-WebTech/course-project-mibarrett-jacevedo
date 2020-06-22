@@ -16,6 +16,7 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :event_organization, allow_destroy: true
   accepts_nested_attributes_for :event_guests
   accepts_nested_attributes_for :event_votes
+  after_create :private_or_public
 
   def self.search(search)
     if search
@@ -23,6 +24,12 @@ class Event < ApplicationRecord
     else
       events = Event.all
     end
+  end
+
+  private
+
+  def private_or_public
+    EventOrganization.create!(event_id: self.id, priv_or_pub: 2, organization_id: self.user.organization.id)
   end
 end
 

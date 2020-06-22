@@ -1,22 +1,84 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Back to home', root_path %>
+
 <div class="row">
   <div class="leftcolumn">
     <div class="card">
-      <div class="fakeimg" style="height:150px;">Image</div>
-      <h2><%= @profile.name %></h2>
-      <div class="profileimg">Profile Picture</div>
-      <h5><%= @user.email %></h5>
-      <h5>Role: <%= @user.role %></h5>
-    </div>
-  </div>
-  <div class="rightcolumn">
-    <div class="card">
-      <h2>About Me</h2>
-      <p><%= @profile.biography %></p>
-    </div>
-  </div>
-</div>
+      <h1 class="display-2"><%= @user.profile.name %></h1>
+      <div class="row ml-0 mt-3">
+        <% if @user.profile.picture.attached? == true %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" style="width:400px;" ><%= image_tag(@user.profile.picture, height: "50%", width: "50%") %></button>
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width:800px;" >
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class ="modal-header"><button type='button' class='close' style='font-size:10px' data-dismiss='modal'>×</button></div>
+                  <%= image_tag(@user.profile.picture, class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef") %>
+                </div>
+              </div>
+            </div>
+        <%end %>
+        <% if @user.profile.picture.attached? == false %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" style="width:400px;" ><%= image_tag("no_image.png", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef") %></button>
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width:800px;">
+              <div class="modal-content">
+                <div class ="modal-header"><button type='button' class='close' style='font-size:10px' data-dismiss='modal'>×</button></div>
+                <%= image_tag("no_image.png") %>
+              </div>
+            </div>
+          </div>
+        <%end %>
+        </div>
+        <p class="lead"><%= @user.email %></p>
+        <%if @user.role = 1 %>
+          <p class = "lead">Role: User</p>
+        <%else %>
+          <p class = "lead">Role: Administrator</p>
+        <%end %>
+        <%if administrator_signed_in? %>
+          <p class="lead">Last access: <%= @user.last_sign_in_at %></p>
+        <%end %>
+      </div>
 
-<%= link_to 'Send message'%> |
-<%= link_to 'Back to home', root_path %>
+      <div class="card">
+        <div class="card mb-4 shadow-sm">
+          <h3>My Events</h3>
+          <% Array(@user.events).each do |event| %>
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <div class="card-content">
+                  <div class="card-img">
+                    <%= link_to image_tag("no_image.png", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef"), url_for(event) %>
+                    <span><h4><%= link_to event.title, event %></h4></span>
+                    <p><%= event.location %></p>
+                  </div>
+                  <div class="card-desc">
+                    <button type="button" class="btn btn-outline-secondary"><%= link_to "View", event %></button>
+                    <button type="button" class="btn btn-outline-secondary"><%= link_to "Edit", edit_event_path(event) %></button>
+                    <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="rightcolumn">
+      <div class="card">
+        <h2 class="lead">About Me</h2>
+        <p class="lead"><%= @user.profile.biography %></p>
+      </div>
+    </div>
+  </div>
+
+  <%if can? :edit, @user %>
+    <%= link_to 'Edit', edit_profile_path(@user.profile) %>  |
+  <%end %>
+  <%if can? :delete, @user %>
+    <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <%end %>
+
+</div>

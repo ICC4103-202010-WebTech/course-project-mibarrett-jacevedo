@@ -14,9 +14,13 @@
       <tr>
         <td><%= comment.event.title %></td>
         <td><%= comment.message %></td>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%if administrator_signed_in? or current_person = comment.user%>
+          <td><%= link_to 'Show', comment %></td>
+          <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+          <td><%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%else %>
+          <td><%= link_to 'Show', comment %></td>
+        <%end %>
       </tr>
     <% end %>
   </tbody>

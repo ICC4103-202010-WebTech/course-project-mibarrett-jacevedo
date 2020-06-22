@@ -30,7 +30,14 @@
         <%end %>
       </div>
       <p class="lead"><%= @profile.user.email %></p>
-      <p class="lead">Role: <%= @profile.user.role %></p>
+        <%if @profile.user.role = 1 %>
+          <p class = "lead">Role: User</p>
+        <%else %>
+          <p class = "lead">Role: Administrator</p>
+        <%end %>
+        <%if administrator_signed_in? %>
+          <p class="lead">Last access: <%= @profile.user.last_sign_in_at %></p>
+        <%end %>
     </div>
 
     <div class="card">
@@ -65,7 +72,11 @@
   </div>
 </div>
 
-<%= link_to 'Edit', edit_profile_path(@profile) %>  |
-<%= link_to 'See all users', profiles_path %> |
-<%= link_to 'Delete', @profile.user, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <%if can? :edit, @profile %>
+    <%= link_to 'Edit', edit_profile_path(@profile) %>  |
+  <%end %>
+  <%if can? :delete, @profile %>
+    <%= link_to 'Delete', @profile.user, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <%end %>
+
 <%= link_to 'Back to home', root_path %>

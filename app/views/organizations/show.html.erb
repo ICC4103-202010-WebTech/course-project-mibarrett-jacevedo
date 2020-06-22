@@ -33,20 +33,21 @@
     <div class="card">
       <h2>Events</h2>
       <% @events.each do |event| %>
-        <div class="dropdown">
-          <button class="dropbtn"><%= event.title %></button>
-          <div class="dropdown-content">
-            <a><%= link_to 'Open Event', event %></a>
+        <%if event.event_organization.priv_or_pub = 2 %>
+          <div class="dropdown">
+            <button class="dropbtn"><%= event.title %></button>
+            <div class="dropdown-content">
+              <a><%= link_to 'Open Event', event %></a>
+            </div>
           </div>
-        </div>
+        <%end %>
       <% end %>
     </div>
 
     <div class="card">
       <h2>Users in organization</h2>
       <%@participants.each do |participant|%>
-        <%@user = participant.user %>
-        <p><%=participant.user.username%> <%=link_to 'See profile', user_path(@user)%></p>
+        <p><%=participant.user.username%> <%=link_to 'See profile', user_path(participant.user)%></p>
       <%end%>
       <%= link_to 'Add participants', new_organization_organization_user_path(@organization)%>
     </div>
@@ -71,9 +72,16 @@
 
 
 <br>
-<div class="row ml-0 mt-2 mb-3">
-  <%= link_to 'Edit', edit_organization_path(@organization), class: ["btn", "btn-primary"] %>
-</div>
+<%if can? :edit, @organization %>
+  <div class="row ml-0 mt-2 mb-3">
+    <%= link_to 'Edit', edit_organization_path(@organization), class: ["btn", "btn-primary"] %>
+  </div>
+<%end %>
+<%if can? :delete, @organization %>
+  <div class="row ml-0 mt-2 mb-3">
+    <%= link_to 'Delete', delete_organization_path(@organization), class: ["btn", "btn-primary"] %>
+  </div>
+<%end %>
 <div class="row ml-0 mt-2 mb-3">
   <%= link_to 'See all organizations', '/organizations', class: ["btn", "btn-primary"] %>
 </div>

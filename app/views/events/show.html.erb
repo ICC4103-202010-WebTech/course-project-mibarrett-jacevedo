@@ -67,10 +67,15 @@
           <div class="card-body">
             <h5 class="card-title"><%= comment.user.username %></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= comment.message %></h6>
+            <% if can? :delete, comment %>
+              <%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %> |
+            <%end %>
+            <% if can? :edit, comment %>
+              <%=link_to 'Edit', edit_comment_path(comment)  %> |
+            <%end %>
             <a href="#" class="card-link"> <%=link_to 'Reply', new_comment_reply_path(comment)%></a>
-            <td><%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% @replies.each do |reply| %>
-              <p class="card-text"><%=reply.user.username%>: <%= reply.message%>    <%= link_to 'Delete', reply, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+              <p class="card-text"><%=reply.user.username%>: <%= reply.message%></p>
             <%end %>
           </div>
         </div>
@@ -85,6 +90,11 @@
     </div>
   </div>
 </div>
+<%if can? :edit, @event %>
+  <%= link_to 'Edit', edit_event_path(@event) %> |
+<%end %>
+<%if can? :delete, @event %>
+  <%= link_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%end %>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

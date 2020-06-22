@@ -12,7 +12,6 @@ class OrganizationsController < ApplicationController
   def show
     @organization = Organization.find(params[:id])
     @events = @organization.events
-        #@events = Event.joins(:event_organization).where(event_organizations: {event_id: params[:event_id]})
     @participants = @organization.organization_users
   end
 
@@ -74,6 +73,6 @@ class OrganizationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def organization_params
-      params.fetch(:organization, {}).permit( :id, :name, :user_id, :description, :picture)
+      params.fetch(:organization, {}).permit( :id, :name, :user_id, :description, :picture, event_organization_attributes: [:id, :event_id, :priv_or_pub],organization_user_attributes: [:id, :organization_id])
     end
 end

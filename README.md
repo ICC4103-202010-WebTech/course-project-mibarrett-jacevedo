@@ -1,4 +1,5 @@
 #SUMMARY OF IMPLEMENTED FEATURES
+-SOLO SE PUEDE CREAR EVENTOS SI PERTENECES A UNA ORGANIZACION
 - Created folder admin and copy controller of organization for testing of CRUD operations on them. This can be found under app/controllers
 - Implemented search engine in the app that allows:
 - General search
