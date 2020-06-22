@@ -8,7 +8,11 @@ class Event < ApplicationRecord
   has_many :users, through: :event_guests
   has_many :event_options, dependent: :destroy
   has_many :event_votes, through: :event_options
+
   has_one_attached :picture
+  has_many_attached :pdf
+  has_many_attached :images
+  has_many_attached :videos
 
   accepts_nested_attributes_for :event_options, allow_destroy: true
   accepts_nested_attributes_for :comments, allow_destroy: true

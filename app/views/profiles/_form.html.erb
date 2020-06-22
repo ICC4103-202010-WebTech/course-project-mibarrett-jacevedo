@@ -29,10 +29,6 @@
             <%= user_form.label :username %>
             <%= user_form.text_area :username,  class: "form-control"%>
           </div>
-          <div class="form-group">
-            <%= user_form.label :email %>
-            <%= user_form.email_field :email, autofocus: true, autocomplete: "email" %>
-          </div>
         </div>
       <% end %>
       <%= link_to "Change your password", edit_user_registration_path %>
