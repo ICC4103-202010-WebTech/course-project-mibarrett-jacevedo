@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_23_003234) do
+ActiveRecord::Schema.define(version: 2020_06_23_003838) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +54,12 @@ ActiveRecord::Schema.define(version: 2020_06_23_003234) do
     t.text "message"
     t.index ["event_id"], name: "index_comments_on_event_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "controllers", force: :cascade do |t|
+    t.string "Report"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "event_guests", force: :cascade do |t|
