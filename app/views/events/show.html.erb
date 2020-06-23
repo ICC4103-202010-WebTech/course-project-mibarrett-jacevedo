@@ -97,6 +97,12 @@
   <%if can? :delete, @event %>
     <%= link_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' } %> |
   <%end %>
+  <%if administrator_signed_in? %>
+    <button type="button" class="btn btn-outline-secondary"><%= link_to "Edit", edit_event_path(@event) %></button>
+    <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", @event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+  <%end %>
+
+
 
   <%= link_to 'Back', events_path %>
   <%= link_to "Report as abusive content", new_event_report_path(@event) %>

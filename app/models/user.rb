@@ -23,7 +23,9 @@ class User < ApplicationRecord
   after_create :create_profile
 
   acts_as_google_authenticated :method => :user_name_with_label
-
+  def administrator
+    false
+  end
   def user_name_with_label
     "#{user_name}@example.com"
   end

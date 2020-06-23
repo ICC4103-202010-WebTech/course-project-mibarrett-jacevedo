@@ -54,8 +54,17 @@
                 </div>
                 <div class="card-desc">
                   <button type="button" class="btn btn-outline-secondary"><%= link_to "View", event %></button>
+                  <%if can? :edit, event %>
                   <button type="button" class="btn btn-outline-secondary"><%= link_to "Edit", edit_event_path(event) %></button>
+                    <%end %>
+                  <%if can? :delete, event %>
                   <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                <%end %>
+                  <%if administrator_signed_in? %>
+                    <button type="button" class="btn btn-outline-secondary"><%= link_to "Edit", edit_event_path(event) %></button>
+                    <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                  <%end %>
+
                 </div>
               </div>
             </div>
@@ -77,6 +86,11 @@
   <%end %>
   <%if can? :delete, @profile %>
     <%= link_to 'Delete', @profile.user, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <%end %>
+
+  <%if administrator_signed_in? %>
+    <button type="button" class="btn btn-outline-secondary"><%= link_to "Edit", edit_profile_path(@profile) %></button>
+    <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", @profile, method: :delete, data: { confirm: 'Are you sure?' } %></button>
   <%end %>
 
 <%= link_to 'Back to home', root_path %>

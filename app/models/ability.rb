@@ -6,14 +6,14 @@ class Ability
   def initialize(useroradmin)
     can :read, :all # permissions for every user, even if not logged in
     if useroradmin.present?  # additional permissions for logged in users (they can manage their posts)
-      if useroradmin.is_a? User
+      #if useroradmin.is_a? User
       can :manage, Profile, user_id: useroradmin.id
       can :manage, User, user_id: useroradmin.id
       can :manage, Event, user_id: useroradmin.id
       can :manage, Comment, user_id: useroradmin.id
 
-      elsif useroradmin.is_a? Administrator  # additional permissions for administrators
-        can :manage, Event
+      if useroradmin.admin?    # additional permissions for administrators
+        can :manage, Events
         can :manage, User
         can :manage, Profile
         can :manage, Organization

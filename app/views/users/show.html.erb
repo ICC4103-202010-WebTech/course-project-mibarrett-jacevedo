@@ -80,5 +80,9 @@
   <%if can? :delete, @user %>
     <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' } %> |
   <%end %>
+  <%if administrator_signed_in? %>
+    <button type="button" class="btn btn-outline-secondary"><%= link_to "Edit", edit_profile_path(@user.profile) %></button>
+    <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", @user, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+  <%end %>
 
 </div>
