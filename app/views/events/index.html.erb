@@ -10,25 +10,20 @@
 <%if administrator_signed_in? %>
   <div class="row">
     <% @events.each do |event| %>
-      <%= render partial: 'event_tile', locals: { event: event } %>
+      <%= render partial: 'events/event_tile', locals: { event: event } %>
     <%end %>
   </div>
 <%end %>
 <!--falta hacer que solo se puedan ver los publicos con priv_or_pub -->
 <%if user_signed_in?%>
   <div class="row">
-    <% @events.each do |event| %>
-      <%if event.user = current_user or event.users %>
-        <%= render partial: 'event_tile', locals: { event: event } %>
-      <%end %>
-    <% end %>
+    <%=render partial: 'events/event_list', locals: {events: @events} %>
   </div>
+<% end %>
 
-  <% if OrganizationUser.where(:user_id => current_user.id).blank?%>
-    <%else %>
+
     <div class="row ml-0 mt-2 mb-3">
       <%= link_to "Add Event", new_event_path, class: ["btn", "btn-primary"] %>
     </div>
-  <%end%>
-<%end %>
+
 

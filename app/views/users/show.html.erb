@@ -56,8 +56,16 @@
                   </div>
                   <div class="card-desc">
                     <button type="button" class="btn btn-outline-secondary"><%= link_to "View", event %></button>
-                    <button type="button" class="btn btn-outline-secondary"><%= link_to "Edit", edit_event_path(event) %></button>
-                    <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                    <%if can? :edit, event %>
+                      <button type="button" class="btn btn-outline-secondary"><%= link_to "Edit", edit_event_path(event) %></button>
+                    <%end %>
+                    <%if can? :delete, event %>
+                      <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                    <%end %>
+                    <%if administrator_signed_in? %>
+                      <button type="button" class="btn btn-outline-secondary"><%= link_to "Edit", edit_event_path(event) %></button>
+                      <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                    <%end %>
                   </div>
                 </div>
               </div>

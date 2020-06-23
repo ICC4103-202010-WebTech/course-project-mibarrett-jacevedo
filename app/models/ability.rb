@@ -3,22 +3,21 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(useroradmin)
+  def initialize(user)
     can :read, :all # permissions for every user, even if not logged in
-    if useroradmin.present?  # additional permissions for logged in users (they can manage their posts)
-      #if useroradmin.is_a? User
-      can :manage, Profile, user_id: useroradmin.id
-      can :manage, User, user_id: useroradmin.id
-      can :manage, Event, user_id: useroradmin.id
-      can :manage, Comment, user_id: useroradmin.id
+    if user.present?  # additional permissions for logged in users (they can manage their posts)
+      can :manage, Profile, user_id: user.id
+      can :manage, User, user_id: user.id
+      can :manage, Event, user_id: user.id
+      can :manage, Comment, user_id: user.id
 
-      if useroradmin.admin?    # additional permissions for administrators
-        can :manage, Events
-        can :manage, User
-        can :manage, Profile
-        can :manage, Organization
-        can :manage, Comment
-      end
+      #if user.administrator?    # additional permissions for administrators
+      # can :manage, Events
+      # can :manage, User
+      # can :manage, Profile
+      # can :manage, Organization
+      # can :manage, Comment
+      #end
     end
     # Define abilities for the passed in user here. For example:
     #
