@@ -1,0 +1,17 @@
+<h1>New Report</h1>
+
+<div class="row ml-0">
+  <%= form_with model: @report, local: true do |form| %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :event_id, value: @event.id %>
+    <h5 class="lead"> Why is this abusive content? </h5>
+    <div class="form-group">
+      <%= form.label :excuse %>
+      <%= form.text_field :excuse, class: "form-control" %>
+    <div class="form-group mt-2">
+      <%= form.submit class: ["btn", "btn-primary"] %>
+      <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+    </div>
+  <% end %>
+</div>
+</div>

@@ -27,6 +27,9 @@
   </div>
   <%= f.hidden_field :role, value: 1 %>
 
+  <div class = "field">
+    <%=link_to "Terms of use", render partial: "devise/registrations/terms_of_use" %>
+  </div>
 
   <div class="actions">
     <%= f.submit "Sign up" %>

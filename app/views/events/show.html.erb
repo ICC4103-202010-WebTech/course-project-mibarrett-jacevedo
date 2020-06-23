@@ -91,8 +91,6 @@
     </div>
   </div>
 
-
-
   <%if can? :edit, @event %>
     <%= link_to 'Edit', edit_event_path(@event) %> |
   <%end %>
@@ -101,5 +99,6 @@
   <%end %>
 
   <%= link_to 'Back', events_path %>
+  <%= link_to "Report as abusive content", new_event_report_path(@event) %>
 
 </div>

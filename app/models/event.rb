@@ -8,7 +8,7 @@ class Event < ApplicationRecord
   has_many :users, through: :event_guests
   has_many :event_options, dependent: :destroy
   has_many :event_votes, through: :event_options
-
+  has_many :reports
   has_one_attached :picture
   has_many_attached :pdf
   has_many_attached :images

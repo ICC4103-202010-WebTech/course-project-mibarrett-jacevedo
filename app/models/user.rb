@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_one :mailbox, dependent: :destroy
   has_many :messages
   has_one :profile, :dependent => :destroy
+  has_many :reports
   #has_one :organization , optional:true #only if its an admin
 
   validates :username, presence: true #, :email, presence: true

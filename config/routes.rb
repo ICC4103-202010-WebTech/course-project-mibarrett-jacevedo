@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :controllers
   devise_for :administrators, controllers: { sessions: 'administrators/sessions' }
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   resources :profiles
 
   resources :events do
+    resources :reports
     resources :organizations
     resources :comments, shallow: true do
       resources :replies, shallow: true
@@ -49,4 +51,5 @@ Rails.application.routes.draw do
   resources :organization_users, defaults: {format: :html}
   resources :event_votes, defaults: {format: :html}
   resources :replies, defaults: {format: :html}
+  resources :reports, defaults: {format: :html}
 end
