@@ -72,9 +72,9 @@ class EventsController < ApplicationController
     def set_event
       @event = Event.find(params[:id])
     end
-
+  event.images.attach(event_params[:images])
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {}).permit(:id, :user_id, :title, :description, :location, :picture, :images, :pdf, :videos, event_options_attributes: [:id, :day, :_destroy], comments_attributes: [:id, :user_id, :message, :_destroy], event_organization_attributes: [:id, :organization_id, :priv_or_pub])
+      params.fetch(:event, {}).permit(:id, :user_id, :title, :description, :location, :picture, images: [], pdf: [], videos: [], event_options_attributes: [:id, :day, :_destroy], comments_attributes: [:id, :user_id, :message, :_destroy], event_organization_attributes: [:id, :organization_id, :priv_or_pub])
     end
 end
