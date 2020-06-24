@@ -71,6 +71,6 @@ class EventOptionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_option_params
-      params.fetch(:event_option, {}).permit(:id, :day, :event_id)
+      params.fetch(:event_option, {}).permit( :day, :event_id)
     end
 end

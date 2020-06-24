@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
   # GET /events
   # GET /events.json
   def index
@@ -30,6 +30,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    event_params.permit!
     @event = Event.new(event_params)
 
     respond_to do |format|
@@ -72,9 +73,11 @@ class EventsController < ApplicationController
     def set_event
       @event = Event.find(params[:id])
     end
-  event.images.attach(event_params[:images])
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {}).permit(:id, :user_id, :title, :description, :location, :picture, images: [], pdf: [], videos: [], event_options_attributes: [:id, :day, :_destroy], comments_attributes: [:id, :user_id, :message, :_destroy], event_organization_attributes: [:id, :organization_id, :priv_or_pub])
+      params.fetch(:event, {}).permit(:id, :user_id, :title, :description, :location, :picture,
+                                      event_options_attributes: [:id, :day, :_destroy],
+                                      comments_attributes: [:id, :user_id, :message, :_destroy],
+                                      event_organization_attributes: [:id, :organization_id, :priv_or_pub])
     end
 end

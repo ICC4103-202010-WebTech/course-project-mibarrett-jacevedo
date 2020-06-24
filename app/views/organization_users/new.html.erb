@@ -2,11 +2,11 @@
   <h2>Choose users for your organization</h2>
 </div>
 <div class="row ml-0">
-  <%= form_with model: @organization_users do |form| %>
+  <%= form_with model: @organization_user do |form| %>
     <%= form.hidden_field :organization_id, value: @organization.id %>
     <div class="form-group">
       <%= form.label :user_id %>
-      <%= form.collection_select :user_id, User.all.order(:username), :id, :username %>
+      <%= form.collection_select :user_id, User.all.order(:username).where.not(id: @organization.users), :id, :username %>
     </div>
     <div class="form-group mt-2">
       <%= form.submit 'Add', class: ["btn", "btn-primary"] %>

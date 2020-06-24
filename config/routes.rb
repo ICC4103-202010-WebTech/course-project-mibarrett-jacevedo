@@ -24,11 +24,11 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :reports
-    resources :organizations
+    #resources :organizations
     resources :comments, shallow: true do
       resources :replies, shallow: true
     end
-    resources :event_options
+    resources :event_options, shallow: true
     resources :event_votes
     resources :event_organizations
     resources :event_guests

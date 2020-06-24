@@ -2,14 +2,21 @@
     let nestedForms = document.querySelector("#event-option-nested-forms");
 new Promise((resolve, reject) => {
     nestedForms.insertAdjacentHTML("beforeend",
-        "<%= j render partial: 'events/event_option_form', locals: {event_option: @event_option } %>")
+        "<%= j render partial: 'events/event_option_form', locals: { event_option: @event_option } %>")
     resolve();
 }).then(() => {
-
+    // TODO: COMPLETE THIS FUNCTION
+    // Steps:
+    // 1. Use the DOM API to find the last red button in the page (class .remove-ticket-type-btn-otf)
+    // 2. Add a click event handler to the button that does the following:
+    // Finds the closest div element to the button with class .new-ticket-type-otf
+    // 3. Removes that element from its parent.
+    // If you accomplish the above steps, the red buttons in the event form will allow
+    // removing the form input elements that have been added on the fly.
     let btns = nestedForms.querySelectorAll(".remove-event-option-btn-otf");
 let btn = Array.prototype.slice.call(btns).pop();
 btn.addEventListener("click", ev => {
-    let parent = ev.target.closest(".new-event-event-option-otf");
+    let parent = ev.target.closest(".new-event-option-otf");
 nestedForms.removeChild(parent);
 ev.preventDefault();
 })
