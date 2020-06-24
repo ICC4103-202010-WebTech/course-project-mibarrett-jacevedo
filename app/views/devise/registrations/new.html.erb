@@ -28,6 +28,35 @@
 
   <%= f.hidden_field :role, value: 1 %>
 
+  <h5 class = "lead"> Join an organization </h5>
+  <%=f.fields_for :organization_users do |organization_user_form| %>
+    <div id="organization-user-nested-forms" class="form-group">
+      <div class="form-group">
+        <%= organization_user_form.label :organization_id %>
+        <%= organization_user_form.collection_select :organization_id, Organization.all.order(:name), :id, :name %>
+      </div>
+    </div>
+  <% end %>
+
+  <h5 class = "lead"> or create an organization </h5>
+  <%=f.fields_for :organization do |organization_form| %>
+      <div class="form-group">
+        <%= organization_form.label :name %>
+        <%= organization_form.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= organization_form.label :description %>
+        <%= organization_form.text_area :description, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= organization_form.label :picture %>
+        <%= organization_form.file_field :picture %>
+      </div>
+
+    <%organization_form.fields_for :organization_user do |organization_user_form| %>
+    <%end %>
+  <% end %>
+
     <!-- Trigger the modal with a button -->
     <button type="button" class="actions" data-toggle="modal" data-target="#myModal">Terms of Use</button>
 
