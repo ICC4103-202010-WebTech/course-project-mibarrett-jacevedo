@@ -25,7 +25,53 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+
   <%= f.hidden_field :role, value: 1 %>
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="actions" data-toggle="modal" data-target="#myModal">Terms of Use</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-body">
+            <%= render partial: 'devise/registrations/terms_of_use' %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+  </html>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="actions" data-toggle="modal" data-target="#myModal">Terms of Service</button>
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <%= render partial: 'devise/registrations/terms_of_service' %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  </body>
+  </html>
+
 
   <div class="actions">
     <%= f.submit "Sign up" %>

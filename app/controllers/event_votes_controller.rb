@@ -14,7 +14,6 @@ class EventVotesController < ApplicationController
 
   # GET /event_votes/new
   def new
-    @user = User.first
     @event = Event.find(params[:event_id])
     @event_vote = EventVote.new
   end
@@ -72,6 +71,6 @@ class EventVotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_vote_params
-      params.fetch(:event_vote, {}).permit(:event_option_id, :user_id)
+      params.fetch(:event_vote, {}).permit(:event_option_id, :user_id, :event_id)
     end
 end

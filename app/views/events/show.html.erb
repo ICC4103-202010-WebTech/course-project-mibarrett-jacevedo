@@ -47,6 +47,7 @@
         <%@vote_number= date.event_votes.count %>
         <p><%=date.day%>  <%=@vote_number%> Votes</p>
       <%end%>
+
       <p><%=link_to 'Vote for this event', new_event_event_vote_path(@event)%></p>
     </div>
     <div class="card">
@@ -55,8 +56,12 @@
         <%@user =guest.user %>
         <p><%=guest.user.username%> <%=link_to 'See profile', user_path(@user)%></p>
       <%end%>
-      <%= link_to 'Add participants', new_event_event_guest_path(@event)%>
+
+      <%if @event.user = current_user %>
+        <%= link_to 'Add participants', new_event_event_guest_path(@event)%>
+      <%end %>
     </div>
+
   </div>
   <div class="rightcolumn">
     <div class="card">
