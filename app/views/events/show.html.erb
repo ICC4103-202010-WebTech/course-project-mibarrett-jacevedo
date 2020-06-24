@@ -48,13 +48,19 @@
         <p><%=date.day%>  <%=@vote_number%> Votes</p>
       <%end%>
 
-      <p><%=link_to 'Vote for this event', new_event_event_vote_path(@event)%></p>
+      <%@event.users.each do |guest|%>
+        <%if guest = current_user %>
+          <p><%=link_to 'Vote for this event', new_event_event_vote_path(@event)%></p>
+        <%end %>
+      <%end%>
+
+      <!-- only guests can vote -->
     </div>
     <div class="card">
       <h2>People invited to this event</h2>
-      <%@event.event_guests.each do |guest|%>
-        <%@user =guest.user %>
-        <p><%=guest.user.username%> <%=link_to 'See profile', user_path(@user)%></p>
+
+      <%@event.users.each do |guest|%>
+        <p><%=guest.username%> <%=link_to 'See profile', user_path(guest)%></p>
       <%end%>
 
       <%if @event.user = current_user %>
