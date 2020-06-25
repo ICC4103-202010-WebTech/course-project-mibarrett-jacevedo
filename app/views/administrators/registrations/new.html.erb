@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2 class="lead">Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "administrators/shared/error_messages", resource: resource %>
@@ -20,7 +20,53 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+  <!-- Trigger the modal with a button -->
+  <div class="checkbox">
+    <label><input type="checkbox" value=""><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal"> Agree to Terms of Use</button></label>
+  </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <%= render partial: 'devise/registrations/terms_of_use' %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  </body>
+  </html>
+  <!-- Trigger the modal with a button -->
+  <div class="checkbox">
+    <label><input type="checkbox" value=""><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal"> Agree to Terms of Service</button></label>
+  </div>
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <%= render partial: 'devise/registrations/terms_of_service' %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  </body>
+  </html>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

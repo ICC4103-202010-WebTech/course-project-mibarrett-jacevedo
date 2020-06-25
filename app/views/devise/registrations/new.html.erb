@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2 class="lead">Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -27,60 +27,35 @@
   </div>
 
   <%= f.hidden_field :role, value: 1 %>
-
-  <h5 class = "lead"> Join an organization </h5>
-  <%=f.fields_for :organization_users do |organization_user_form| %>
-    <div id="organization-user-nested-forms" class="form-group">
-      <div class="form-group">
-        <%= organization_user_form.label :organization_id %>
-        <%= organization_user_form.collection_select :organization_id, Organization.all.order(:name), :id, :name %>
-      </div>
-    </div>
-  <% end %>
-
-  <h5 class = "lead"> or create an organization </h5>
-  <%=f.fields_for :organization do |organization_form| %>
-      <div class="form-group">
-        <%= organization_form.label :name %>
-        <%= organization_form.text_field :name, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= organization_form.label :description %>
-        <%= organization_form.text_area :description, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= organization_form.label :picture %>
-        <%= organization_form.file_field :picture %>
-      </div>
-
-    <%organization_form.fields_for :organization_user do |organization_user_form| %>
-    <%end %>
-  <% end %>
-
     <!-- Trigger the modal with a button -->
-    <button type="button" class="actions" data-toggle="modal" data-target="#myModal">Terms of Use</button>
+  <div class="checkbox">
+    <label><input type="checkbox" value=""><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal"> Agree to Terms of Use</button></label>
+  </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog">
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
 
         <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-body">
-            <%= render partial: 'devise/registrations/terms_of_use' %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
+      <div class="modal-content">
+        <div class="modal-body">
+          <%= render partial: 'devise/registrations/terms_of_use' %>
         </div>
-
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
       </div>
+
     </div>
+  </div>
 
   </body>
   </html>
   <!-- Trigger the modal with a button -->
-  <button type="button" class="actions" data-toggle="modal" data-target="#myModal">Terms of Service</button>
+  <div>
+    <label for="terms_and_conditions"><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal"> Agree to Terms of Service</button></label>
+    <input type="checkbox" id="terms_and_conditions" value="1" onclick="terms_changed(this)" />
+  </div>
 
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -101,10 +76,10 @@
   </body>
   </html>
 
-
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <button type="submit" id="submit_button" disabled><%= f.submit "Sign up" %></button>
   </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>
