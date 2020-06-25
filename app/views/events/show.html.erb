@@ -46,10 +46,20 @@
       <%@event.event_options.each do |date|%>
         <%@vote_number= date.event_votes.count %>
         <p><%=date.day%>  <%=@vote_number%> Votes</p>
+        <%@event.users.each do |guest|%>
+          <%if guest.id == current_user.id%>
+            <% guest.event_votes.each do |vote| %>
+              <%if vote.event_option.id != date.id %>
+                <p><%=link_to 'Vote', new_event_event_vote_path(@event)%></p>
+              <%end%>
+            <%end%>
+
+          <%end %>
+        <%end%>
       <%end%>
 
       <%@event.users.each do |guest|%>
-        <%if guest = current_user %>
+        <%if ((guest.id == current_user.id) && ())%>
           <p><%=link_to 'Vote for this event', new_event_event_vote_path(@event)%></p>
         <%end %>
       <%end%>
