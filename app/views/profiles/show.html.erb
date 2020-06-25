@@ -12,7 +12,8 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <div class ="modal-header"><button type='button' class='close' style='font-size:10px' data-dismiss='modal'>×</button></div>
-                <%= image_tag(@profile.picture, class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef") %>
+                  <%= image_tag(@profile.picture, class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef") %>
+                </div>
               </div>
             </div>
           </div>
@@ -39,9 +40,11 @@
           <p class="lead">Last access: <%= @profile.user.last_sign_in_at %></p>
         <%end %>
     </div>
-
+      <div class="card">
+        <h2 class="lead">About Me</h2>
+        <p class="lead"><%= @profile.biography %></p>
+      </div>
     <div class="card">
-      <div class="card mb-4 shadow-sm">
         <h3>My Events</h3>
         <% Array(@profile.user.events).each do |event| %>
           <div class="col-md-4">
@@ -70,13 +73,6 @@
             </div>
           </div>
         <% end %>
-      </div>
-    </div>
-  </div>
-  <div class="rightcolumn">
-    <div class="card">
-      <h2 class="lead">About Me</h2>
-      <p class="lead"><%= @profile.biography %></p>
     </div>
   </div>
 </div>
