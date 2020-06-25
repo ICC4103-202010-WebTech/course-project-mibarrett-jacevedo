@@ -19,6 +19,9 @@ class User < ApplicationRecord
   validates :username, presence: true #, :email, presence: true
   validates :username, uniqueness: true
   #validates :email, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/
+
+  accepts_nested_attributes_for :organization_user
+
   after_create :create_mailbox
   after_create :create_profile
 

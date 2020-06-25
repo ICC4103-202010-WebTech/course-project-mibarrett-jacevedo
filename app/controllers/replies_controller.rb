@@ -16,7 +16,7 @@ class RepliesController < ApplicationController
   def new
     #@event = Event.find(params[:event_id])
     @comment = Comment.find(params[:comment_id])
-    @user = User.first
+    #@user = current_person
     @reply = Reply.new
   end
 

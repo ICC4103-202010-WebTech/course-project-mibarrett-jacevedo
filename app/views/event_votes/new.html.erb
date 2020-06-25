@@ -1,12 +1,12 @@
 <div class="row ml-0 mt-3">
-  <h2>Vote for an event date</h2>
+  <h2>Confirm your vote</h2>
 </div>
 <div class="row ml-0">
-  <%= form_with model: @event_guest do |form| %>
+  <%= form_with model: @event_vote do |form| %>
     <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :event_option_id, value: @event_option.id %>
     <div class="form-group">
-      <%= form.label :event_option_id %>
-      <%= form.collection_select :event_option_id, EventOption.all.order(:day), :id, :day %>
+      <p>Voting for date: <%=@event_option.day%></p>
     </div>
     <div class="form-group mt-2">
       <%= form.submit 'Vote', class: ["btn", "btn-primary"] %>

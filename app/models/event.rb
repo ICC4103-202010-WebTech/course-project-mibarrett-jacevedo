@@ -6,8 +6,8 @@ class Event < ApplicationRecord
   has_many :replies, through: :comments
   has_many :event_guests, dependent: :destroy
   has_many :users, through: :event_guests
-  has_many :event_options #, dependent: :destroy
-  #has_many :event_votes, through: :event_options
+  has_many :event_options, dependent: :destroy
+  has_many :event_votes, through: :event_options
   has_many :reports
   has_one_attached :picture
   has_many_attached :pdf
@@ -19,6 +19,7 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :replies, allow_destroy: true
   accepts_nested_attributes_for :event_organization, allow_destroy: true
   accepts_nested_attributes_for :event_guests
+  accepts_nested_attributes_for :event_votes, allow_destroy: true
   #accepts_nested_attributes_for :event_votes
   after_create :private_or_public
 

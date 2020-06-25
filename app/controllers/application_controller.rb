@@ -17,5 +17,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :role, organization_user_attributes: [:id, :organization_id]])
   end
 
+  def after_sign_up_path_for(resource)
+    if resource == :user
+      events_path
+    end
+  end
 
 end

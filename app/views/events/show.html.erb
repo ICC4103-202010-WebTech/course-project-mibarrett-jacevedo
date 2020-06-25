@@ -4,7 +4,7 @@
   <div class="leftcolumn">
     <div class="card">
       <h5 class="display-2"><%= @event.title %></h5>
-      <p class="card-text"><%= @event.user.username %></p>
+      <p class="card-text">Hosted by: <%= @event.user.username %></p>
     </div>
 
     <div class="card">
@@ -41,6 +41,9 @@
       </div>
     </div>
 
+    <!-- No funciona bien -->
+    <!-- only guests can vote -->
+
     <div class="card">
       <h2>Date Options</h2>
       <%@event.event_options.each do |date|%>
@@ -50,16 +53,15 @@
           <%if guest.id == current_user.id%>
             <% guest.event_votes.each do |vote| %>
               <%if vote.event_option.id != date.id %>
-                <p><%=link_to 'Vote', new_event_event_vote_path(@event)%></p>
+                <p><%=link_to 'Vote', new_event_option_event_vote_path(date)%></p>
               <%end%>
             <%end%>
-
           <%end %>
         <%end%>
       <%end%>
 
 
-      <!-- only guests can vote -->
+
     </div>
     <div class="card">
       <h2>People invited to this event</h2>

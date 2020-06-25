@@ -4,7 +4,7 @@
   <p class="card-text"><%=reply.user.username%>: <%= reply.message%></p>
 <%end %>
 <%= form_with model: @reply do |form| %>
-  <%= form.hidden_field :user_id, value: @user.id %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
   <%= form.hidden_field :comment_id, value: @comment.id %>
   <div class="form-group">
     <%= form.label :message %>
