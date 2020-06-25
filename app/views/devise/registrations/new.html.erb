@@ -51,11 +51,14 @@
 
   </body>
   </html>
+
+
+
   <!-- Trigger the modal with a button -->
-  <div>
-    <label for="terms_and_conditions"><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal"> Agree to Terms of Service</button></label>
-    <input type="checkbox" id="terms_and_conditions" value="1" onclick="terms_changed(this)" />
+  <div class="checkbox">
+    <label><input type="checkbox" value=""><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal"> Agree to Terms of Service</button></label>
   </div>
+
 
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -76,8 +79,9 @@
   </body>
   </html>
 
+  <p> By signing up we assume you agree to Terms of Use an Terms of Service </p>
   <div class="actions">
-    <button type="submit" id="submit_button" disabled><%= f.submit "Sign up" %></button>
+    <%= f.submit "Sign up"%>
   </div>
 
 <% end %>
