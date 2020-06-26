@@ -44,9 +44,6 @@
       <%@participants.each do |participant|%>
         <p><%=participant.user.username%> <%=link_to 'See profile', user_path(participant.user)%></p>
       <%end%>
-      <%if administrator_signed_in? %>
-        <%= link_to 'Add participants', new_organization_organization_user_path(@organization)%>
-      <%end %>
     </div>
 
     <div class="card">
@@ -72,13 +69,13 @@
 <%end %>
 <%if can? :delete, @organization %>
   <div class="row ml-0 mt-2 mb-3">
-    <%= link_to 'Delete', delete_organization_path(@organization), class: ["btn", "btn-primary"] %> |
+    <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", @organization, method: :delete, data: { confirm: 'Are you sure?' } %></button> |
   </div>
 <%end %>
 
 <%if administrator_signed_in? %>
   <%= link_to 'Edit', edit_organization_path(@organization), class: ["btn", "btn-primary"] %> |
-  <%= link_to 'Delete', delete_organization_path(@organization), class: ["btn", "btn-primary"] %> |
+  <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", @organization, method: :delete, data: { confirm: 'Are you sure?' } %></button>  |
 <%end %>
 
 

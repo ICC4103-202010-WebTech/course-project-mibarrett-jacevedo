@@ -1,9 +1,13 @@
 <div class="row event-list">
   <% events.each do |event| %>
-    <%if event.organization == current_user.organization %>
-      <%if (current_user.presence_in event.event_guests) != nil or event.privorpub = 2 %>
-        <%= render partial: 'events/event_tile', locals: { event: event } %>
+    <% if user_signed_in? %>
+      <%if event.organization == current_user.organization %>
+        <%if (current_user.presence_in event.event_guests) != nil or event.privorpub = 2 %>
+          <%= render partial: 'events/event_tile', locals: { event: event } %>
+        <%end %>
       <%end %>
+    <%elsif administrator_signed_in?%>
+      <%= render partial: 'events/event_tile', locals: { event: event } %>
     <%end %>
   <% end %>
 </div>

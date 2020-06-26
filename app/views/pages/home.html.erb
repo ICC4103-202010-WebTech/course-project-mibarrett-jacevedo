@@ -2,7 +2,7 @@
 <html>
 
 <%if user_signed_in? or administrator_signed_in?%>
-  <% if current_user.organization.nil? %>
+  <% if user_signed_in? and current_user.organization.nil? %>
     <button type="button" class="btn btn-light"><%= link_to 'New organization', new_organization_path %></button>
     <button type="button" class="btn btn-light"><%= link_to 'Join organization', new_organization_user_path %></button>
 

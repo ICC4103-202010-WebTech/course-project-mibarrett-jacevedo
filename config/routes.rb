@@ -39,7 +39,6 @@ Rails.application.routes.draw do
   resources :organizations
   resources :organization_users
 
-  match 'comments/:id/edit', controller: 'comments', action: 'edit', via: 'get'
   match 'comments/:id/edit', controller: 'comments', action: 'update', via: 'post'
 
 

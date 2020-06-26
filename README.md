@@ -15,6 +15,7 @@ In `app/models/event` there is a function placed betweeen comments which needs t
 
 ###App Walk-through for `Administrator`
 - System administrators use a special route to enter the app, in the url they need to write 
+
 -SOLO SE PUEDE CREAR EVENTOS SI PERTENECES A UNA ORGANIZACION
 - profile se crae solo hay que editar los datos despues
 

@@ -22,6 +22,7 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :organization_user
 
+  after_create :insert_role
   after_create :create_mailbox
   after_create :create_profile
 
@@ -33,6 +34,9 @@ class User < ApplicationRecord
     "#{user_name}@example.com"
   end
   private
+  def insert_role
+    self.update(role:1)
+  end
   def create_mailbox
     Mailbox.create!(user_id: self.id)
   end

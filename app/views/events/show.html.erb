@@ -46,18 +46,25 @@
 
     <div class="card">
       <h2>Date Options</h2>
-      <%@event.event_options.each do |date|%>
-        <%@vote_number= date.event_votes.count %>
-        <p><%=date.day%>  <%=@vote_number%> Votes</p>
-        <%@event.users.each do |guest|%>
-          <%if guest.id == current_user.id%>
-            <% guest.event_votes.each do |vote| %>
-              <%if vote.event_option.id != date.id %>
-                <p><%=link_to 'Vote', new_event_option_event_vote_path(date)%></p>
+      <%if user_signed_in? %>
+        <%@event.event_options.each do |date|%>
+          <%@vote_number= date.event_votes.count %>
+          <p><%=date.day%>  <%=@vote_number%> Votes</p>
+          <%@event.users.each do |guest|%>
+            <%if guest.id == current_user.id%>
+              <% guest.event_votes.each do |vote| %>
+                <%if vote.event_option.id != date.id %>
+                  <p><%=link_to 'Vote', new_event_option_event_vote_path(date)%></p>
+                <%end%>
               <%end%>
-            <%end%>
-          <%end %>
+            <%end %>
+          <%end%>
         <%end%>
+      <%elsif administrator_signed_in?%>
+        <%@event.event_options.each do |date|%>
+          <%@vote_number= date.event_votes.count %>
+          <p><%=date.day%>  <%=@vote_number%> Votes</p>
+        <%end %>
       <%end%>
 
 
@@ -70,7 +77,7 @@
         <p><%=guest.username%> <%=link_to 'See profile', user_path(guest)%></p>
       <%end%>
 
-      <%if @event.user = current_user %>
+      <%if @event.user = current_user or administrator_signed_in? %>
         <%= link_to 'Add participants', new_event_event_guest_path(@event)%>
       <%end %>
     </div>

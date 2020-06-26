@@ -17,7 +17,8 @@ u8 = User.create!(username:"mramirez4", email:"mayar@gmail.com", password:"passw
 u9 = User.create!(username:"pacita2m", email:"mariapazmar@hotmail.com", password:"martinez23111", role:2)
 u10 = User.create!(username:"alejandro_r", email:"alerojas@gmail.com", password:"chile341111", role:1)
 u11 = User.create!(username:"georgew", email:"georgewes1@gmail.com", password:"washington61111", role:1)
-u12 = User.create!(username:"theodorem", email:"theomax@hotmail.com", password:"theo31111", role:2)
+u12 = User.create!(username:"theodorem", email:"theomax@hotmail.com", password:"theo31111", role:1)
+
 
 #PROFILE
 #p1 = Profile.create!(name: "Pablo Lopez", biography: "I am a party animal", user: u1)
