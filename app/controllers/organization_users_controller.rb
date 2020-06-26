@@ -14,7 +14,7 @@ class OrganizationUsersController < ApplicationController
 
   # GET /organization_users/new
   def new
-    @organization = Organization.find(params[:organization_id])
+    #@organization = Organization.find(params[:organization_id])
     @organization_user = OrganizationUser.new
   end
 
