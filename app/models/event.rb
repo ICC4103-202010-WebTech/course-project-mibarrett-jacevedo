@@ -21,7 +21,7 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :event_guests
   accepts_nested_attributes_for :event_votes, allow_destroy: true
 
-  after_create :organization
+  after_create :priv_or_pub
   after_create :admin_guest
 
   def self.search(search)
@@ -34,9 +34,10 @@ class Event < ApplicationRecord
 
   private
 
-  def organization
-    EventOrganization.create!(event_id: self.id, priv_or_pub: 2, organization_id: self.user.organization.id)
+  def priv_or_pub
+   EventOrganization.create!(event_id: self.id, priv_or_pub: 2, organization_id: self.user.organization.id)
   end
+
   def admin_guest
     EventGuest.create!(event_id:self.id, user_id:self.user.id )
   end

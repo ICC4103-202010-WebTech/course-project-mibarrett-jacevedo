@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :reports
-    #resources :organizations
+    resources :organizations
     resources :comments, shallow: true do
       resources :replies, shallow: true
     end
