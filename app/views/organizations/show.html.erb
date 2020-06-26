@@ -33,8 +33,8 @@
     <div class="card">
       <h2>Events</h2>
       <% @events.each do |event| %>
-        <%if event.event_organization.priv_or_pub = 2 %>
-          <%= render partial: 'events/event_list', locals: { events: @events } %>
+        <%if (event.presence_in @organization.events) != nil and event.privorpub = 2 %>
+          <%= render partial: 'events/event_tile', locals: { event: event } %>
         <%end %>
       <% end %>
     </div>

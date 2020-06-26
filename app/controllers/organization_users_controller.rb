@@ -30,7 +30,7 @@ class OrganizationUsersController < ApplicationController
     respond_to do |format|
       if @organization_user.save
         @organization = @organization_user.organization
-        format.html { redirect_to @organization, notice: 'Organization user was successfully created.' }
+        format.html { redirect_to @organization, notice: 'You were joined successfully.' }
         format.json { render :show, status: :created, location: @organization }
       else
         format.html { render :new }

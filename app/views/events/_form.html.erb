@@ -29,6 +29,9 @@
       <%= form.label :videos %>
       <%= form.file_field :videos, multiple: true  %>
     </div>
+    <h5 class="card-title">Private or public</h5>
+      <%= form.label :privorpub %>
+      <%= form.select(:privorpub, raw('<option value="1">Private</option><option value="2">Public</option>')) %>
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Event Option</h5>
@@ -50,14 +53,6 @@
         <% end %>
       </div>
     </div>
-    <h5 class="card-title">Private or public</h5>
-    <%= form.fields_for :event_organization do |event_organization_form| %>
-      <%= event_organization_form.hidden_field :organization_id, value: current_user.organization.id %>
-      <%= event_organization_form.select(:priv_or_pub, raw('<option value="1">Private</option><option value="2">Public</option>')) %>
-    <%end%>
-    <%= form.fields_for :event_guests do |guest_form| %>
-      <%= guest_form.hidden_field :user_id, value: current_user.id %>
-    <%end %>
     <div class="form-group mt-2">
       <%= form.submit submit_btn_text, class: ["btn", "btn-primary"] %>
       <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>

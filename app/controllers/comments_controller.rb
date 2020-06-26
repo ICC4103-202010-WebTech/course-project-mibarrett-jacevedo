@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
     @comment = Comment.find(params[:id])
+    @event = @comment.event
   end
 
   # POST /comments
@@ -46,8 +47,9 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
+        @event = @comment.event
+        format.html { redirect_to @event, notice: 'Comment was successfully updated.' }
+        format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
         format.json { render json: @comment.errors, status: :unprocessable_entity }

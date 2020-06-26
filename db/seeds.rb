@@ -20,24 +20,24 @@ u11 = User.create!(username:"georgew", email:"georgewes1@gmail.com", password:"w
 u12 = User.create!(username:"theodorem", email:"theomax@hotmail.com", password:"theo31111", role:2)
 
 #PROFILE
-p1 = Profile.create!(name: "Pablo Lopez", biography: "I am a party animal", user: u1)
-p2 = Profile.create!(name: "Maria Pizarro", biography: "Ingeniero mencion Obras Civiles", user: u2)
-p3 = Profile.create!(name:"Carlos Jones", biography: "Agricultor de dia, Batman de noche", user: u3)
-p4 = Profile.create!(name: "Robert Patrick", biography: "Artista abstracto minimalista contemporaneo", user: u4)
-p5 = Profile.create!(name: "Mia Rosales", biography: "Industrias Monsters Inc", user: u5)
-p6 = Profile.create!(name: "Pedro Montes", biography: "Jefa de mesa", user: u6)
-p7 = Profile.create!(name: "Rosa Gonzalez", biography: "Logistica de transporte", user: u7)
-p8 = Profile.create!(name: "Maya Ramirez", biography: "Locutor de radio", user: u8)
-p9 = Profile.create!(name: "Maria Paz Mardones", biography: "Tecnologo en alimentos veganos", user: u9)
-p10 = Profile.create!(name: "Alejandro Rojas", biography: "Enfermera geriatra", user: u10)
-p11 = Profile.create!(name: "George Wesley", biography: "Instructor de vuelo en parapente", user: u11)
-p12 = Profile.create!(name: "Theodore Maxwell", biography: "Piloto de avion", user: u12)
+#p1 = Profile.create!(name: "Pablo Lopez", biography: "I am a party animal", user: u1)
+#p2 = Profile.create!(name: "Maria Pizarro", biography: "Ingeniero mencion Obras Civiles", user: u2)
+#p3 = Profile.create!(name:"Carlos Jones", biography: "Agricultor de dia, Batman de noche", user: u3)
+#p4 = Profile.create!(name: "Robert Patrick", biography: "Artista abstracto minimalista contemporaneo", user: u4)
+#p5 = Profile.create!(name: "Mia Rosales", biography: "Industrias Monsters Inc", user: u5)
+#p6 = Profile.create!(name: "Pedro Montes", biography: "Jefa de mesa", user: u6)
+#p7 = Profile.create!(name: "Rosa Gonzalez", biography: "Logistica de transporte", user: u7)
+#p8 = Profile.create!(name: "Maya Ramirez", biography: "Locutor de radio", user: u8)
+#p9 = Profile.create!(name: "Maria Paz Mardones", biography: "Tecnologo en alimentos veganos", user: u9)
+#p10 = Profile.create!(name: "Alejandro Rojas", biography: "Enfermera geriatra", user: u10)
+#p11 = Profile.create!(name: "George Wesley", biography: "Instructor de vuelo en parapente", user: u11)
+#p12 = Profile.create!(name: "Theodore Maxwell", biography: "Piloto de avion", user: u12)
 
 #EVENTS
-e1 = Event.create!(title: "Birthday Party",user: u1, description: "My birthday is coming ups and i would like to celebrate with all of you!", location:"Avenida la Dehesa 2000")
-e2 = Event.create!(title: "Anniversary",user: u1, description: "For 20 years now this organization has given us so much to learn", location:"Avenida Larrain 10998")
-e3 = Event.create!(title: "Run for cancer",user: u2, description: "It is a race to colect for people suffering through this frustrating disease", location:"Padre Hurtado Sur 2334")
-e4 = Event.create!(title: "Dog meeting",user: u3, description: "As you know this is a very important subject we are in need to discuss", location:"Lo Beltran 2700")
+e1 = Event.create!(title: "Birthday Party",user: u1, description: "My birthday is coming ups and i would like to celebrate with all of you!", location:"Avenida la Dehesa 2000", privorpub:1)
+e2 = Event.create!(title: "Anniversary",user: u1, description: "For 20 years now this organization has given us so much to learn", location:"Avenida Larrain 10998", privorpub:1)
+e3 = Event.create!(title: "Run for cancer",user: u2, description: "It is a race to colect for people suffering through this frustrating disease", location:"Padre Hurtado Sur 2334", privorpub:2)
+e4 = Event.create!(title: "Dog meeting",user: u3, description: "As you know this is a very important subject we are in need to discuss", location:"Lo Beltran 2700", privorpub:2)
 
 #EVENTOPTION
 eov1 = EventOption.create!(event: e1, day:"01/01/2017 07:00")
@@ -65,10 +65,10 @@ ev11 = EventVote.create!(event_option: eov8, user:u1)
 ev12 = EventVote.create!(event_option: eov5, user:u3)
 
 #EVENTGUEST
-eg1 = EventGuest.create!(event:e1, user:u1)#creador
-eg2 = EventGuest.create!(event:e2, user:u1)#creador
-eg3 = EventGuest.create!(event:e3, user:u2)#creador
-eg4 = EventGuest.create!(event:e4, user:u3)#creador
+#eg1 = EventGuest.create!(event:e1, user:u1)#creador
+#eg2 = EventGuest.create!(event:e2, user:u1)#creador
+#eg3 = EventGuest.create!(event:e3, user:u2)#creador
+#eg4 = EventGuest.create!(event:e4, user:u3)#creador
 eg5 = EventGuest.create!(event:e4, user:u4)
 eg6 = EventGuest.create!(event:e1, user:u6)
 eg7 = EventGuest.create!(event:e2, user:u7)

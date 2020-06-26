@@ -21,7 +21,10 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :event_guests
   accepts_nested_attributes_for :event_votes, allow_destroy: true
 
+#This function needs to be comented before running rake db:seed command
   after_create :priv_or_pub
+#######################################################################
+#
   after_create :admin_guest
 
   def self.search(search)

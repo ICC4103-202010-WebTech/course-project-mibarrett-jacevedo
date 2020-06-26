@@ -45,31 +45,47 @@
       <div class="card">
         <div class="card mb-4 shadow-sm">
           <h3>My Events</h3>
-          <% Array(@user.events).each do |event| %>
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <div class="card-content">
-                  <div class="card-img">
-                    <%= link_to image_tag("no_image.png", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef"), url_for(event) %>
-                    <span><h4><%= link_to event.title, event %></h4></span>
-                    <p><%= event.location %></p>
-                  </div>
-                  <div class="card-desc">
-                    <button type="button" class="btn btn-outline-secondary"><%= link_to "View", event %></button>
-                    <%if can? :edit, event %>
-                      <button type="button" class="btn btn-outline-secondary"><%= link_to "Edit", edit_event_path(event) %></button>
-                    <%end %>
-                    <%if can? :delete, event %>
-                      <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
-                    <%end %>
-                    <%if administrator_signed_in? %>
-                      <button type="button" class="btn btn-outline-secondary"><%= link_to "Edit", edit_event_path(event) %></button>
-                      <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
-                    <%end %>
+          <% if (current_user.presence_in @user.organization.users) != nil %>
+            <% Array(@user.events).each do |event| %>
+              <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <div class="card-content">
+                    <div class="card-img">
+                      <%= link_to image_tag("no_image.png", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef"), url_for(event) %>
+                      <span><h4><%= link_to event.title, event %></h4></span>
+                      <p><%= event.location %></p>
+                    </div>
+                    <div class="card-desc">
+                      <button type="button" class="btn btn-outline-secondary"><%= link_to "View", event %></button>
+                      <%if can? :edit, event %>
+                        <button type="button" class="btn btn-outline-secondary"><%= link_to "Edit", edit_event_path(event) %></button>
+                      <%end %>
+                      <%if can? :delete, event %>
+                        <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                      <%end %>
+                      <%if administrator_signed_in? %>
+                        <button type="button" class="btn btn-outline-secondary"><%= link_to "Edit", edit_event_path(event) %></button>
+                        <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                      <%end %>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            <% end %>
+          <%else %>
+            <% Array(@user.events).each do |event| %>
+              <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <div class="card-content">
+                    <div class="card-img">
+                      <%=image_tag("no_image.png", class: "card-img-top", width: "100%", background: "#55595c", color: "#eceeef") %>
+                      <span><h4><%=event.title%></h4></span>
+                      <p><%= event.location %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <%end%>
           <% end %>
         </div>
       </div>
