@@ -1,7 +1,9 @@
 <div class="row event-list">
   <% events.each do |event| %>
-    <% if (current_user.presence_in event.event_guests) == nil or (event.event_organization.priv_or_pub = 2 and event.organization = current_user.organization)%>
-      <%= render partial: 'events/event_tile', locals: { event: event } %>
+    <%if event.organization == current_user.organization %>
+      <%if (current_user.presence_in event.event_guests) != nil or event.event_organization.priv_or_pub = 2 %>
+        <%= render partial: 'events/event_tile', locals: { event: event } %>
+      <%end %>
     <%end %>
   <% end %>
 </div>
