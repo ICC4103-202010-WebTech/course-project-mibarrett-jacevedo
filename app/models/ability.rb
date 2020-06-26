@@ -3,17 +3,16 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(useroradmin)
-    if useroradmin.present? and useroradmin.class.name == "User" # additional permissions for logged in users (they can manage their posts)
-      can :manage, Profile, user_id: useroradmin.id
-      can :manage, User, user_id: useroradmin.id
-      can :manage, Event, user_id: useroradmin.id
-      can :manage, Comment, user_id: useroradmin.id
+  def initialize(user)
+    can :read, :all
+    if user.present? and user.class.name == "User" # additional permissions for logged in users (they can manage their posts)
+      can :manage, Profile, user_id: user.id
+      can :manage, User, user_id: user.id
+      can :manage, Event, user_id: user.id
+      can :manage, Comment, user_id: user.id
 
-    elsif useroradmin.present? and useroradmin.class.name == "Administrator"
-      can :manage, :all
     else
-      can :read, :all
+      can :manage, :all
         # additional permissions for administrators
       # can :manage, Events
       # can :manage, User

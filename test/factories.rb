@@ -1,6 +1,6 @@
-require 'securerandom'
+#require 'securerandom'
 
-include FactoryBot::Syntax::Methods
+#include FactoryBot::Syntax::Methods
 #FactoryBot.define do
 # factory :admin do
 

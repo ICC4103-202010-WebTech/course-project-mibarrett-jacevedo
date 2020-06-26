@@ -52,10 +52,11 @@
           <p><%=date.day%>  <%=@vote_number%> Votes</p>
           <%@event.users.each do |guest|%>
             <%if guest.id == current_user.id%>
-              <% guest.event_votes.each do |vote| %>
-                <%if vote.event_option.id != date.id %>
+
+              <% if (date.id.presence_in? guest.event_vote)!= nil %>
+
                   <p><%=link_to 'Vote', new_event_option_event_vote_path(date)%></p>
-                <%end%>
+
               <%end%>
             <%end %>
           <%end%>
@@ -100,11 +101,9 @@
             <% if can? :edit, comment %>
               <%=link_to 'Edit', edit_comment_path(comment)  %> |
             <%end %>
-            <%if administrator_signed_in? %>
-              <%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %> |
-              <%=link_to 'Edit', edit_comment_path(comment)  %> |
-            <%end %>
-            <a href="#" class="card-link"> <%=link_to 'Reply', new_comment_reply_path(comment)%></a>
+            <%if user_signed_in? %>
+              <a href="#" class="card-link"> <%=link_to 'Reply', new_comment_reply_path(comment)%></a>
+            <%end%>
             <% @replies.each do |reply| %>
               <p class="card-text"><%=reply.user.username%>: <%= reply.message%></p>
             <%end %>
@@ -126,10 +125,7 @@
   <%if can? :delete, @event %>
     <%= link_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' } %> |
   <%end %>
-  <%if administrator_signed_in? %>
-    <%= link_to "    Edit", edit_event_path(@event) %> |
-    <%= link_to "Destroy", @event, method: :delete, data: { confirm: 'Are you sure?' } %> |
-  <%end %>
+
 
   <%= link_to 'Back ', events_path %>
 

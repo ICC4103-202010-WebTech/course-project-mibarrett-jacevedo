@@ -35,7 +35,9 @@
 <br>
 
 <div class="row ml-0 mt-2 mb-3">
-  <%= link_to "Create Organization", new_organization_path, class: ["btn", "btn-primary"] %>
+  <%if administrator_signed_in? %>
+    <%= link_to "Create Organization", new_organization_path, class: ["btn", "btn-primary"] %>
+  <%end %>
 </div>
 
 <%= link_to 'Back to home', root_path %>

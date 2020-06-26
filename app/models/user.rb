@@ -26,7 +26,8 @@ class User < ApplicationRecord
   after_create :create_mailbox
   after_create :create_profile
 
-  acts_as_google_authenticated :method => :user_name_with_label
+  #acts_as_google_authenticated :method => :user_name_with_label
+
   def administrator
     false
   end

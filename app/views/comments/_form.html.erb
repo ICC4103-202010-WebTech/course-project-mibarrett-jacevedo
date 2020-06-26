@@ -1,7 +1,15 @@
 
 <%= form_with model: @comments, local: true do |form| %>
-  <%= form.hidden_field :user_id, value: current_user.id %>
-  <%= form.hidden_field :event_id, value: event.id %>
+  <%if user_signed_in? %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  <%elsif administrator_signed_in? %>
+    <div class="form-group">
+      <%@event_users = event.users %>
+      <%= form.label :user_id %>
+      <%= form.collection_select :user_id, @event_users.all.order(:username), :id, :username %>
+    </div>
+  <%end %>
+    <%= form.hidden_field :event_id, value: event.id %>
   <div class="form-group">
     <%= form.label :message %>
     <%= form.text_field :message, class: "form-control" %>

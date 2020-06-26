@@ -4,7 +4,7 @@ class Administrator < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  after_create :user
+  #after_create :user
 
   def administrator
     true
