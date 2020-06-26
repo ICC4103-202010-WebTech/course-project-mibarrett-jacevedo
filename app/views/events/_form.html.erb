@@ -1,11 +1,15 @@
 <div class="row ml-0">
   <%= form_with model: event, local: true do |form| %>
+
     <%if user_signed_in? %>
       <%= form.hidden_field :user_id, value: current_user.id %>
     <%elsif administrator signed_in? %>
-      <%@user_admin = User.where(username: current_administrator.username) %>
-      <%= form.hidden_field :user_id, value: @user_admin.id %>
+      <div class="form-group">
+        <%= form.label :user_id %>
+        <%= form.collection_select :user_id, User.all.order(:name), :id, :name %>
+      </div>
     <%end %>
+
     <div class="form-group">
       <%= form.label :title %>
       <%= form.text_field :title, class: "form-control" %>

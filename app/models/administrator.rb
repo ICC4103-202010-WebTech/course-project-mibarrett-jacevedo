@@ -10,8 +10,8 @@ class Administrator < ApplicationRecord
     true
   end
 
-  def user
-    User.create!(username:self.username, password:self.password, email:self.email)
-  end
+  # def user
+  # User.create!(username:self.username, password:self.password, email:self.email)
+  #end
 
 end

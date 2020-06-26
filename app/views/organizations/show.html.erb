@@ -69,14 +69,14 @@
 <%end %>
 <%if can? :delete, @organization %>
   <div class="row ml-0 mt-2 mb-3">
-    <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", @organization, method: :delete, data: { confirm: 'Are you sure?' } %></button> |
+    <%= link_to "Destroy", @organization, method: :delete, data: { confirm: 'Are you sure?' }, class:  ["btn", "btn-primary"]  %> |
   </div>
 <%end %>
 
 <%if administrator_signed_in? %>
   <%= link_to 'Edit', edit_organization_path(@organization), class: ["btn", "btn-primary"] %> |
-  <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", @organization, method: :delete, data: { confirm: 'Are you sure?' } %></button>  |
+  <%= link_to "Destroy", @organization, method: :delete, data: { confirm: 'Are you sure?' }, class: ["btn", "btn-primary"]  %>  |
 <%end %>
 
 
-<%= link_to 'Back', '/organizations' %>
+<%= link_to 'Back', '/organizations' , class: ["btn", "btn-primary"]%>

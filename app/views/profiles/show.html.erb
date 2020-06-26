@@ -78,15 +78,15 @@
 </div>
 
   <%if can? :edit, @profile %>
-    <%= link_to '    Edit', edit_profile_path(@profile) %>  |
+    <%= link_to '    Edit', edit_profile_path(@profile), class: ["btn", "btn-primary"] %>  |
   <%end %>
   <%if can? :delete, @profile %>
-    <%= link_to 'Delete', @profile.user, method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <%= link_to 'Delete', @profile.user, method: :delete, data: { confirm: 'Are you sure?' }, class: ["btn", "btn-primary"]%> |
   <%end %>
 
   <%if administrator_signed_in? %>
-    <button type="button" class="btn btn-outline-secondary"><%= link_to "    Edit", edit_profile_path(@profile) %></button>
-    <button type="button" class="btn btn-outline-secondary"><%= link_to "Destroy", @profile, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+    <%= link_to "    Edit", edit_profile_path(@profile), class: ["btn", "btn-primary"] %>
+    <%= link_to "Destroy", @profile, method: :delete, data: { confirm: 'Are you sure?' }, class: ["btn", "btn-primary"] %>
   <%end %>
 
-<%= link_to 'Back to home', root_path %>
+<%= link_to 'Back to home', root_path , class: ["btn", "btn-primary"]%>
