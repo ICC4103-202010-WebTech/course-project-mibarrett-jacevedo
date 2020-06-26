@@ -14,12 +14,12 @@
     <%end %>
   </div>
 <%end %>
+
 <!--falta hacer que solo se puedan ver los publicos con priv_or_pub -->
 <%if user_signed_in?%>
-
-  <div class="row">
-    <%=render partial: 'events/event_list', locals: {events: @events} %>
-  </div>
+    <div class="row">
+      <%=render partial: 'events/event_list', locals: {events: @events} %>
+    </div>
 <% end %>
 
 
