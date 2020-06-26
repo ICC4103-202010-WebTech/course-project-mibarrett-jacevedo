@@ -8,11 +8,17 @@ class Organization < ApplicationRecord
 
   accepts_nested_attributes_for :organization_users
 
+  after_create :org_user
+
   def self.search(search)
     if search
       organizations = Organization.where("name LIKE ?" , "%#{search}%")
     else
       organizations = Organization.all
     end
+  end
+
+  def org_user
+    OrganizationUser.create!(user_id: self.user.id, organization_id: self.id)
   end
 end

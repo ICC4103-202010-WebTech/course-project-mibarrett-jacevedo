@@ -20,11 +20,13 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <% if user_signed_in? %>
-              <li class="nav-item"><%= link_to 'Events', events_path %></li>
-              <li class="nav-item"><%= link_to 'Mailbox', mailbox_path(current_user) %></li>
               <li class="nav-item"><%= link_to 'Profile', profile_path(current_user) %></a></li>
-              <li class="nav-item"><%= link_to 'Users', profiles_path %></li>
-              <li class="nav-item"><%= link_to 'Organizations', organizations_path %></li>
+              <li class="nav-item"><%= link_to 'Mailbox', mailbox_path(current_user) %></li>
+              <% if current_user.organization!=nil %>
+                <li class="nav-item"><%= link_to 'Events', events_path %></li>
+                <li class="nav-item"><%= link_to 'Users', profiles_path %></li>
+                <li class="nav-item"><%= link_to 'Organizations', organizations_path %></li>
+              <%end%>
               <li class="nav-item"><%= link_to 'Log Out', destroy_user_session_path,:method => :delete %></li>
             <%end %>
             <% if administrator_signed_in? %>
@@ -34,6 +36,7 @@
               <li class="nav-item"><%= link_to 'Reports', '/reports' %></li>
               <li class="nav-item"><%= link_to 'Log Out', destroy_user_session_path,:method => :delete %></li>
             <%end %>
+
           </ul>
         <!-- <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

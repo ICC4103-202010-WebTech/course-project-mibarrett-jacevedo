@@ -36,9 +36,9 @@ Rails.application.routes.draw do
     resources :event_guests
   end
   resources :searches
-  resources :organizations do
-    resources :organization_users
-  end
+  resources :organizations
+  resources :organization_users
+
 
   resources :users, defaults: { format: :html }
   resources :comments, defaults: { format: :html }

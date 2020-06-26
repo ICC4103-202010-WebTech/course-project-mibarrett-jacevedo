@@ -2,10 +2,17 @@
 <html>
 
 <%if user_signed_in? or administrator_signed_in?%>
-  <div class="row ml-0 mt-3">
-    <h2>Upcoming Events</h2>
-  </div>
-  <%= render partial: 'events/event_list', locals: { events: @events } %>
+  <% if current_user.organization.nil? %>
+    <button type="button" class="btn btn-light"><%= link_to 'New organization', new_organization_path %></button>
+    <button type="button" class="btn btn-light"><%= link_to 'Join organization', new_organization_user_path %></button>
+
+  <%else %>
+    <div class="row ml-0 mt-3">
+      <h2>Upcoming Events</h2>
+    </div>
+    <%= render partial: 'events/event_list', locals: { events: @events } %>
+  <%end%>
+
 
 <%else %>
 
