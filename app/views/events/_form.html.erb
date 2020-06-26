@@ -1,6 +1,11 @@
 <div class="row ml-0">
   <%= form_with model: event, local: true do |form| %>
-    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%if user_signed_in? %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+    <%elsif administrator signed_in? %>
+      <%@user_admin = User.where(username: current_administrator.username) %>
+      <%= form.hidden_field :user_id, value: @user_admin.id %>
+    <%end %>
     <div class="form-group">
       <%= form.label :title %>
       <%= form.text_field :title, class: "form-control" %>
@@ -53,6 +58,16 @@
 
       </div>
     </div>
+
+    <%if administrator_signed_in? %>
+      <%=form.fields_for :event_organization do |event_organizations_form| %>
+        <div class="form-group">
+          <%= event_organizations_form.label :organization_id %>
+          <%= event_organizations_form.collection_select :organization_id, Organization.all.order(:name), :id, :name %>
+        </div>
+      <% end %>
+    <%end%>
+
     <div class="form-group mt-2">
       <%= form.submit submit_btn_text, class: ["btn", "btn-primary"] %>
       <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>

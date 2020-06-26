@@ -22,7 +22,7 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :event_votes, allow_destroy: true
 
 #This function needs to be comented before running rake db:seed command
-  after_create :priv_or_pub
+after_create :priv_or_pub
 #######################################################################
 #
   after_create :admin_guest
@@ -38,7 +38,9 @@ class Event < ApplicationRecord
   private
 
   def priv_or_pub
-   EventOrganization.create!(event_id: self.id, priv_or_pub: 2, organization_id: self.user.organization.id)
+    if current_user?
+      EventOrganization.create!(event_id: self.id, priv_or_pub: 2, organization_id: self.user.organization.id)
+    end
   end
 
   def admin_guest

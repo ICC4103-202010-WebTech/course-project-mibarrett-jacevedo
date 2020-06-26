@@ -11,13 +11,16 @@ class Ability
       can :manage, Event, user_id: user.id
       can :manage, Comment, user_id: user.id
 
-      #if user.administrator?    # additional permissions for administrators
+      if user.administrator?
+        can :crud, :all
+        can :manage, :all
+        # additional permissions for administrators
       # can :manage, Events
       # can :manage, User
       # can :manage, Profile
       # can :manage, Organization
       # can :manage, Comment
-      #end
+      end
     end
     # Define abilities for the passed in user here. For example:
     #
