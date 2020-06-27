@@ -4,6 +4,7 @@ In `app/models/event` there is a function placed betweeen comments which needs t
 
 ###App Walk-through for `User`
 - A page with the option to sign in or sign up is diplayed, where sign in will render devise's sign in form and sign up devise's sign un form
+	- The user can sign in with email and password OR with Google Authentication
 - The sign in form asks for email and password, with an option to recover password if forgotten. 
 - The sign up form asks for email, username, password, password confirmation and a link to see Terms of Use and Terms of Service
 - When a new user `signs up` the navbar will only display the new users `Mailbox`, `Profile` and `Log Out` options.
@@ -29,6 +30,10 @@ In `app/models/event` there is a function placed betweeen comments which needs t
 - System administrators dont have a profile or a mailbox, so those options are not available in the nav bar
 - They have access to all links regarding "View", "Edit" and "Destroy"
 - They can add participants to any event
+- CRUD on events (only choose participant with organization otherwise it doesnt work!)
+- CRUD on comments
+- CRUD on organizations (organizations can only be created by administrators with users that dont belong to an organization previously)
+- CRUD on users (create users is a bit wonky)
 
 
 
@@ -45,6 +50,8 @@ In `app/models/event` there is a function placed betweeen comments which needs t
 - A user can only create events if it belongs to an organization
 - Implemented devise
 - Implemented cancancan
+- Can attach images and pdfs to event 
+
 
 
 Pending Features

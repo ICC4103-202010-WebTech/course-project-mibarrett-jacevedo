@@ -39,6 +39,30 @@
           </div>
         <%end %>
       </div>
+
+      <div class="card">
+        <% if @event.pdf.attached? %>
+          <%@event.pdf.each do |pdf| %>
+            <div class = "mb-3">
+              <%= link_to pdf.blob.filename, url_for(pdf), class: "text-info" %>
+            </div>
+          <%end %>
+        <%else %>
+          <p class="lead">This event has no pdf attached</p>
+        <%end %>
+      </div>
+      <div class="card">
+        <% if @event.images.attached? %>
+          <%@event.images.each do |image| %>
+            <div class = "mb-3">
+              <%= link_to image_tag(image, class: "card-img-top", height: "100px")%>
+            </div>
+            <%end %>
+        <%else%>
+          <p class="lead">This event has no images attached</p>
+        <%end %>
+      </div>
+
     </div>
 
     <!-- No funciona bien -->
