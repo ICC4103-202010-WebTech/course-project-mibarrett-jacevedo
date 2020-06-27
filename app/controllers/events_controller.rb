@@ -75,7 +75,7 @@ class EventsController < ApplicationController
       params.fetch(:event, {}).permit(:id, :user_id, :title, :description, :location, :picture, :privorpub,
                                       event_options_attributes: [:id, :day, :_destroy],
                                       comments_attributes: [:id, :user_id, :message, :_destroy],
-                                      event_organization_attributes: [:id, :organization_id, :priv_or_pub],
-                                      event_guests_attributes: [:id, :user_id])
+                                      event_organization_attributes: [:id, :organization_id, :priv_or_pub, :_destroy],
+                                      event_guests_attributes: [:id, :user_id, :_destroy])
     end
 end

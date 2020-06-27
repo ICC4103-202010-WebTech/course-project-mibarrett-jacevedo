@@ -7,13 +7,13 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :event_votes, dependent: :destroy
   has_one :organization_user, dependent: :destroy
-  has_one :organization, through: :organization_user, dependent: :destroy
+  has_one :organization, dependent: :destroy,  through: :organization_user, dependent: :destroy
   has_many :event_guests, dependent: :destroy
   has_many :replies, dependent: :destroy
   has_one :mailbox, dependent: :destroy
-  has_many :messages
-  has_one :profile, :dependent => :destroy
-  has_many :reports
+  has_many :messages, dependent: :destroy
+  has_one :profile, dependent: :destroy
+  has_many :reports, dependent: :destroy
   #has_one :organization , optional:true #only if its an admin
 
   validates :username, presence: true #, :email, presence: true
