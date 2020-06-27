@@ -50,15 +50,8 @@
         <%@event.event_options.each do |date|%>
           <%@vote_number= date.event_votes.count %>
           <p><%=date.day%>  <%=@vote_number%> Votes</p>
-          <%@event.users.each do |guest|%>
-            <%if guest.id == current_user.id%>
-
-              <% if (date.id.presence_in? guest.event_vote)!= nil %>
-
-                  <p><%=link_to 'Vote', new_event_option_event_vote_path(date)%></p>
-
-              <%end%>
-            <%end %>
+          <% if (current_user.presence_in @event.users) != nil %>
+            <p><%=link_to 'Vote', new_event_option_event_vote_path(date)%></p>
           <%end%>
         <%end%>
       <%elsif administrator_signed_in?%>
@@ -120,16 +113,16 @@
   </div>
 
   <%if can? :edit, @event %>
-    <%= link_to '    Edit', edit_event_path(@event) %> |
+    <%= link_to '    Edit', edit_event_path(@event), class: ["btn", "btn-primary"] %>
   <%end %>
   <%if can? :delete, @event %>
-    <%= link_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <%= link_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' }, class: ["btn", "btn-primary"] %>
   <%end %>
 
 
-  <%= link_to 'Back ', events_path %>
+  <%= link_to 'Back ', events_path, class: ["btn", "btn-primary"] %>
 
   <%if user_signed_in? %>
-    | <%= link_to "Report as abusive content", new_event_report_path(@event) %>
+    <%= link_to "Report as abusive content", new_event_report_path(@event), class: ["btn", "btn-primary"] %>
   <%end %>
 </div>
