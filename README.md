@@ -54,6 +54,3 @@ In `app/models/event` there is a function placed betweeen comments which needs t
 
 
 
-Pending Features
-- We were unable to complete the totality of the CRUD operations for all of the models
-
