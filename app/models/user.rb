@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-              :recoverable, :rememberable, :validatable, :trackable
+              :recoverable, :rememberable, :validatable, :trackable, :omniauthable, omniauth_providers: [:google_oauth2]
   has_many :comments, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :event_votes, dependent: :destroy
@@ -44,6 +44,19 @@ class User < ApplicationRecord
 
   def create_profile
     Profile.create!(user_id: self.id, name: self.username, biography: "Add a biography..." )
+  end
+  def self.from_omniauth(access_token)
+    data = access_token.info
+    user = User.where(email: data['email']).first
+
+    # Uncomment the section below if you want users to be created if they don't exist
+     unless user
+         user = User.create(username: data['name'],
+            email: data['email'],
+            password: "password"
+         )
+     end
+    user
   end
 
 end

@@ -56,7 +56,7 @@
                   <p><%= event.location %></p>
                 </div>
                 <div class="card-desc">
-                  <%if (current_user.presence_in? event.users) != nil %>
+                  <%if (current_user.presence_in event.users) != nil %>
                     <button type="button" class="btn btn-outline-secondary"><%= link_to "View", event %></button>
                   <%end %>
                   <%if can? :edit, event %>
