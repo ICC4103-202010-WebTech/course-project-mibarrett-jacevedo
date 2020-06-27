@@ -1,7 +1,17 @@
 <div class="row ml-0">
   <%= form_with model: organization, local: true do |form| %>
 
-    <%= form.hidden_field :user_id, value: current_user.id %>
+    <% if action_name == "new" %>
+      <%if user_signed_in? %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+      <%elsif administrator_signed_in? %>
+        <div class="form-group">
+          <%= form.label :user_id %>
+          <%= form.collection_select :user_id, User.all.order(:username), :id, :username %>
+        </div>
+      <%end %>
+    <%end %>
+
     <div class="form-group">
       <%= form.label :name %>
       <%= form.text_field :name, class: "form-control" %>
