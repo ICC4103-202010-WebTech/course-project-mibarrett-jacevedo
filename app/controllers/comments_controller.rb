@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
   def new
     @event = Event.find(params[:event_id])
     @comment = Comment.new
+
   end
 
   # GET /comments/1/edit

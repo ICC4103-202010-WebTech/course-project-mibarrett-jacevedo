@@ -22,19 +22,6 @@
         <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
-    <% if action_name == 'edit' %>
-      <%=form.fields_for :user do |user_form| %>
-        <div id="organization-user-nested-forms" class="form-group">
-          <div class="form-group">
-            <%= user_form.label :username %>
-            <%= user_form.text_area :username,  class: "form-control"%>
-          </div>
-        </div>
-      <% end %>
-      <%= link_to "Change your password", edit_user_registration_path %>
-    <% end %>
-
-
     <div class="form-group mt-2">
       <%= form.submit 'Add', class: ["btn", "btn-primary"] %>
       <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
