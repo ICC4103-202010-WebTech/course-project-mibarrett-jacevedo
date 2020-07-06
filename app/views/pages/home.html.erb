@@ -69,5 +69,46 @@
 <%end %>
 
 
+<div>
+  <label><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal"> Terms of Use</button></label>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= render partial: 'devise/registrations/terms_of_use' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Trigger the modal with a button -->
+<div>
+  <label><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal"> Terms of Service</button></label>
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= render partial: 'devise/registrations/terms_of_service' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </html>
 

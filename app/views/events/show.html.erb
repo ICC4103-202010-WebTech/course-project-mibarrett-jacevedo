@@ -51,11 +51,22 @@
           <p class="lead">This event has no pdf attached</p>
         <%end %>
       </div>
+
+      <div class="card">
+        <% if @event.videos.attached? %>
+          <%@event.videos.each do |video| %>
+            <div class = "mb-3">
+              <%= link_to video.blob.filename, url_for(video), class: "text-info" %>
+            </div>
+          <%end %>
+        <%end %>
+      </div>
+
       <div class="card">
         <% if @event.images.attached? %>
           <%@event.images.each do |image| %>
             <div class = "mb-3">
-              <%= link_to image_tag(image, class: "card-img-top", height: "100px")%>
+              <%= link_to image_tag(image, class: "img-thumbnail")%>
             </div>
             <%end %>
         <%else%>
